@@ -1,0 +1,19 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Top slab: left-shifted parallelogram -->
+  <!-- Top face -->
+  <polygon points="18,28 50,12 82,28 50,44" fill="currentColor"/>
+  <!-- Left side face -->
+  <polygon points="18,28 18,36 50,52 50,44" fill="currentColor" opacity="0.75"/>
+  <!-- Right side face -->
+  <polygon points="82,28 82,36 50,52 50,44" fill="currentColor" opacity="0.55"/>
+
+  <!-- Gap (background shows through) -->
+
+  <!-- Bottom slab: right-shifted parallelogram -->
+  <!-- Top face -->
+  <polygon points="18,56 50,40 82,56 50,72" fill="currentColor"/>
+  <!-- Left side face -->
+  <polygon points="18,56 18,66 50,82 50,72" fill="currentColor" opacity="0.75"/>
+  <!-- Right side face -->
+  <polygon points="82,56 82,66 50,82 50,72" fill="currentColor" opacity="0.55"/>
+</svg>
