@@ -74,7 +74,7 @@ export const Hero: React.FC = () => {
               }}
             >
               <span className="h-1.5 w-1.5 rounded-full bg-[#E8372A] animate-pulse" />
-              <span className="text-xs font-mono tracking-widest uppercase" style={{ color: '#A8ACBA' }}>
+              <span className="text-xs font-mono tracking-widest uppercase" style={{ color: 'var(--text-secondary)' }}>
                 AI-First Software Engineering Agency
               </span>
             </motion.div>
@@ -141,7 +141,7 @@ export const Hero: React.FC = () => {
                   <span className="text-2xl sm:text-4xl font-bold font-sans tracking-tight mb-1.5 tabular-nums" style={{ color: '#F0F1F3' }}>
                     {stat.value}
                   </span>
-                  <span className="text-[9px] sm:text-[10px] uppercase tracking-widest font-mono text-center leading-tight" style={{ color: '#3D4150' }}>
+                  <span className="text-[9px] sm:text-[10px] uppercase tracking-widest font-mono text-center leading-tight" style={{ color: 'var(--text-disabled)' }}>
                     {stat.label}
                   </span>
                 </div>
@@ -172,9 +172,9 @@ export const Hero: React.FC = () => {
             <div
               key={idx}
               className="text-xs sm:text-sm font-mono tracking-wider transition-colors duration-300"
-              style={{ color: '#3D4150' }}
-              onMouseEnter={e => (e.currentTarget.style.color = '#A8ACBA')}
-              onMouseLeave={e => (e.currentTarget.style.color = '#3D4150')}
+              style={{ color: 'var(--text-disabled)' }}
+              onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-disabled)')}
             >
               {tech}
             </div>

@@ -9,14 +9,23 @@ export function Birds() {
 
   const birdPositions = useMemo(() => {
     const arr = [];
+    
+    // Stateless deterministic pseudo-random generator
+    const random = (idx: number) => {
+      const s = idx * 15485863;
+      const r = (s * s * s) % 233280;
+      return Math.abs(r) / 233280;
+    };
+
     for (let i = 0; i < 16; i++) {
+      const idx = i * 4;
       arr.push({
         offset: new THREE.Vector3(
-          (Math.random() - 0.5) * 40,
-          Math.random() * 10,
-          (Math.random() - 0.5) * 30
+          (random(idx) - 0.5) * 40,
+          random(idx + 1) * 10,
+          (random(idx + 2) - 0.5) * 30
         ),
-        speed: 1 + Math.random() * 0.5
+        speed: 1 + random(idx + 3) * 0.5
       });
     }
     return arr;

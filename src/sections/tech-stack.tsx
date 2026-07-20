@@ -89,7 +89,7 @@ export const TechStack: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-sans" style={{ color: '#F0F1F3' }}>
             Our Production Tech Stack.
           </h2>
-          <p className="text-sm sm:text-base leading-relaxed font-light" style={{ color: '#6B7080' }}>
+          <p className="text-sm sm:text-base leading-relaxed font-light" style={{ color: 'var(--text-tertiary)' }}>
             We build exclusively with modern, battle-tested technologies that ensure performance, type-safety, and seamless integrations.
           </p>
         </div>
@@ -107,7 +107,7 @@ export const TechStack: React.FC = () => {
               }`}
               style={{
                 background: activeCategory === cat.name ? 'rgba(255,255,255,0.08)' : 'transparent',
-                color: activeCategory === cat.name ? '#F0F1F3' : '#6B7080',
+                color: activeCategory === cat.name ? '#F0F1F3' : 'var(--text-tertiary)',
               }}
             >
               {cat.name.toUpperCase()}
@@ -141,7 +141,7 @@ export const TechStack: React.FC = () => {
                         {tech.name}
                       </h3>
                     </div>
-                    <div className="text-[10px] font-mono" style={{ color: '#3D4150' }}>
+                    <div className="text-[10px] font-mono" style={{ color: 'var(--text-disabled)' }}>
                       VERIFIED PRODUCTIVE
                     </div>
                   </Card>

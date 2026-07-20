@@ -6,6 +6,8 @@ export const RoadShader = {
     uRoadColor: { value: new THREE.Color('#1a1c23') },
     uLineColor: { value: new THREE.Color('#f59e0b') },
     uEdgeColor: { value: new THREE.Color('#ffffff') },
+    uMoonlightIntensity: { value: 0.5 },
+    uMoonlightColor: { value: new THREE.Color('#bae6fd') }
   },
   vertexShader: `
     varying vec2 vUv;
@@ -24,6 +26,8 @@ export const RoadShader = {
     uniform vec3 uRoadColor;
     uniform vec3 uLineColor;
     uniform vec3 uEdgeColor;
+    uniform float uMoonlightIntensity;
+    uniform vec3 uMoonlightColor;
     varying vec2 vUv;
     varying vec3 vWorldPosition;
     varying vec3 vNormal;
@@ -45,7 +49,12 @@ export const RoadShader = {
       float edgeLine = step(edgeDistLeft, 0.008) + step(edgeDistRight, 0.008);
 
       color = mix(color, uLineColor, centerLine);
-      color = mix(color, uEdgeColor, clamp(edgeLine, 0.0, 1.0));
+      
+      // Edge coloring with dynamic cool blue moonlight highlight response
+      vec3 edgeColor = mix(uEdgeColor, uMoonlightColor, uMoonlightIntensity * 0.5);
+      edgeColor = edgeColor * (1.0 + uMoonlightIntensity * 0.4);
+      
+      color = mix(color, edgeColor, clamp(edgeLine, 0.0, 1.0));
 
       gl_FragColor = vec4(color, 1.0);
     }

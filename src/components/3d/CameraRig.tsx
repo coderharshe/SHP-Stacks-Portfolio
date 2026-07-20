@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
-import { useFrame, useThree } from '@react-three/fiber';
+import { useFrame } from '@react-three/fiber';
 import { roadCurve } from './RoadPath';
 import { useCameraMotion } from '@/context/CameraMotionContext';
 
@@ -11,7 +11,6 @@ interface CameraRigProps {
 }
 
 export function CameraRig({ scrollProgressRef }: CameraRigProps) {
-  const { camera } = useThree();
   const { updateCameraPhysics } = useCameraMotion();
 
   const currentProgress = useRef(0);
@@ -29,7 +28,8 @@ export function CameraRig({ scrollProgressRef }: CameraRigProps) {
     }
   }, []);
 
-  useFrame((_, delta) => {
+  useFrame((state, delta) => {
+    const { camera } = state;
     if (isReducedMotion.current) {
       // Static overview position for accessibility
       camera.position.set(0, 15, 25);
@@ -89,7 +89,7 @@ export function CameraRig({ scrollProgressRef }: CameraRigProps) {
     let tunnelFactor = 0;
     let fogFactor = 0;
     let overlookFactor = 0;
-    let sunAngle = 45 + p * 90;
+    const sunAngle = 45 + p * 90;
     let lightColor = '#f97316';
     let ambientIntensity = 0.6;
 

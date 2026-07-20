@@ -26,11 +26,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
           // ── Outline: Hairline border ──
           variant === 'outline' &&
-            "bg-transparent text-[#A8ACBA] border border-[rgba(255,255,255,0.12)] hover:border-[rgba(255,255,255,0.22)] hover:text-[#F0F1F3]",
+            "bg-transparent text-[var(--text-secondary)] border border-[rgba(255,255,255,0.12)] hover:border-[rgba(255,255,255,0.22)] hover:text-[#F0F1F3]",
 
           // ── Ghost ──
           variant === 'ghost' &&
-            "bg-transparent text-[#6B7080] hover:text-[#F0F1F3] hover:bg-[rgba(255,255,255,0.04)]",
+            "bg-transparent text-[var(--text-tertiary)] hover:text-[#F0F1F3] hover:bg-[rgba(255,255,255,0.04)]",
 
           className
         )}

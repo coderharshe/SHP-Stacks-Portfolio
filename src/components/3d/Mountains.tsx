@@ -2,9 +2,13 @@
 
 import React, { useMemo } from 'react';
 import * as THREE from 'three';
+import { useFrame } from '@react-three/fiber';
+import { useCameraMotion } from '@/context/CameraMotionContext';
 import { TerrainShader } from './Shaders/TerrainShader';
 
 export function Mountains() {
+  const { stateRef } = useCameraMotion();
+
   // Mountain terrain geometry with procedural displacement
   const terrainGeo = useMemo(() => {
     const geo = new THREE.PlaneGeometry(600, 700, 120, 140);
@@ -46,6 +50,20 @@ export function Mountains() {
     });
   }, []);
 
+  // Update terrain shader uniform based on the dynamic moon position
+  useFrame((state) => {
+    const s = stateRef.current;
+    const p = s.progress;
+    const xOffset = 110 - p * 80;
+    const yOffset = 70 + p * 60;
+    const zOffset = -480;
+    const targetMoonPos = state.camera.position.clone().add(new THREE.Vector3(xOffset, yOffset, zOffset));
+
+    if (terrainMaterial.uniforms.uSunPosition) {
+      terrainMaterial.uniforms.uSunPosition.value.copy(targetMoonPos);
+    }
+  });
+
   // GPU Instanced Pine Trees (Cone + Cylinder)
   const treeCount = 600;
   const treeTransforms = useMemo(() => {
@@ -55,24 +73,34 @@ export function Mountains() {
     const tempRot = new THREE.Euler();
     const tempScale = new THREE.Vector3();
 
+    // Stateless deterministic pseudo-random generator
+    const random = (i: number) => {
+      const s = i * 15485863;
+      const r = (s * s * s) % 233280;
+      return Math.abs(r) / 233280;
+    };
+
     let count = 0;
+    let idx = 0;
     while (count < treeCount) {
-      const x = (Math.random() - 0.5) * 450;
-      const z = -Math.random() * 550;
+      idx++;
+      const x = (random(idx) - 0.5) * 450;
+      const z = -random(idx + 1) * 550;
       
       // Don't place trees directly inside the road ribbon
       if (Math.abs(x) > 12) {
-        const scale = 0.8 + Math.random() * 1.4;
+        const scale = 0.8 + random(idx + 2) * 1.4;
         const y = Math.max(0, (Math.sin(x * 0.02) * Math.cos(z * 0.02) * 25 + 5));
         
         tempPos.set(x, y, z);
-        tempRot.set(0, Math.random() * Math.PI * 2, 0);
-        tempScale.set(scale, scale * (0.9 + Math.random() * 0.4), scale);
+        tempRot.set(0, random(idx + 3) * Math.PI * 2, 0);
+        tempScale.set(scale, scale * (0.9 + random(idx + 4) * 0.4), scale);
         
         tempMatrix.compose(tempPos, new THREE.Quaternion().setFromEuler(tempRot), tempScale);
         matrices.push(tempMatrix.clone());
         count++;
       }
+      idx += 5;
     }
     return matrices;
   }, [treeCount]);

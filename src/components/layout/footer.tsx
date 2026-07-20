@@ -76,7 +76,7 @@ export const Footer: React.FC = () => {
               </span>
             </a>
 
-            <p className="text-sm max-w-sm leading-relaxed" style={{ color: '#6B7080' }}>
+            <p className="text-sm max-w-sm leading-relaxed" style={{ color: 'var(--text-tertiary)' }}>
               Engineering Modern Software. Building Businesses. We combine strict engineering
               standards with high-end design to solve complex industrial problems.
             </p>
@@ -96,7 +96,7 @@ export const Footer: React.FC = () => {
                   aria-label={item.label}
                   className="rounded-lg p-2 transition-all duration-300 group"
                   style={{
-                    color: '#6B7080',
+                    color: 'var(--text-tertiary)',
                     border: '1px solid rgba(255,255,255,0.07)',
                   }}
                   onMouseEnter={e => {
@@ -104,7 +104,7 @@ export const Footer: React.FC = () => {
                     (e.currentTarget as HTMLElement).style.borderColor = 'rgba(232,55,42,0.25)';
                   }}
                   onMouseLeave={e => {
-                    (e.currentTarget as HTMLElement).style.color = '#6B7080';
+                    (e.currentTarget as HTMLElement).style.color = 'var(--text-tertiary)';
                     (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.07)';
                   }}
                 >
@@ -117,7 +117,7 @@ export const Footer: React.FC = () => {
           {/* Link columns */}
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title} className="space-y-4">
-              <h4 className="text-xs font-mono uppercase tracking-widest capitalize" style={{ color: '#3D4150' }}>
+              <h4 className="text-xs font-mono uppercase tracking-widest capitalize" style={{ color: 'var(--text-disabled)' }}>
                 {title}
               </h4>
               <ul className="space-y-2.5">
@@ -127,9 +127,9 @@ export const Footer: React.FC = () => {
                       href={link.href}
                       onClick={(e) => handleSectionScroll(e, link.href)}
                       className="text-sm transition-colors duration-200"
-                      style={{ color: '#6B7080' }}
+                      style={{ color: 'var(--text-tertiary)' }}
                       onMouseEnter={e => (e.currentTarget.style.color = '#E8372A')}
-                      onMouseLeave={e => (e.currentTarget.style.color = '#6B7080')}
+                      onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-tertiary)')}
                     >
                       {link.label}
                     </a>
@@ -145,16 +145,16 @@ export const Footer: React.FC = () => {
           className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4"
           style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}
         >
-          <div className="text-xs font-mono" style={{ color: '#3D4150' }}>
+          <div className="text-xs font-mono" style={{ color: 'var(--text-disabled)' }}>
             &copy; {currentYear} SHP Stacks. All rights reserved.
           </div>
 
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="flex items-center gap-2 text-xs font-mono transition-colors duration-200 cursor-pointer group"
-            style={{ color: '#3D4150' }}
+            style={{ color: 'var(--text-disabled)' }}
             onMouseEnter={e => (e.currentTarget.style.color = '#E8372A')}
-            onMouseLeave={e => (e.currentTarget.style.color = '#3D4150')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-disabled)')}
           >
             <span>BACK TO TOP</span>
             <span

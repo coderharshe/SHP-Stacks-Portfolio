@@ -1,16 +1,21 @@
+/* eslint-disable react-hooks/immutability */
 'use client';
 
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef } from 'react';
 import * as THREE from 'three';
+import { useFrame } from '@react-three/fiber';
+import { useCameraMotion } from '@/context/CameraMotionContext';
 import { roadCurve } from './RoadPath';
 import { RoadShader } from './Shaders/RoadShader';
 
 export function Road() {
+  const { stateRef } = useCameraMotion();
+  const railLeftRef = useRef<THREE.Mesh>(null);
+  const railRightRef = useRef<THREE.Mesh>(null);
+
   // Road surface geometry generated along spline
-  const { roadGeometry, guardrailLeft, guardrailRight, bridgeMesh } = useMemo(() => {
+  const { roadGeometry, guardrailLeft, guardrailRight } = useMemo(() => {
     const tubularSegments = 400;
-    const radius = 3.5;
-    const radialSegments = 8;
     
     // Custom road ribbon geometry
     const points = roadCurve.getSpacedPoints(tubularSegments);
@@ -90,8 +95,7 @@ export function Road() {
     return {
       roadGeometry: roadGeo,
       guardrailLeft: railGeoLeft,
-      guardrailRight: railGeoRight,
-      bridgeMesh: null
+      guardrailRight: railGeoRight
     };
   }, []);
 
@@ -104,17 +108,58 @@ export function Road() {
     });
   }, []);
 
+  // Update moonlight intensity and guardrail reflections dynamically
+  useFrame(() => {
+    const s = stateRef.current;
+    const tunnelFade = THREE.MathUtils.clamp(1.0 - s.environment.tunnelFactor * 1.5, 0.0, 1.0);
+
+    // Moonlight is stronger in open sections (alpine, lakeside, sunset)
+    const isOpen = s.environment.zone === 'alpine' || s.environment.zone === 'lakeside' || s.environment.zone === 'sunset';
+    const moonlightIntensity = (isOpen ? 0.95 : 0.45) * tunnelFade;
+
+    // 1. Brighten road edges based on moonlight intensity
+    if (roadMaterial.uniforms.uMoonlightIntensity) {
+      roadMaterial.uniforms.uMoonlightIntensity.value = THREE.MathUtils.lerp(
+        roadMaterial.uniforms.uMoonlightIntensity.value,
+        moonlightIntensity,
+        0.05
+      );
+    }
+
+    // 2. Add faint specular highlight glow on guardrails
+    if (railLeftRef.current && railRightRef.current) {
+      const matLeft = railLeftRef.current.material as THREE.MeshStandardMaterial;
+      const matRight = railRightRef.current.material as THREE.MeshStandardMaterial;
+      
+      const targetEmissiveIntensity = (0.04 + (isOpen ? 0.12 : 0.0)) * tunnelFade;
+      matLeft.emissiveIntensity = THREE.MathUtils.lerp(matLeft.emissiveIntensity, targetEmissiveIntensity, 0.05);
+      matRight.emissiveIntensity = THREE.MathUtils.lerp(matRight.emissiveIntensity, targetEmissiveIntensity, 0.05);
+    }
+  });
+
   return (
     <group>
       {/* Asphalt Ribbon */}
       <mesh geometry={roadGeometry} material={roadMaterial} receiveShadow />
 
-      {/* Steel Guardrails */}
-      <mesh geometry={guardrailLeft}>
-        <meshStandardMaterial color="#94a3b8" metalness={0.8} roughness={0.3} />
+      {/* Steel Guardrails with moonlight response */}
+      <mesh ref={railLeftRef} geometry={guardrailLeft}>
+        <meshStandardMaterial 
+          color="#94a3b8" 
+          metalness={0.9} 
+          roughness={0.2} 
+          emissive="#bae6fd" 
+          emissiveIntensity={0.04}
+        />
       </mesh>
-      <mesh geometry={guardrailRight}>
-        <meshStandardMaterial color="#94a3b8" metalness={0.8} roughness={0.3} />
+      <mesh ref={railRightRef} geometry={guardrailRight}>
+        <meshStandardMaterial 
+          color="#94a3b8" 
+          metalness={0.9} 
+          roughness={0.2} 
+          emissive="#bae6fd" 
+          emissiveIntensity={0.04}
+        />
       </mesh>
 
       {/* Scenic Valley Bridge Pillars at Testimonials section (Z = -330) */}

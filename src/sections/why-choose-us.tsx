@@ -96,7 +96,7 @@ export const WhyChooseUs: React.FC = () => {
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-sans" style={{ color: '#F0F1F3' }}>
               Built for Serious Operations.
             </h2>
-            <p className="text-sm sm:text-base leading-relaxed font-light" style={{ color: '#6B7080' }}>
+            <p className="text-sm sm:text-base leading-relaxed font-light" style={{ color: 'var(--text-tertiary)' }}>
               We operate as your core technical co-founders, building software designed to secure user trust and drive long-term business value.
             </p>
           </div>
@@ -124,13 +124,13 @@ export const WhyChooseUs: React.FC = () => {
                         className="h-10 w-10 rounded-lg flex items-center justify-center transition-colors"
                         style={{ border: '1px solid rgba(255,255,255,0.07)', background: 'rgba(255,255,255,0.02)' }}
                       >
-                        <Icon className="h-5 w-5" style={{ color: '#6B7080' }} />
+                        <Icon className="h-5 w-5" style={{ color: 'var(--text-tertiary)' }} />
                       </div>
                       <div className="space-y-2">
                         <h3 className="text-base font-semibold tracking-tight" style={{ color: '#F0F1F3' }}>
                           {reason.title}
                         </h3>
-                        <p className="text-xs sm:text-sm leading-relaxed font-light" style={{ color: '#6B7080' }}>
+                        <p className="text-xs sm:text-sm leading-relaxed font-light" style={{ color: 'var(--text-tertiary)' }}>
                           {reason.desc}
                         </p>
                       </div>

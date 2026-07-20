@@ -32,7 +32,7 @@ export const Navbar: React.FC = () => {
   const scrollY = useScrollPosition();
   const [scrollProgress, setScrollProgress] = useState(0);
 
-  const sectionIds = ['hero', 'about', 'services', 'projects', 'why-choose-us', 'tech-stack', 'process', 'faq'];
+  const sectionIds = ['hero', 'about', 'services', 'projects', 'why-choose-us', 'process', 'faq'];
   const activeSection = useActiveSection(sectionIds);
 
   const navLinks = [
@@ -103,9 +103,9 @@ export const Navbar: React.FC = () => {
                     href={link.href}
                     onClick={(e) => handleLinkClick(e, link.href)}
                     className="relative text-sm font-medium transition-colors duration-200 py-1.5 cursor-pointer"
-                    style={{ color: isActive ? '#F0F1F3' : '#6B7080' }}
-                    onMouseEnter={e => { if (!isActive) (e.currentTarget as HTMLElement).style.color = '#A8ACBA'; }}
-                    onMouseLeave={e => { if (!isActive) (e.currentTarget as HTMLElement).style.color = '#6B7080'; }}
+                    style={{ color: isActive ? '#F0F1F3' : 'var(--text-tertiary)' }}
+                    onMouseEnter={e => { if (!isActive) (e.currentTarget as HTMLElement).style.color = 'var(--text-secondary)'; }}
+                    onMouseLeave={e => { if (!isActive) (e.currentTarget as HTMLElement).style.color = 'var(--text-tertiary)'; }}
                   >
                     {link.label}
                     {isActive && (
@@ -138,9 +138,9 @@ export const Navbar: React.FC = () => {
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="p-2 cursor-pointer focus:outline-none transition-colors duration-200"
-                style={{ color: '#6B7080' }}
+                style={{ color: 'var(--text-tertiary)' }}
                 onMouseEnter={e => (e.currentTarget.style.color = '#F0F1F3')}
-                onMouseLeave={e => (e.currentTarget.style.color = '#6B7080')}
+                onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-tertiary)')}
                 aria-label="Toggle menu"
               >
                 {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -174,7 +174,7 @@ export const Navbar: React.FC = () => {
                       onClick={(e) => handleLinkClick(e, link.href)}
                       className="w-full text-base font-medium py-3 cursor-pointer transition-colors duration-200"
                       style={{
-                        color: isActive ? '#E8372A' : '#6B7080',
+                        color: isActive ? '#E8372A' : 'var(--text-tertiary)',
                         borderBottom: '1px solid rgba(255,255,255,0.05)',
                         fontWeight: isActive ? 600 : 400,
                       }}

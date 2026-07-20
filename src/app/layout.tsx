@@ -89,6 +89,12 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet" />
+        <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&f[]=boska@300,400,500,700,900&display=swap" rel="stylesheet" />
+      </head>
       <body className="min-h-full flex flex-col bg-transparent text-foreground antialiased relative">
         <CameraMotionProvider>
           {/* Cinematic 3D Highway WebGL Scene */}

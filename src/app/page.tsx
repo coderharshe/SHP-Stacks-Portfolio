@@ -3,7 +3,6 @@ import { About } from '@/sections/about';
 import { Services } from '@/sections/services';
 import { Projects } from '@/sections/projects';
 import { WhyChooseUs } from '@/sections/why-choose-us';
-import { TechStack } from '@/sections/tech-stack';
 import { Process } from '@/sections/process';
 
 import { Testimonials } from '@/sections/testimonials';
@@ -21,7 +20,6 @@ export default function Home() {
       <Services />
       <Projects />
       <WhyChooseUs />
-      <TechStack />
       <Process />
 
       <Testimonials />

@@ -12,23 +12,44 @@
   --color-card:    rgba(255,255,255,0.04);
   --color-border:  rgba(255,255,255,0.08);
 
-  /* 10% — SHP Red Accent */
-  --color-accent-red:    #E8372A;
-  --color-accent-blue:   #E8372A;
-  --color-accent-purple: #E8372A;
-  --color-accent-cyan:   #E8372A;
-  --color-accent-gold:   #A8ACBA;
+  /* User Color Palette */
+  --color-dark-teal:      #225059;
+  --color-blaze-orange:   #fc6100;
+  --color-vanilla-custard: #fff3b0;
+  --color-blue-bell:      #20a4f3;
+  --color-wine-plum:      #773344;
+
+  /* 10% — Accents mapped to User Palette */
+  --color-accent-red:    #fc6100;
+  --color-accent-blue:   #20a4f3;
+  --color-accent-purple: #773344;
+  --color-accent-cyan:   #225059;
+  --color-accent-gold:   #fff3b0;
   --color-accent-mint:   #F0F1F3;
 
   /* Foreground */
   --color-foreground: #F0F1F3;
 
-  --font-sans: var(--font-geist-sans), var(--font-inter), sans-serif;
-  --font-mono: var(--font-geist-mono), monospace;
+  --font-sans: "Source Sans 3", "Source Sans Pro", sans-serif;
+  --font-mono: "SF Mono", SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+  --font-accent: Boska, serif;
+  --font-h1: Satoshi, sans-serif;
 }
+
+h1 {
+  font-family: Satoshi, sans-serif !important;
+}
+
 
 /* ── Design Token Custom Properties ── */
 :root {
+  /* User Colors */
+  --dark-teal:       #225059;
+  --blaze-orange:    #fc6100;
+  --vanilla-custard: #fff3b0;
+  --blue-bell:       #20a4f3;
+  --wine-plum:       #773344;
+
   /* Backgrounds */
   --bg-primary:   #0A0B0D;
   --bg-secondary: #0D0F12;
@@ -45,26 +66,26 @@
   --border-subtle:  rgba(255,255,255,0.05);
   --border-default: rgba(255,255,255,0.08);
   --border-strong:  rgba(255,255,255,0.13);
-  --border-accent:  rgba(232,55,42,0.30);
+  --border-accent:  rgba(252,97,0,0.30);
 
-  /* Text hierarchy — no pure white */
-  --text-primary:   #F0F1F3;
-  --text-secondary: #A8ACBA;
-  --text-tertiary:  #6B7080;
-  --text-disabled:  #3D4150;
-  --text-accent:    #E8372A;
+  /* Text hierarchy — no pure white, based on Vanilla Custard #FFF3B0 */
+  --text-primary:   #FFFFFF;
+  --text-secondary: hsla(51, 100%, 95%, 0.95);
+  --text-tertiary:  hsla(51, 100%, 90%, 0.85);
+  --text-disabled:  hsla(51, 100%, 85%, 0.6);
+  --text-accent:    var(--blaze-orange);
 
-  /* Accent — SHP Red */
-  --accent-primary: #E8372A;
-  --accent-hover:   #F04438;
-  --accent-active:  #C42F22;
-  --accent-glow:    rgba(232,55,42,0.18);
-  --accent-subtle:  rgba(232,55,42,0.07);
+  /* Accent — Blaze Orange & Palette Mappings */
+  --accent-primary: var(--blaze-orange);
+  --accent-hover:   #ff7b25;
+  --accent-active:  #d55100;
+  --accent-glow:    rgba(252,97,0,0.18);
+  --accent-subtle:  rgba(252,97,0,0.07);
 
   /* Semantic */
   --success: #22C55E;
   --warning: #F59E0B;
-  --danger:  #E8372A;
+  --danger:  var(--blaze-orange);
 
   /* Legacy compat (consumed by tailwind's foreground/background vars) */
   --background: #0A0B0D;
@@ -84,6 +105,9 @@ body {
   font-family: var(--font-sans);
   position: relative;
   min-height: 100vh;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  letter-spacing: 0.015em;
 }
 
 /* ── Custom Scrollbar ── */
@@ -209,3 +233,75 @@ body {
   margin-left: auto !important;
   margin-right: auto !important;
 }
+
+/* ── Wood Tray Card & Text Highlights ── */
+.wood-tray-card {
+  position: relative;
+  /* Premium Wood Texture: stacks linear highlights, SVG wood grain noise, and rich brown-teal-plum base gradient */
+  background-image: 
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 0%, transparent 15%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='woodNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.015 0.045' numOctaves='4' result='noise'/%3E%3CfeColorMatrix type='matrix' values='0.36 0 0 0 0.35 0.22 0 0 0 0.20 0.13 0 0 0 0.12 0 0 0 0.32 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23woodNoise)'/%3E%3C/svg%3E"),
+    linear-gradient(135deg, #3d2314 0%, #2b180d 40%, var(--dark-teal) 80%, #150b06 100%);
+  background-size: cover;
+  border-width: 6px;
+  border-style: solid;
+  /* Deep recessed inner shadow using wine-plum tint for organic wood look */
+  box-shadow: 
+    inset 0 4px 10px rgba(0, 0, 0, 0.85), 
+    inset 0 -4px 8px rgba(119, 51, 68, 0.15),
+    0 10px 25px rgba(0, 0, 0, 0.5);
+  transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+}
+
+.wood-tray-card.active {
+  background-image: 
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.09) 0%, transparent 15%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='woodNoiseActive'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.015 0.045' numOctaves='4' result='noise'/%3E%3CfeColorMatrix type='matrix' values='0.36 0 0 0 0.35 0.22 0 0 0 0.20 0.13 0 0 0 0.12 0 0 0 0.32 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23woodNoiseActive)'/%3E%3C/svg%3E"),
+    linear-gradient(135deg, #5c341d 0%, #462513 40%, var(--wine-plum) 80%, #1f0e05 100%);
+  box-shadow: 
+    inset 0 4px 12px rgba(0, 0, 0, 0.9), 
+    inset 0 0 15px rgba(252, 97, 0, 0.25), 
+    0 15px 35px rgba(0, 0, 0, 0.7),
+    0 0 20px rgba(252, 97, 0, 0.15);
+}
+
+.wood-highlight {
+  background: linear-gradient(120deg, rgba(252, 97, 0, 0.25) 0%, rgba(255, 243, 176, 0.15) 100%);
+  color: var(--vanilla-custard);
+  padding: 1px 5px;
+  margin: 0 -2px;
+  border-radius: 4px;
+  border-bottom: 2px solid var(--blaze-orange);
+  box-shadow: 0 0 8px rgba(252, 97, 0, 0.2);
+  font-weight: 500;
+  display: inline;
+  text-shadow: 0 0 4px rgba(255, 243, 176, 0.2);
+}
+
+.font-accent {
+  font-family: var(--font-accent), serif;
+}
+
+/* ── HUD Custom Cockpit Animations ── */
+@keyframes hud-scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(220px); }
+}
+@keyframes hud-dash-flow {
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+.hud-glow-red {
+  box-shadow: 0 0 20px rgba(232, 55, 42, 0.12), inset 0 0 10px rgba(232, 55, 42, 0.05);
+}
+.animate-spin-slow {
+  animation: spin 16s linear infinite;
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+

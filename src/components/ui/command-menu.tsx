@@ -33,19 +33,38 @@ export const CommandMenu: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  interface CommandItem {
+    id: string;
+    name: string;
+    type: string;
+    sectionId?: string;
+    icon: React.ComponentType<{ className?: string }>;
+  }
+
+  // Handle select callback
+  const handleSelect = React.useCallback((item: CommandItem) => {
+    setIsOpen(false);
+    const targetId = item.sectionId || item.id;
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, []);
+
   // Focus input on open
   useEffect(() => {
     if (isOpen) {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         inputRef.current?.focus();
+        setSearch('');
+        setSelectedIndex(0);
       }, 50);
-      setSearch('');
-      setSelectedIndex(0);
+      return () => clearTimeout(timer);
     }
   }, [isOpen]);
 
   // Command items definition
-  const navigationItems = [
+  const navigationItems: CommandItem[] = [
     { id: 'hero', name: 'Home / Hero Section', type: 'section', icon: Hash },
     { id: 'about', name: 'About SHP Stacks', type: 'section', icon: FileText },
     { id: 'services', name: 'Our Services', type: 'section', icon: Code },
@@ -58,7 +77,7 @@ export const CommandMenu: React.FC = () => {
     { id: 'cta', name: 'Start a Project / Contact Us', type: 'section', icon: Hash },
   ];
 
-  const projectItems = PROJECTS_DATA.map(p => ({
+  const projectItems: CommandItem[] = PROJECTS_DATA.map(p => ({
     id: `project-${p.id}`,
     name: `Project: ${p.title}`,
     type: 'project',
@@ -66,7 +85,7 @@ export const CommandMenu: React.FC = () => {
     icon: Briefcase
   }));
 
-  const serviceItems = SERVICES_DATA.map(s => ({
+  const serviceItems: CommandItem[] = SERVICES_DATA.map(s => ({
     id: `service-${s.id}`,
     name: `Service: ${s.title}`,
     type: 'service',
@@ -102,7 +121,7 @@ export const CommandMenu: React.FC = () => {
 
     window.addEventListener('keydown', handleKeys);
     return () => window.removeEventListener('keydown', handleKeys);
-  }, [isOpen, filteredItems, selectedIndex]);
+  }, [isOpen, filteredItems, selectedIndex, handleSelect]);
 
   // Adjust scroll position when navigating with arrow keys
   useEffect(() => {
@@ -122,19 +141,6 @@ export const CommandMenu: React.FC = () => {
       container.scrollTop = selectedBottom - container.clientHeight;
     }
   }, [selectedIndex]);
-
-  const handleSelect = (item: typeof allItems[0]) => {
-    setIsOpen(false);
-    let targetId = item.id;
-    if (item.type === 'project' || item.type === 'service') {
-      targetId = (item as any).sectionId;
-    }
-    
-    const element = document.getElementById(targetId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <>

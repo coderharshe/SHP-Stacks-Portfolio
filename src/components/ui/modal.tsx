@@ -61,9 +61,9 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }
               <button
                 onClick={onClose}
                 className="rounded-lg p-1.5 transition-colors duration-200 cursor-pointer"
-                style={{ color: '#6B7080' }}
+                style={{ color: 'var(--text-tertiary)' }}
                 onMouseEnter={e => (e.currentTarget.style.color = '#F0F1F3')}
-                onMouseLeave={e => (e.currentTarget.style.color = '#6B7080')}
+                onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-tertiary)')}
                 aria-label="Close dialog"
               >
                 <X className="h-5 w-5" />

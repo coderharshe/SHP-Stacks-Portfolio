@@ -57,12 +57,16 @@ const CameraMotionContext = createContext<CameraMotionContextType | null>(null);
 export const CameraMotionProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const stateRef = useRef<CameraMotionState>({ ...defaultState });
   const subscribersRef = useRef<Set<(state: CameraMotionState) => void>>(new Set());
-  const [isReducedMotion, setIsReducedMotion] = useState(false);
+  const [isReducedMotion, setIsReducedMotion] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+    return false;
+  });
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-      setIsReducedMotion(mediaQuery.matches);
       stateRef.current.isReducedMotion = mediaQuery.matches;
 
       const handleChange = (e: MediaQueryListEvent) => {
@@ -128,10 +132,10 @@ export const CameraMotionProvider: React.FC<{ children: ReactNode }> = ({ childr
         root.style.setProperty('--ui-glass-border', 'rgba(16, 185, 129, 0.25)');
         root.style.setProperty('--ui-glass-reflection', 'linear-gradient(135deg, rgba(52, 211, 153, 0.2), rgba(6, 182, 212, 0.1))');
       } else {
-        // Sunrise / Alpine / Morning
-        root.style.setProperty('--ui-glass-bg', 'rgba(255, 255, 255, 0.04)');
-        root.style.setProperty('--ui-glass-border', 'rgba(255, 255, 255, 0.12)');
-        root.style.setProperty('--ui-glass-reflection', 'linear-gradient(135deg, rgba(255, 255, 255, 0.15), transparent)');
+        // Sunrise / Alpine / Morning — dynamic cool blue moonlight reflections
+        root.style.setProperty('--ui-glass-bg', 'rgba(10, 20, 32, 0.45)');
+        root.style.setProperty('--ui-glass-border', 'rgba(186, 230, 253, 0.25)');
+        root.style.setProperty('--ui-glass-reflection', 'linear-gradient(135deg, rgba(186, 230, 253, 0.16) 0%, rgba(255, 255, 255, 0.02) 60%, transparent 100%)');
       }
 
       root.style.setProperty('--ui-fog-blur', `${(fogFactor * 8).toFixed(1)}px`);

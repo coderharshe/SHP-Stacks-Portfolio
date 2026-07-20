@@ -10,15 +10,24 @@ export function Clouds() {
   const cloudPuffs = useMemo(() => {
     const puffs = [];
     const count = 35;
+
+    // Stateless deterministic pseudo-random generator
+    const random = (idx: number) => {
+      const s = idx * 15485863;
+      const r = (s * s * s) % 233280;
+      return Math.abs(r) / 233280;
+    };
+
     for (let i = 0; i < count; i++) {
+      const idx = i * 5;
       puffs.push({
         position: new THREE.Vector3(
-          (Math.random() - 0.5) * 350,
-          25 + Math.random() * 30,
-          -Math.random() * 500
+          (random(idx) - 0.5) * 350,
+          25 + random(idx + 1) * 30,
+          -random(idx + 2) * 500
         ),
-        scale: 8 + Math.random() * 16,
-        speed: 0.2 + Math.random() * 0.4
+        scale: 8 + random(idx + 3) * 16,
+        speed: 0.2 + random(idx + 4) * 0.4
       });
     }
     return puffs;

@@ -48,7 +48,7 @@ export const CTA: React.FC = () => {
               <h2 className="text-3xl sm:text-5xl font-bold tracking-tight font-sans leading-tight" style={{ color: '#F0F1F3' }}>
                 Ready to Build Your Next Product?
               </h2>
-              <p className="text-sm sm:text-base leading-relaxed font-light" style={{ color: '#6B7080' }}>
+              <p className="text-sm sm:text-base leading-relaxed font-light" style={{ color: 'var(--text-tertiary)' }}>
                 Let&rsquo;s engineer software that drives actual growth for your company. Whether you need a warehouse management system, custom ERP, or an AI agent platform, our team is equipped to deliver.
               </p>
             </div>
@@ -70,7 +70,7 @@ export const CTA: React.FC = () => {
                     <h4 className="text-sm font-semibold transition-colors group-hover:text-[#E8372A]" style={{ color: '#F0F1F3' }}>
                       Book a Discovery Call
                     </h4>
-                    <p className="text-xs" style={{ color: '#6B7080' }}>Choose a time slot to review your specs.</p>
+                    <p className="text-xs" style={{ color: 'var(--text-tertiary)' }}>Choose a time slot to review your specs.</p>
                   </div>
                 </a>
 
@@ -82,13 +82,13 @@ export const CTA: React.FC = () => {
                     className="h-10 w-10 rounded-lg flex items-center justify-center group-hover:border-[rgba(255,255,255,0.14)] transition-colors"
                     style={{ border: '1px solid rgba(255,255,255,0.07)', background: 'rgba(255,255,255,0.02)' }}
                   >
-                    <Mail className="h-4 w-4" style={{ color: '#A8ACBA' }} />
+                    <Mail className="h-4 w-4" style={{ color: 'var(--text-secondary)' }} />
                   </div>
                   <div className="space-y-0.5">
-                    <h4 className="text-sm font-semibold transition-colors group-hover:text-[#F0F1F3]" style={{ color: '#A8ACBA' }}>
+                    <h4 className="text-sm font-semibold transition-colors group-hover:text-[#F0F1F3]" style={{ color: 'var(--text-secondary)' }}>
                       Direct Email Inquiry
                     </h4>
-                    <p className="text-xs" style={{ color: '#6B7080' }}>Send requirements directly to founders.</p>
+                    <p className="text-xs" style={{ color: 'var(--text-tertiary)' }}>Send requirements directly to founders.</p>
                   </div>
                 </a>
               </div>
@@ -106,7 +106,7 @@ export const CTA: React.FC = () => {
                     <h3 className="text-xl font-bold tracking-tight" style={{ color: '#F0F1F3' }}>
                       Requirements Received
                     </h3>
-                    <p className="text-sm max-w-sm leading-relaxed font-light" style={{ color: '#6B7080' }}>
+                    <p className="text-sm max-w-sm leading-relaxed font-light" style={{ color: 'var(--text-tertiary)' }}>
                       Thank you. We have received your project details and will review them within 12 business hours.
                     </p>
                   </div>
@@ -123,7 +123,7 @@ export const CTA: React.FC = () => {
                   {/* Name & Email Group */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="space-y-1.5">
-                      <label htmlFor="name" className="text-[10px] font-mono uppercase tracking-wider" style={{ color: '#3D4150' }}>Your Name</label>
+                      <label htmlFor="name" className="text-[10px] font-mono uppercase tracking-wider" style={{ color: 'var(--text-disabled)' }}>Your Name</label>
                       <input
                         id="name" type="text" placeholder="John Doe"
                         {...register('name', { required: 'Name is required' })}
@@ -141,7 +141,7 @@ export const CTA: React.FC = () => {
                     </div>
 
                     <div className="space-y-1.5">
-                      <label htmlFor="email" className="text-[10px] font-mono uppercase tracking-wider" style={{ color: '#3D4150' }}>Email Address</label>
+                      <label htmlFor="email" className="text-[10px] font-mono uppercase tracking-wider" style={{ color: 'var(--text-disabled)' }}>Email Address</label>
                       <input
                         id="email" type="email" placeholder="john@company.com"
                         {...register('email', { required: 'Email is required', pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, message: 'Invalid email address' } })}
@@ -157,7 +157,7 @@ export const CTA: React.FC = () => {
                   {/* Company & Budget Group */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="space-y-1.5">
-                      <label htmlFor="company" className="text-[10px] font-mono uppercase tracking-wider" style={{ color: '#3D4150' }}>Company Name</label>
+                      <label htmlFor="company" className="text-[10px] font-mono uppercase tracking-wider" style={{ color: 'var(--text-disabled)' }}>Company Name</label>
                       <input
                         id="company" type="text" placeholder="Acme Corp"
                         {...register('company', { required: 'Company is required' })}
@@ -170,12 +170,12 @@ export const CTA: React.FC = () => {
                     </div>
 
                     <div className="space-y-1.5">
-                      <label htmlFor="budget" className="text-[10px] font-mono uppercase tracking-wider" style={{ color: '#3D4150' }}>Budget Range</label>
+                      <label htmlFor="budget" className="text-[10px] font-mono uppercase tracking-wider" style={{ color: 'var(--text-disabled)' }}>Budget Range</label>
                       <select
                         id="budget"
                         {...register('budget', { required: 'Please select a budget range' })}
                         className="w-full rounded-lg px-4 py-2.5 text-sm focus:outline-none transition-all appearance-none cursor-pointer"
-                        style={{ background: '#111318', border: '1px solid rgba(255,255,255,0.08)', color: '#A8ACBA' }}
+                        style={{ background: '#111318', border: '1px solid rgba(255,255,255,0.08)', color: 'var(--text-secondary)' }}
                       >
                         <option value="">Select a range...</option>
                         <option value="under-10k">Under $10,000</option>
@@ -188,7 +188,7 @@ export const CTA: React.FC = () => {
                   </div>
 
                     <div className="space-y-1.5">
-                      <label htmlFor="message" className="text-[10px] font-mono uppercase tracking-wider" style={{ color: '#3D4150' }}>Project Description</label>
+                      <label htmlFor="message" className="text-[10px] font-mono uppercase tracking-wider" style={{ color: 'var(--text-disabled)' }}>Project Description</label>
                       <textarea
                         id="message" rows={4}
                         placeholder="Outline your technical requirements, scaling problems, or system scope..."

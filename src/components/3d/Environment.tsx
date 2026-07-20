@@ -3,16 +3,32 @@
 import React, { useMemo } from 'react';
 import * as THREE from 'three';
 import { useFrame } from '@react-three/fiber';
+import { useCameraMotion } from '@/context/CameraMotionContext';
 
 export function Environment() {
   const lakeRef = React.useRef<THREE.Mesh>(null);
   const waterfallRef = React.useRef<THREE.Mesh>(null);
+  const { stateRef } = useCameraMotion();
 
-  // Animate water subtle surface ripple
+  // Animate water subtle surface ripple and moonlight shimmer
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
     if (lakeRef.current) {
+      // Gentle height wave animation
       lakeRef.current.position.y = -1.2 + Math.sin(t * 1.5) * 0.15;
+      
+      const s = stateRef.current;
+      const p = s.progress;
+      
+      // Moonlight shimmer on lake: peaks when the camera reaches Lakeside section (p ~ 0.72)
+      const lakesideFactor = Math.max(0.0, 1.0 - Math.abs(p - 0.72) / 0.15);
+      const tunnelFade = THREE.MathUtils.clamp(1.0 - s.environment.tunnelFactor * 1.5, 0.0, 1.0);
+      
+      const mat = lakeRef.current.material as THREE.MeshStandardMaterial;
+      if (mat) {
+        mat.emissive.setHex(0xbae6fd); // Crisp moon ice blue highlight
+        mat.emissiveIntensity = (0.01 + lakesideFactor * 0.14) * tunnelFade;
+      }
     }
   });
 
@@ -23,7 +39,7 @@ export function Environment() {
         <planeGeometry args={[180, 220]} />
         <meshStandardMaterial
           color="#0f4c81"
-          roughness={0.1}
+          roughness={0.15}
           metalness={0.8}
           transparent
           opacity={0.88}

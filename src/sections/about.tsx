@@ -5,47 +5,64 @@ import { motion } from "framer-motion";
 import { Eye, ShieldCheck, Cpu, Lightbulb, Users, Zap } from "lucide-react";
 import { AboutCard } from "@/components/ui/about-card";
 import { useHorizontalScroll } from "@/hooks/use-horizontal-scroll";
-import { CameraReactive } from "@/components/ui/CameraReactive";
 
 // ─── Card Data ────────────────────────────────────────────────────────────────
 const CARDS = [
   {
     title: "Our Mission",
-    description:
-      "To build software assets that drive business equity. We solve hard problems with structured, reliable, and clean solutions.",
+    description: (
+      <>
+        To build <span className="glass-highlight">software assets</span> that drive <span className="glass-highlight">business equity</span>. We solve hard problems with structured, reliable, and clean solutions.
+      </>
+    ),
     icon: Cpu,
   },
   {
     title: "Our Vision",
-    description:
-      "To establish the engineering benchmark for software development, helping enterprises transition into AI-driven operational efficiency.",
+    description: (
+      <>
+        To establish the <span className="glass-highlight">engineering benchmark</span> for software development, helping enterprises transition into <span className="glass-highlight">AI-driven operational efficiency</span>.
+      </>
+    ),
     icon: Eye,
   },
   {
     title: "Engineering Philosophy",
-    description:
-      "No shortcut frameworks. We utilize strong static typing, server-side caching, secure authorization models, and modular architecture.",
+    description: (
+      <>
+        <span className="glass-highlight">No shortcut frameworks</span>. We utilize strong static typing, server-side caching, secure authorization models, and <span className="glass-highlight">modular architecture</span>.
+      </>
+    ),
     icon: ShieldCheck,
   },
   {
     title: "Innovation First",
-    description:
-      "We stay ahead of the curve — adopting proven emerging technologies strategically so our clients lead, not follow.",
+    description: (
+      <>
+        We stay <span className="glass-highlight">ahead of the curve</span> — adopting proven emerging technologies strategically so our clients <span className="glass-highlight">lead, not follow</span>.
+      </>
+    ),
     icon: Lightbulb,
   },
   {
     title: "Client Partnership",
-    description:
-      "We embed ourselves in your processes and goals. Transparent communication and collaborative planning are non-negotiable.",
+    description: (
+      <>
+        We <span className="glass-highlight">embed ourselves</span> in your processes and goals. Transparent communication and collaborative planning are non-negotiable.
+      </>
+    ),
     icon: Users,
   },
   {
     title: "Delivery at Speed",
-    description:
-      "Structured sprints, rigorous CI/CD, and automated testing pipelines ensure we ship fast without sacrificing quality.",
+    description: (
+      <>
+        <span className="glass-highlight">Structured sprints</span>, rigorous CI/CD, and automated testing pipelines ensure we <span className="glass-highlight">ship fast</span> without sacrificing quality.
+      </>
+    ),
     icon: Zap,
   },
-] as const;
+];
 
 // ─── Animation variants (used in mobile / reduced-motion paths) ───────────────
 const fadeUp = {
@@ -67,7 +84,7 @@ function SectionHeader() {
       <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-sans leading-tight" style={{ color: '#F0F1F3' }}>
         We Build Software<br />That Scales Businesses.
       </h2>
-      <p className="text-sm sm:text-base leading-relaxed font-light max-w-sm" style={{ color: '#6B7080' }}>
+      <p className="text-sm sm:text-base leading-relaxed font-light max-w-sm" style={{ color: 'var(--text-tertiary)' }}>
         SHP Stacks is a premium software development firm. We partner with
         ambitious enterprises and scaling SaaS companies to build
         mission&#8209;critical digital products.
@@ -83,7 +100,6 @@ function DesktopAbout() {
   const trackRef = useRef<HTMLDivElement>(null);
   const stripRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [parentWidth, setParentWidth] = useState(1200);
   const [travel, setTravel] = useState(0);
 
   // scrollProgress 0→1, isActive = currently pinned
@@ -102,7 +118,6 @@ function DesktopAbout() {
     const stripWidth = stripRef.current.scrollWidth || stripRef.current.offsetWidth;
     const trav = Math.max(0, stripWidth - pWidth);
     
-    setParentWidth(pWidth);
     setTravel(trav);
     setOuterHeight(`calc(100vh + ${trav}px)`);
 
@@ -187,10 +202,12 @@ function DesktopAbout() {
                 const zTranslate = -40 * factor;
                 const rotateY = (dist > 0 ? 4 : -4) * factor;
 
-                // Border color interpolation
-                const redOpacity = 0.25 * (1 - factor);
-                const borderOpacity = 0.06 + redOpacity;
-                const borderColor = `rgba(${Math.round(232 * (1 - factor) + 255 * factor)}, ${Math.round(55 * (1 - factor) + 255 * factor)}, ${Math.round(42 * (1 - factor) + 255 * factor)}, ${borderOpacity})`;
+                // Border color interpolation (from glowing Blaze Orange to deep wood frame brown)
+                const r = Math.round(252 * (1 - factor) + 43 * factor);
+                const g = Math.round(97 * (1 - factor) + 22 * factor);
+                const b = Math.round(0 * (1 - factor) + 10 * factor);
+                const borderOpacity = 0.8 * (1 - factor) + 0.9 * factor;
+                const borderColor = `rgba(${r}, ${g}, ${b}, ${borderOpacity})`;
 
                 return (
                   <div key={card.title} role="listitem" className="flex-shrink-0">
@@ -234,7 +251,7 @@ function DesktopAbout() {
                 />
               ))}
             </div>
-            <span className="text-xs font-mono" style={{ color: '#3D4150' }}>Scroll to explore</span>
+            <span className="text-xs font-mono" style={{ color: 'var(--text-disabled)' }}>Scroll to explore</span>
           </div>
         </div>
       </div>
@@ -307,20 +324,23 @@ export const About: React.FC = () => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-
     const mq = window.matchMedia("(max-width: 767px)");
     const rmq = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-    setIsMobile(mq.matches);
-    setReducedMotion(rmq.matches);
 
     const onMQ = (e: MediaQueryListEvent) => setIsMobile(e.matches);
     const onRMQ = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
 
     mq.addEventListener("change", onMQ);
     rmq.addEventListener("change", onRMQ);
+
+    const frameId = requestAnimationFrame(() => {
+      setMounted(true);
+      setIsMobile(mq.matches);
+      setReducedMotion(rmq.matches);
+    });
+
     return () => {
+      cancelAnimationFrame(frameId);
       mq.removeEventListener("change", onMQ);
       rmq.removeEventListener("change", onRMQ);
     };

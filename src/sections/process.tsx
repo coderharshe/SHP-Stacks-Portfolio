@@ -6,6 +6,101 @@ import { TIMELINE_PROCESS } from '@/constants/data';
 import { Check } from 'lucide-react';
 import { CameraReactive } from '@/components/ui/CameraReactive';
 
+interface ProcessCardProps {
+  step: typeof TIMELINE_PROCESS[0];
+  idx: number;
+  nodeTargetProgress: number;
+}
+
+const ProcessCard: React.FC<ProcessCardProps> = ({ step, idx, nodeTargetProgress }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "center center"]
+  });
+
+  const isBrownTransition = idx >= 1;
+
+  // Cinematic scroll interpolation to rich warm brown color
+  const bg = useTransform(
+    scrollYProgress,
+    [0.15, 0.85],
+    isBrownTransition
+      ? ["rgba(255, 255, 255, 0.04)", "rgba(43, 22, 11, 0.65)"]
+      : ["rgba(255, 255, 255, 0.04)", "rgba(255, 255, 255, 0.04)"]
+  );
+
+  const border = useTransform(
+    scrollYProgress,
+    [0.15, 0.85],
+    isBrownTransition
+      ? ["1px solid rgba(255, 255, 255, 0.08)", "1px solid rgba(139, 92, 26, 0.3)"]
+      : ["1px solid rgba(255, 255, 255, 0.08)", "1px solid rgba(255, 255, 255, 0.08)"]
+  );
+
+  return (
+    <CameraReactive
+      depth="card"
+      tiltOnHover={true}
+      sectionProgressTarget={nodeTargetProgress}
+    >
+      <motion.div
+        ref={cardRef}
+        style={{ background: bg, border }}
+        className="relative flex flex-col md:flex-row items-start md:justify-between p-6 md:p-8 rounded-2xl transition-all duration-300"
+      >
+        {/* Left Side Content (Desktop: step & duration, Mobile: stacked above) */}
+        <div className="hidden md:flex w-[45%] flex-col items-end text-right pr-12 space-y-1">
+          <span className="text-xs font-mono text-foreground/35 uppercase tracking-widest">
+            STAGE {step.step}
+          </span>
+          <span className="text-sm font-mono text-accent-blue font-medium">
+            {step.duration}
+          </span>
+        </div>
+
+        <div
+          className="absolute left-[30px] md:left-1/2 top-1.5 h-6 w-6 rounded-full flex items-center justify-center -translate-x-1/2 z-10"
+          style={{
+            border: '1px solid rgba(255,255,255,0.10)',
+            background: '#111318',
+            boxShadow: '0 0 12px rgba(232,55,42,0.15)',
+          }}
+        >
+          <div className="h-2 w-2 rounded-full" style={{ background: '#E8372A' }} />
+        </div>
+
+        <div className="pl-14 md:pl-0 md:w-[45%] space-y-4">
+          <div className="flex md:hidden items-center gap-3 text-xs font-mono mb-2" style={{ color: 'var(--text-disabled)' }}>
+            <span style={{ color: '#E8372A', fontWeight: 600 }}>STAGE {step.step}</span>
+            <span>•</span>
+            <span>{step.duration}</span>
+          </div>
+
+          <div className="space-y-2">
+            <h3 className="text-lg md:text-xl font-semibold tracking-tight" style={{ color: '#F0F1F3' }}>
+              {step.title}
+            </h3>
+            <p className="text-sm leading-relaxed font-light" style={{ color: 'var(--text-tertiary)' }}>
+              {step.desc}
+            </p>
+          </div>
+
+          <ul className="space-y-2 pt-2" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+            {step.details.map((detail, dIdx) => (
+              <li key={dIdx} className="flex items-start gap-2.5 text-xs font-light leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                <Check className="h-4 w-4 flex-shrink-0 mt-0.5" style={{ color: 'rgba(232,55,42,0.55)' }} />
+                <span>{detail}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </motion.div>
+    </CameraReactive>
+  );
+};
+
 export const Process: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -40,7 +135,7 @@ export const Process: React.FC = () => {
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-sans" style={{ color: '#F0F1F3' }}>
               How We Build Systems.
             </h2>
-            <p className="text-sm sm:text-base leading-relaxed font-light" style={{ color: '#6B7080' }}>
+            <p className="text-sm sm:text-base leading-relaxed font-light" style={{ color: 'var(--text-tertiary)' }}>
               Our systematic approach ensures all custom software assets are delivered on time, securely configured, and fully verified.
             </p>
           </div>
@@ -65,63 +160,12 @@ export const Process: React.FC = () => {
             {TIMELINE_PROCESS.map((step, idx) => {
               const nodeTargetProgress = 0.72 + idx * 0.03;
               return (
-                <CameraReactive
+                <ProcessCard
                   key={step.step}
-                  depth="card"
-                  tiltOnHover={true}
-                  sectionProgressTarget={nodeTargetProgress}
-                >
-                  <div className="relative flex flex-col md:flex-row items-start md:justify-between glass-card p-6 md:p-8 rounded-2xl">
-                    
-                    {/* Left Side Content (Desktop: step & duration, Mobile: stacked above) */}
-                    <div className="hidden md:flex w-[45%] flex-col items-end text-right pr-12 space-y-1">
-                      <span className="text-xs font-mono text-foreground/35 uppercase tracking-widest">
-                        STAGE {step.step}
-                      </span>
-                      <span className="text-sm font-mono text-accent-blue font-medium">
-                        {step.duration}
-                      </span>
-                    </div>
-
-                    <div
-                      className="absolute left-[30px] md:left-1/2 top-1.5 h-6 w-6 rounded-full flex items-center justify-center -translate-x-1/2 z-10"
-                      style={{
-                        border: '1px solid rgba(255,255,255,0.10)',
-                        background: '#111318',
-                        boxShadow: '0 0 12px rgba(232,55,42,0.15)',
-                      }}
-                    >
-                      <div className="h-2 w-2 rounded-full" style={{ background: '#E8372A' }} />
-                    </div>
-
-                      <div className="pl-14 md:pl-0 md:w-[45%] space-y-4">
-                        <div className="flex md:hidden items-center gap-3 text-xs font-mono mb-2" style={{ color: '#3D4150' }}>
-                          <span style={{ color: '#E8372A', fontWeight: 600 }}>STAGE {step.step}</span>
-                          <span>•</span>
-                          <span>{step.duration}</span>
-                        </div>
-
-                        <div className="space-y-2">
-                          <h3 className="text-lg md:text-xl font-semibold tracking-tight" style={{ color: '#F0F1F3' }}>
-                            {step.title}
-                          </h3>
-                          <p className="text-sm leading-relaxed font-light" style={{ color: '#6B7080' }}>
-                            {step.desc}
-                          </p>
-                        </div>
-
-                        <ul className="space-y-2 pt-2" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                          {step.details.map((detail, dIdx) => (
-                            <li key={dIdx} className="flex items-start gap-2.5 text-xs font-light leading-relaxed" style={{ color: '#A8ACBA' }}>
-                              <Check className="h-4 w-4 flex-shrink-0 mt-0.5" style={{ color: 'rgba(232,55,42,0.55)' }} />
-                              <span>{detail}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                  </div>
-                </CameraReactive>
+                  step={step}
+                  idx={idx}
+                  nodeTargetProgress={nodeTargetProgress}
+                />
               );
             })}
           </div>

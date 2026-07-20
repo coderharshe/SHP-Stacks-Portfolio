@@ -8,7 +8,7 @@ import { Fog } from './Fog';
 import { Road } from './Road';
 import { Mountains } from './Mountains';
 import { Environment } from './Environment';
-import { Clouds } from './Clouds';
+import { CelestialSystem } from './CelestialSystem';
 import { Birds } from './Birds';
 import { ScrollController } from './ScrollController';
 
@@ -17,7 +17,8 @@ export function Scene() {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
+    const frameId = requestAnimationFrame(() => setIsMounted(true));
+    return () => cancelAnimationFrame(frameId);
   }, []);
 
   if (!isMounted) {
@@ -38,14 +39,13 @@ export function Scene() {
             powerPreference: 'high-performance'
           }}
         >
-          <color attach="background" args={['#090d16']} />
           <CameraRig scrollProgressRef={scrollProgressRef} />
           <Lighting scrollProgressRef={scrollProgressRef} />
           <Fog scrollProgressRef={scrollProgressRef} />
           <Road />
           <Mountains />
           <Environment />
-          <Clouds />
+          <CelestialSystem />
           <Birds />
         </Canvas>
       </div>
