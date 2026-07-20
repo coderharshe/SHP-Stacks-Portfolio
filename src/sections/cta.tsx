@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Mail, Calendar, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Mail, Phone, Calendar, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { CONTACT_INFO } from '@/constants/data';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { CameraReactive } from '@/components/ui/CameraReactive';
@@ -42,53 +43,71 @@ export const CTA: React.FC = () => {
           {/* Left Column - Copy & Slogan */}
           <CameraReactive depth="hero-title" sectionProgressTarget={0.90} className="lg:col-span-5 space-y-8">
             <div className="space-y-4">
-              <span className="text-xs font-mono uppercase tracking-widest font-semibold" style={{ color: '#E8372A' }}>
+              <span className="text-sm font-mono uppercase tracking-widest font-bold" style={{ color: '#E8372A' }}>
                 GET IN TOUCH
               </span>
               <h2 className="text-3xl sm:text-5xl font-bold tracking-tight font-sans leading-tight" style={{ color: '#F0F1F3' }}>
                 Ready to Build Your Next Product?
               </h2>
-              <p className="text-sm sm:text-base leading-relaxed font-light" style={{ color: '#6B7080' }}>
+              <p className="text-base sm:text-lg leading-relaxed font-semibold" style={{ color: '#A8ACBA' }}>
                 Let&rsquo;s engineer software that drives actual growth for your company. Whether you need a warehouse management system, custom ERP, or an AI agent platform, our team is equipped to deliver.
               </p>
             </div>
 
-              <div className="space-y-4 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+              <div className="space-y-5 pt-6" style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
                 <a
                   href="https://calendly.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 group cursor-pointer"
+                  className="flex items-center gap-4 group cursor-pointer p-3 rounded-xl transition-all duration-200 hover:bg-[rgba(255,255,255,0.03)] -mx-3"
                 >
                   <div
-                    className="h-10 w-10 rounded-lg flex items-center justify-center group-hover:border-[rgba(232,55,42,0.20)] transition-colors"
-                    style={{ border: '1px solid rgba(255,255,255,0.07)', background: 'rgba(255,255,255,0.02)' }}
+                    className="h-12 w-12 rounded-xl flex items-center justify-center group-hover:border-[#E8372A]/50 transition-colors shrink-0"
+                    style={{ border: '1px solid rgba(255,255,255,0.12)', background: 'rgba(232,55,42,0.10)' }}
                   >
-                    <Calendar className="h-4 w-4" style={{ color: '#E8372A' }} />
+                    <Calendar className="h-5 w-5 text-[#E8372A]" />
                   </div>
-                  <div className="space-y-0.5">
-                    <h4 className="text-sm font-semibold transition-colors group-hover:text-[#E8372A]" style={{ color: '#F0F1F3' }}>
+                  <div className="space-y-1">
+                    <h4 className="text-base sm:text-lg font-bold transition-colors group-hover:text-[#E8372A]" style={{ color: '#F0F1F3' }}>
                       Book a Discovery Call
                     </h4>
-                    <p className="text-xs" style={{ color: '#6B7080' }}>Choose a time slot to review your specs.</p>
+                    <p className="text-sm sm:text-base font-semibold" style={{ color: '#A8ACBA' }}>Choose a time slot to review your specs.</p>
                   </div>
                 </a>
 
                 <a
-                  href="mailto:contact@shpstacks.com"
-                  className="flex items-center gap-4 group cursor-pointer"
+                  href={`mailto:${CONTACT_INFO.email}`}
+                  className="flex items-center gap-4 group cursor-pointer p-3 rounded-xl transition-all duration-200 hover:bg-[rgba(255,255,255,0.03)] -mx-3"
                 >
                   <div
-                    className="h-10 w-10 rounded-lg flex items-center justify-center group-hover:border-[rgba(255,255,255,0.14)] transition-colors"
-                    style={{ border: '1px solid rgba(255,255,255,0.07)', background: 'rgba(255,255,255,0.02)' }}
+                    className="h-12 w-12 rounded-xl flex items-center justify-center group-hover:border-[#E8372A]/50 transition-colors shrink-0"
+                    style={{ border: '1px solid rgba(255,255,255,0.12)', background: 'rgba(232,55,42,0.10)' }}
                   >
-                    <Mail className="h-4 w-4" style={{ color: '#A8ACBA' }} />
+                    <Mail className="h-5 w-5 text-[#E8372A]" />
                   </div>
-                  <div className="space-y-0.5">
-                    <h4 className="text-sm font-semibold transition-colors group-hover:text-[#F0F1F3]" style={{ color: '#A8ACBA' }}>
+                  <div className="space-y-1">
+                    <h4 className="text-base sm:text-lg font-bold transition-colors group-hover:text-[#E8372A]" style={{ color: '#F0F1F3' }}>
                       Direct Email Inquiry
                     </h4>
-                    <p className="text-xs" style={{ color: '#6B7080' }}>Send requirements directly to founders.</p>
+                    <p className="text-sm sm:text-base font-bold font-mono tracking-wide" style={{ color: '#F0F1F3' }}>{CONTACT_INFO.email}</p>
+                  </div>
+                </a>
+
+                <a
+                  href={`tel:${CONTACT_INFO.phone}`}
+                  className="flex items-center gap-4 group cursor-pointer p-3 rounded-xl transition-all duration-200 hover:bg-[rgba(255,255,255,0.03)] -mx-3"
+                >
+                  <div
+                    className="h-12 w-12 rounded-xl flex items-center justify-center group-hover:border-[#E8372A]/50 transition-colors shrink-0"
+                    style={{ border: '1px solid rgba(255,255,255,0.12)', background: 'rgba(232,55,42,0.10)' }}
+                  >
+                    <Phone className="h-5 w-5 text-[#E8372A]" />
+                  </div>
+                  <div className="space-y-1">
+                    <h4 className="text-base sm:text-lg font-bold transition-colors group-hover:text-[#E8372A]" style={{ color: '#F0F1F3' }}>
+                      Call / WhatsApp
+                    </h4>
+                    <p className="text-sm sm:text-base font-bold font-mono tracking-wide" style={{ color: '#F0F1F3' }}>{CONTACT_INFO.phoneFormatted}</p>
                   </div>
                 </a>
               </div>
@@ -103,17 +122,17 @@ export const CTA: React.FC = () => {
                     <CheckCircle2 className="h-6 w-6" style={{ color: '#22C55E' }} />
                   </div>
                   <div className="space-y-2">
-                    <h3 className="text-xl font-bold tracking-tight" style={{ color: '#F0F1F3' }}>
+                    <h3 className="text-2xl font-bold tracking-tight" style={{ color: '#F0F1F3' }}>
                       Requirements Received
                     </h3>
-                    <p className="text-sm max-w-sm leading-relaxed font-light" style={{ color: '#6B7080' }}>
+                    <p className="text-base font-semibold max-w-sm leading-relaxed" style={{ color: '#A8ACBA' }}>
                       Thank you. We have received your project details and will review them within 12 business hours.
                     </p>
                   </div>
                   <Button 
                     variant="outline" 
                     onClick={() => setIsSubmitted(false)}
-                    className="mt-4 text-xs py-1.5 px-4"
+                    className="mt-4 text-sm font-bold py-2 px-5"
                   >
                     <span>Submit another inquiry</span>
                   </Button>
@@ -123,59 +142,59 @@ export const CTA: React.FC = () => {
                   {/* Name & Email Group */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="space-y-1.5">
-                      <label htmlFor="name" className="text-[10px] font-mono uppercase tracking-wider" style={{ color: '#3D4150' }}>Your Name</label>
+                      <label htmlFor="name" className="text-xs sm:text-sm font-mono uppercase tracking-wider font-bold" style={{ color: '#F0F1F3' }}>Your Name</label>
                       <input
                         id="name" type="text" placeholder="John Doe"
                         {...register('name', { required: 'Name is required' })}
-                        className="w-full rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-1 transition-all"
+                        className="w-full rounded-lg px-4 py-2.5 text-sm sm:text-base font-medium focus:outline-none focus:ring-1 transition-all"
                         style={{
                           background: 'rgba(255,255,255,0.03)',
-                          border: '1px solid rgba(255,255,255,0.08)',
+                          border: '1px solid rgba(255,255,255,0.12)',
                           color: '#F0F1F3',
-                          '--tw-ring-color': 'rgba(232,55,42,0.20)',
+                          '--tw-ring-color': 'rgba(232,55,42,0.30)',
                         } as React.CSSProperties}
-                        onFocus={e => (e.target.style.borderColor = 'rgba(232,55,42,0.40)')}
-                        onBlur={e => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
+                        onFocus={e => (e.target.style.borderColor = 'rgba(232,55,42,0.50)')}
+                        onBlur={e => (e.target.style.borderColor = 'rgba(255,255,255,0.12)')}
                       />
-                      {errors.name && <p className="text-[10px] font-mono" style={{ color: '#E8372A' }}>{errors.name.message}</p>}
+                      {errors.name && <p className="text-xs font-mono font-bold" style={{ color: '#E8372A' }}>{errors.name.message}</p>}
                     </div>
 
                     <div className="space-y-1.5">
-                      <label htmlFor="email" className="text-[10px] font-mono uppercase tracking-wider" style={{ color: '#3D4150' }}>Email Address</label>
+                      <label htmlFor="email" className="text-xs sm:text-sm font-mono uppercase tracking-wider font-bold" style={{ color: '#F0F1F3' }}>Email Address</label>
                       <input
                         id="email" type="email" placeholder="john@company.com"
                         {...register('email', { required: 'Email is required', pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, message: 'Invalid email address' } })}
-                        className="w-full rounded-lg px-4 py-2.5 text-sm focus:outline-none transition-all"
-                        style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', color: '#F0F1F3' }}
-                        onFocus={e => (e.target.style.borderColor = 'rgba(232,55,42,0.40)')}
-                        onBlur={e => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
+                        className="w-full rounded-lg px-4 py-2.5 text-sm sm:text-base font-medium focus:outline-none transition-all"
+                        style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.12)', color: '#F0F1F3' }}
+                        onFocus={e => (e.target.style.borderColor = 'rgba(232,55,42,0.50)')}
+                        onBlur={e => (e.target.style.borderColor = 'rgba(255,255,255,0.12)')}
                       />
-                      {errors.email && <p className="text-[10px] font-mono" style={{ color: '#E8372A' }}>{errors.email.message}</p>}
+                      {errors.email && <p className="text-xs font-mono font-bold" style={{ color: '#E8372A' }}>{errors.email.message}</p>}
                     </div>
                   </div>
 
                   {/* Company & Budget Group */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="space-y-1.5">
-                      <label htmlFor="company" className="text-[10px] font-mono uppercase tracking-wider" style={{ color: '#3D4150' }}>Company Name</label>
+                      <label htmlFor="company" className="text-xs sm:text-sm font-mono uppercase tracking-wider font-bold" style={{ color: '#F0F1F3' }}>Company Name</label>
                       <input
                         id="company" type="text" placeholder="Acme Corp"
                         {...register('company', { required: 'Company is required' })}
-                        className="w-full rounded-lg px-4 py-2.5 text-sm focus:outline-none transition-all"
-                        style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', color: '#F0F1F3' }}
-                        onFocus={e => (e.target.style.borderColor = 'rgba(232,55,42,0.40)')}
-                        onBlur={e => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
+                        className="w-full rounded-lg px-4 py-2.5 text-sm sm:text-base font-medium focus:outline-none transition-all"
+                        style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.12)', color: '#F0F1F3' }}
+                        onFocus={e => (e.target.style.borderColor = 'rgba(232,55,42,0.50)')}
+                        onBlur={e => (e.target.style.borderColor = 'rgba(255,255,255,0.12)')}
                       />
-                      {errors.company && <p className="text-[10px] font-mono" style={{ color: '#E8372A' }}>{errors.company.message}</p>}
+                      {errors.company && <p className="text-xs font-mono font-bold" style={{ color: '#E8372A' }}>{errors.company.message}</p>}
                     </div>
 
                     <div className="space-y-1.5">
-                      <label htmlFor="budget" className="text-[10px] font-mono uppercase tracking-wider" style={{ color: '#3D4150' }}>Budget Range</label>
+                      <label htmlFor="budget" className="text-xs sm:text-sm font-mono uppercase tracking-wider font-bold" style={{ color: '#F0F1F3' }}>Budget Range</label>
                       <select
                         id="budget"
                         {...register('budget', { required: 'Please select a budget range' })}
-                        className="w-full rounded-lg px-4 py-2.5 text-sm focus:outline-none transition-all appearance-none cursor-pointer"
-                        style={{ background: '#111318', border: '1px solid rgba(255,255,255,0.08)', color: '#A8ACBA' }}
+                        className="w-full rounded-lg px-4 py-2.5 text-sm sm:text-base font-medium focus:outline-none transition-all appearance-none cursor-pointer"
+                        style={{ background: '#111318', border: '1px solid rgba(255,255,255,0.12)', color: '#F0F1F3' }}
                       >
                         <option value="">Select a range...</option>
                         <option value="under-10k">Under $10,000</option>
@@ -183,22 +202,22 @@ export const CTA: React.FC = () => {
                         <option value="25k-50k">$25,000 - $50,000</option>
                         <option value="over-50k">$50,000+</option>
                       </select>
-                      {errors.budget && <p className="text-[10px] font-mono" style={{ color: '#E8372A' }}>{errors.budget.message}</p>}
+                      {errors.budget && <p className="text-xs font-mono font-bold" style={{ color: '#E8372A' }}>{errors.budget.message}</p>}
                     </div>
                   </div>
 
                     <div className="space-y-1.5">
-                      <label htmlFor="message" className="text-[10px] font-mono uppercase tracking-wider" style={{ color: '#3D4150' }}>Project Description</label>
+                      <label htmlFor="message" className="text-xs sm:text-sm font-mono uppercase tracking-wider font-bold" style={{ color: '#F0F1F3' }}>Project Description</label>
                       <textarea
                         id="message" rows={4}
                         placeholder="Outline your technical requirements, scaling problems, or system scope..."
                         {...register('message', { required: 'Project description is required' })}
-                        className="w-full rounded-lg px-4 py-2.5 text-sm focus:outline-none transition-all resize-none"
-                        style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', color: '#F0F1F3' }}
-                        onFocus={e => (e.target.style.borderColor = 'rgba(232,55,42,0.40)')}
-                        onBlur={e => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
+                        className="w-full rounded-lg px-4 py-2.5 text-sm sm:text-base font-medium focus:outline-none transition-all resize-none"
+                        style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.12)', color: '#F0F1F3' }}
+                        onFocus={e => (e.target.style.borderColor = 'rgba(232,55,42,0.50)')}
+                        onBlur={e => (e.target.style.borderColor = 'rgba(255,255,255,0.12)')}
                       />
-                      {errors.message && <p className="text-[10px] font-mono" style={{ color: '#E8372A' }}>{errors.message.message}</p>}
+                      {errors.message && <p className="text-xs font-mono font-bold" style={{ color: '#E8372A' }}>{errors.message.message}</p>}
                     </div>
 
                   {/* Submit Button */}
@@ -207,10 +226,10 @@ export const CTA: React.FC = () => {
                       type="submit"
                       variant="primary"
                       glow
-                      className="w-full py-3"
+                      className="w-full py-3.5 text-base font-bold tracking-wide"
                     >
                       <span>Submit Project Specs</span>
-                      <ArrowRight className="h-4 w-4" />
+                      <ArrowRight className="h-5 w-5" />
                     </Button>
                   </div>
                 </form>

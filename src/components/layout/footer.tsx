@@ -1,7 +1,8 @@
 "use client";
 
 import React from 'react';
-import { ArrowUp, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowUp, Github, Linkedin, Mail, Phone } from 'lucide-react';
+import { CONTACT_INFO } from '@/constants/data';
 
 const SHPLogoMark = ({ className }: { className?: string }) => (
   <svg
@@ -76,17 +77,52 @@ export const Footer: React.FC = () => {
               </span>
             </a>
 
-            <p className="text-sm max-w-sm leading-relaxed" style={{ color: '#6B7080' }}>
+            <p className="text-sm sm:text-base font-semibold max-w-sm leading-relaxed" style={{ color: '#A8ACBA' }}>
               Engineering Modern Software. Building Businesses. We combine strict engineering
               standards with high-end design to solve complex industrial problems.
             </p>
 
+            {/* Direct Contact Links */}
+            <div className="space-y-3 pt-2 font-mono text-sm sm:text-base font-bold">
+              <a
+                href={`mailto:${CONTACT_INFO.email}`}
+                className="flex items-center gap-3 transition-colors duration-200 group w-fit"
+                style={{ color: '#F0F1F3' }}
+                onMouseEnter={e => (e.currentTarget.style.color = '#E8372A')}
+                onMouseLeave={e => (e.currentTarget.style.color = '#F0F1F3')}
+              >
+                <span
+                  className="p-2 rounded-lg transition-colors group-hover:border-[#E8372A]/60"
+                  style={{ background: 'rgba(232,55,42,0.10)', border: '1px solid rgba(232,55,42,0.30)' }}
+                >
+                  <Mail className="h-4 w-4 text-[#E8372A]" />
+                </span>
+                <span className="tracking-wide">{CONTACT_INFO.email}</span>
+              </a>
+              <a
+                href={`tel:${CONTACT_INFO.phone}`}
+                className="flex items-center gap-3 transition-colors duration-200 group w-fit"
+                style={{ color: '#F0F1F3' }}
+                onMouseEnter={e => (e.currentTarget.style.color = '#E8372A')}
+                onMouseLeave={e => (e.currentTarget.style.color = '#F0F1F3')}
+              >
+                <span
+                  className="p-2 rounded-lg transition-colors group-hover:border-[#E8372A]/60"
+                  style={{ background: 'rgba(232,55,42,0.10)', border: '1px solid rgba(232,55,42,0.30)' }}
+                >
+                  <Phone className="h-4 w-4 text-[#E8372A]" />
+                </span>
+                <span className="tracking-wide">{CONTACT_INFO.phoneFormatted}</span>
+              </a>
+            </div>
+
             {/* Social Links */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 pt-2">
               {[
                 { href: 'https://github.com',          icon: <Github  className="h-4 w-4" />, label: 'GitHub'   },
                 { href: 'https://linkedin.com',         icon: <Linkedin className="h-4 w-4" />, label: 'LinkedIn' },
-                { href: 'mailto:contact@shpstacks.com', icon: <Mail    className="h-4 w-4" />, label: 'Email'    },
+                { href: `mailto:${CONTACT_INFO.email}`, icon: <Mail    className="h-4 w-4" />, label: 'Email'    },
+                { href: `tel:${CONTACT_INFO.phone}`,    icon: <Phone   className="h-4 w-4" />, label: 'Phone'    },
               ].map((item) => (
                 <a
                   key={item.label}
@@ -94,18 +130,19 @@ export const Footer: React.FC = () => {
                   target={item.href.startsWith('http') ? '_blank' : undefined}
                   rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   aria-label={item.label}
-                  className="rounded-lg p-2 transition-all duration-300 group"
+                  className="rounded-lg p-2.5 transition-all duration-300 group"
                   style={{
-                    color: '#6B7080',
-                    border: '1px solid rgba(255,255,255,0.07)',
+                    color: '#A8ACBA',
+                    border: '1px solid rgba(255,255,255,0.12)',
+                    background: 'rgba(255,255,255,0.02)'
                   }}
                   onMouseEnter={e => {
                     (e.currentTarget as HTMLElement).style.color = '#E8372A';
-                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(232,55,42,0.25)';
+                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(232,55,42,0.40)';
                   }}
                   onMouseLeave={e => {
-                    (e.currentTarget as HTMLElement).style.color = '#6B7080';
-                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.07)';
+                    (e.currentTarget as HTMLElement).style.color = '#A8ACBA';
+                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.12)';
                   }}
                 >
                   {item.icon}
@@ -117,19 +154,19 @@ export const Footer: React.FC = () => {
           {/* Link columns */}
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title} className="space-y-4">
-              <h4 className="text-xs font-mono uppercase tracking-widest capitalize" style={{ color: '#3D4150' }}>
+              <h4 className="text-sm font-mono font-bold uppercase tracking-widest capitalize" style={{ color: '#F0F1F3' }}>
                 {title}
               </h4>
-              <ul className="space-y-2.5">
+              <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.label}>
                     <a
                       href={link.href}
                       onClick={(e) => handleSectionScroll(e, link.href)}
-                      className="text-sm transition-colors duration-200"
-                      style={{ color: '#6B7080' }}
+                      className="text-sm sm:text-base font-semibold transition-colors duration-200 block py-0.5"
+                      style={{ color: '#A8ACBA' }}
                       onMouseEnter={e => (e.currentTarget.style.color = '#E8372A')}
-                      onMouseLeave={e => (e.currentTarget.style.color = '#6B7080')}
+                      onMouseLeave={e => (e.currentTarget.style.color = '#A8ACBA')}
                     >
                       {link.label}
                     </a>
@@ -143,25 +180,25 @@ export const Footer: React.FC = () => {
         {/* Bottom bar */}
         <div
           className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4"
-          style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}
+          style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}
         >
-          <div className="text-xs font-mono" style={{ color: '#3D4150' }}>
+          <div className="text-xs sm:text-sm font-mono font-bold" style={{ color: '#6B7080' }}>
             &copy; {currentYear} SHP Stacks. All rights reserved.
           </div>
 
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center gap-2 text-xs font-mono transition-colors duration-200 cursor-pointer group"
-            style={{ color: '#3D4150' }}
+            className="flex items-center gap-2 text-xs sm:text-sm font-mono font-bold transition-colors duration-200 cursor-pointer group"
+            style={{ color: '#A8ACBA' }}
             onMouseEnter={e => (e.currentTarget.style.color = '#E8372A')}
-            onMouseLeave={e => (e.currentTarget.style.color = '#3D4150')}
+            onMouseLeave={e => (e.currentTarget.style.color = '#A8ACBA')}
           >
             <span>BACK TO TOP</span>
             <span
-              className="rounded-full p-1.5 transition-all group-hover:bg-[rgba(232,55,42,0.08)]"
-              style={{ border: '1px solid rgba(255,255,255,0.07)' }}
+              className="rounded-full p-2 transition-all group-hover:bg-[rgba(232,55,42,0.15)]"
+              style={{ border: '1px solid rgba(255,255,255,0.12)' }}
             >
-              <ArrowUp className="h-3 w-3 group-hover:-translate-y-0.5 transition-transform" />
+              <ArrowUp className="h-3.5 w-3.5 group-hover:-translate-y-0.5 transition-transform text-[#E8372A]" />
             </span>
           </button>
         </div>
