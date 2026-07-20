@@ -12,7 +12,7 @@ const CARDS = [
     title: "Our Mission",
     description: (
       <>
-        To build <span className="glass-highlight">software assets</span> that drive <span className="glass-highlight">business equity</span>. We solve hard problems with structured, reliable, and clean solutions.
+        To build <span style={{color:'#FF5C00',fontWeight:600}}>software assets</span> that drive <span style={{color:'#FF5C00',fontWeight:600}}>business equity</span>. We solve hard problems with structured, reliable, and clean solutions.
       </>
     ),
     icon: Cpu,
@@ -21,7 +21,7 @@ const CARDS = [
     title: "Our Vision",
     description: (
       <>
-        To establish the <span className="glass-highlight">engineering benchmark</span> for software development, helping enterprises transition into <span className="glass-highlight">AI-driven operational efficiency</span>.
+        To establish the <span style={{color:'#FF5C00',fontWeight:600}}>engineering benchmark</span> for software development, helping enterprises transition into <span style={{color:'#FF5C00',fontWeight:600}}>AI-driven operational efficiency</span>.
       </>
     ),
     icon: Eye,
@@ -30,7 +30,7 @@ const CARDS = [
     title: "Engineering Philosophy",
     description: (
       <>
-        <span className="glass-highlight">No shortcut frameworks</span>. We utilize strong static typing, server-side caching, secure authorization models, and <span className="glass-highlight">modular architecture</span>.
+        <span style={{color:'#FF5C00',fontWeight:600}}>No shortcut frameworks</span>. We utilize strong static typing, server-side caching, secure authorization models, and <span style={{color:'#FF5C00',fontWeight:600}}>modular architecture</span>.
       </>
     ),
     icon: ShieldCheck,
@@ -39,7 +39,7 @@ const CARDS = [
     title: "Innovation First",
     description: (
       <>
-        We stay <span className="glass-highlight">ahead of the curve</span> — adopting proven emerging technologies strategically so our clients <span className="glass-highlight">lead, not follow</span>.
+        We stay <span style={{color:'#FF5C00',fontWeight:600}}>ahead of the curve</span> — adopting proven emerging technologies strategically so our clients <span style={{color:'#FF5C00',fontWeight:600}}>lead, not follow</span>.
       </>
     ),
     icon: Lightbulb,
@@ -48,7 +48,7 @@ const CARDS = [
     title: "Client Partnership",
     description: (
       <>
-        We <span className="glass-highlight">embed ourselves</span> in your processes and goals. Transparent communication and collaborative planning are non-negotiable.
+        We <span style={{color:'#FF5C00',fontWeight:600}}>embed ourselves</span> in your processes and goals. Transparent communication and collaborative planning are non-negotiable.
       </>
     ),
     icon: Users,
@@ -57,7 +57,7 @@ const CARDS = [
     title: "Delivery at Speed",
     description: (
       <>
-        <span className="glass-highlight">Structured sprints</span>, rigorous CI/CD, and automated testing pipelines ensure we <span className="glass-highlight">ship fast</span> without sacrificing quality.
+        <span style={{color:'#FF5C00',fontWeight:600}}>Structured sprints</span>, rigorous CI/CD, and automated testing pipelines ensure we <span style={{color:'#FF5C00',fontWeight:600}}>ship fast</span> without sacrificing quality.
       </>
     ),
     icon: Zap,
@@ -77,14 +77,15 @@ const fadeUp = {
 // ─── Shared Static Content Layer ────────────────────────────────────────────────
 function SectionHeader() {
   return (
-    <div className="space-y-4 max-w-lg">
-      <span className="text-xs font-mono uppercase tracking-widest font-semibold" style={{ color: '#E8372A' }}>
+    <div className="space-y-5 max-w-lg">
+      <span className="text-xs font-mono uppercase tracking-widest font-semibold" style={{ color: '#FF5C00' }}>
         About SHP Stacks
       </span>
-      <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-sans leading-tight" style={{ color: '#F0F1F3' }}>
+      <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-sans leading-tight" style={{ color: '#FFFFFF' }}>
         We Build Software<br />That Scales Businesses.
       </h2>
-      <p className="text-sm sm:text-base leading-relaxed font-light max-w-sm" style={{ color: 'var(--text-tertiary)' }}>
+      <div className="w-12 h-0.5 rounded-full" style={{ background: 'linear-gradient(90deg, #FF5C00, #E8372A)' }} />
+      <p className="text-sm sm:text-base leading-relaxed max-w-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>
         SHP Stacks is a premium software development firm. We partner with
         ambitious enterprises and scaling SaaS companies to build
         mission&#8209;critical digital products.
@@ -93,7 +94,6 @@ function SectionHeader() {
   );
 }
 
-// ─── Desktop horizontal-scroll inner component ────────────────────────────────
 // ─── Desktop horizontal-scroll inner component ────────────────────────────────
 function DesktopAbout() {
   const outerRef = useRef<HTMLDivElement>(null);
@@ -125,9 +125,9 @@ function DesktopAbout() {
     const xVal = -(scrollProgress * trav);
     stripRef.current.style.transform = `translate3d(${xVal}px, 0, 0)`;
 
-    // Calculate which card is closest to the center
+    // Calculate which card is closest to the center of the viewport
     const cardWidthWithGap = 360 + 24; // 384
-    const idealIndex = (-xVal - (pWidth / 2)) / cardWidthWithGap;
+    const idealIndex = -xVal / cardWidthWithGap;
     let closestIndex = Math.round(idealIndex);
     closestIndex = Math.max(0, Math.min(CARDS.length - 1, closestIndex));
     setActiveIndex(closestIndex);
@@ -160,7 +160,7 @@ function DesktopAbout() {
         {/* Background (Fixed) */}
         <div className="absolute inset-0 pointer-events-none -z-10">
           <div
-            className="absolute top-1/2 left-1/4 -translate-y-1/2 h-[500px] w-[700px] rounded-full bg-[rgba(239,68,68,0.04)] blur-[140px]"
+            className="absolute top-1/2 left-1/4 -translate-y-1/2 h-[500px] w-[700px] rounded-full bg-[rgba(255,92,0,0.06)] blur-[140px]"
             aria-hidden="true"
           />
         </div>
@@ -168,7 +168,7 @@ function DesktopAbout() {
         {/* Progress indicator */}
         <div
           className="absolute top-0 left-0 h-[2px] transition-none z-50"
-          style={{ width: `${scrollProgress * 100}%`, opacity: isActive ? 1 : 0, background: '#E8372A' }}
+          style={{ width: `${scrollProgress * 100}%`, opacity: isActive ? 1 : 0, background: '#FF5C00' }}
           aria-hidden="true"
         />
 
@@ -197,17 +197,10 @@ function DesktopAbout() {
                 const factor = Math.min(1, Math.max(0, Math.abs(dist) / cardWidthWithGap));
 
                 // Interpolated styling values
-                const opacity = 1.0 - 0.65 * factor;
-                const scale = 1.0 - 0.08 * factor;
-                const zTranslate = -40 * factor;
-                const rotateY = (dist > 0 ? 4 : -4) * factor;
-
-                // Border color interpolation (from glowing Blaze Orange to deep wood frame brown)
-                const r = Math.round(252 * (1 - factor) + 43 * factor);
-                const g = Math.round(97 * (1 - factor) + 22 * factor);
-                const b = Math.round(0 * (1 - factor) + 10 * factor);
-                const borderOpacity = 0.8 * (1 - factor) + 0.9 * factor;
-                const borderColor = `rgba(${r}, ${g}, ${b}, ${borderOpacity})`;
+                const opacity = 1.0 - 0.45 * factor;
+                const scale = 1.0 - 0.05 * factor;
+                const zTranslate = -25 * factor;
+                const rotateY = (dist > 0 ? 2.5 : -2.5) * factor;
 
                 return (
                   <div key={card.title} role="listitem" className="flex-shrink-0">
@@ -219,9 +212,8 @@ function DesktopAbout() {
                       index={i}
                       style={{
                         opacity,
-                        transform: `perspective(1000px) translate3d(0, 0, ${zTranslate}px) rotateY(${rotateY}deg) scale(${scale})`,
-                        borderColor,
-                        transition: "none", // Avoids fighting real-time scroll updates
+                        transform: `perspective(1200px) translate3d(0, 0, ${zTranslate}px) rotateY(${rotateY}deg) scale(${scale})`,
+                        transition: "none",
                       }}
                     />
                   </div>
@@ -236,22 +228,24 @@ function DesktopAbout() {
           {/* Static Scroll Hint */}
           <div
             className="px-6 sm:px-12 lg:px-20 flex items-center gap-3 transition-opacity duration-500 flex-shrink-0"
-            style={{ opacity: isActive ? 0 : 0.5 }}
+            style={{ opacity: isActive ? 0 : 0.6 }}
             aria-hidden="true"
           >
-            <div className="flex gap-1">
+            <div className="flex gap-1.5">
               {CARDS.map((_, i) => (
                 <div
                   key={i}
-                  className="h-1 rounded-full transition-all duration-300"
+                  className="h-[3px] rounded-full transition-all duration-400"
                   style={{
-                    width: i === activeIndex ? "24px" : "6px",
-                    background: i === activeIndex ? "#E8372A" : "rgba(255,255,255,0.12)",
+                    width: i === activeIndex ? '28px' : '6px',
+                    background: i === activeIndex
+                      ? 'linear-gradient(90deg, #FF5C00, #E8372A)'
+                      : 'rgba(255,255,255,0.1)',
                   }}
                 />
               ))}
             </div>
-            <span className="text-xs font-mono" style={{ color: 'var(--text-disabled)' }}>Scroll to explore</span>
+            <span className="text-xs font-mono" style={{ color: 'rgba(255,255,255,0.3)' }}>Scroll to explore</span>
           </div>
         </div>
       </div>

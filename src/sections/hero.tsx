@@ -96,7 +96,7 @@ export const Hero: React.FC = () => {
           <CameraReactive depth="paragraph" sectionProgressTarget={0.0}>
             <motion.p
               variants={itemVariants}
-              className="text-base sm:text-lg md:text-xl text-[#111827]/50 max-w-2xl mb-10 leading-relaxed font-light"
+              className="text-lg sm:text-xl md:text-2xl text-slate-200 max-w-2xl mb-10 leading-relaxed font-normal"
             >
               We build enterprise software, AI solutions, SaaS platforms, automation systems,
               and high-performance web applications for ambitious businesses.
@@ -113,7 +113,7 @@ export const Hero: React.FC = () => {
                 variant="primary"
                 glow
                 onClick={() => handleScrollTo('cta')}
-                className="group w-full sm:w-auto"
+                className="group w-full sm:w-auto text-base px-6 py-3"
               >
                 <span>Start Your Project</span>
                 <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
@@ -121,7 +121,7 @@ export const Hero: React.FC = () => {
               <Button
                 variant="outline"
                 onClick={() => handleScrollTo('projects')}
-                className="group w-full sm:w-auto"
+                className="group w-full sm:w-auto text-base px-6 py-3"
               >
                 <span>Explore Our Work</span>
                 <ChevronRight className="h-4 w-4 opacity-50 group-hover:translate-x-0.5 transition-transform" />
@@ -141,7 +141,7 @@ export const Hero: React.FC = () => {
                   <span className="text-2xl sm:text-4xl font-bold font-sans tracking-tight mb-1.5 tabular-nums" style={{ color: '#F0F1F3' }}>
                     {stat.value}
                   </span>
-                  <span className="text-[9px] sm:text-[10px] uppercase tracking-widest font-mono text-center leading-tight" style={{ color: 'var(--text-disabled)' }}>
+                  <span className="text-xs sm:text-sm uppercase tracking-widest font-mono text-center leading-tight font-medium" style={{ color: 'rgba(255,255,255,0.7)' }}>
                     {stat.label}
                   </span>
                 </div>

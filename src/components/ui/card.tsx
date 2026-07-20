@@ -24,18 +24,18 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
     // Dark-system spotlight map — subtle, not garish
     const spotlightColorMap = {
       default: 'rgba(255,255,255,0.03)',
-      blue:    'rgba(232,55,42,0.06)',   // Red glow on dark
+      blue:    'rgba(255,92,0,0.07)',
       gold:    'rgba(168,172,186,0.04)',
-      purple:  'rgba(232,55,42,0.05)',
-      cyan:    'rgba(232,55,42,0.06)',
+      purple:  'rgba(255,92,0,0.06)',
+      cyan:    'rgba(255,92,0,0.07)',
     };
 
     const borderGlowMap = {
       default: 'rgba(255,255,255,0.06)',
-      blue:    'rgba(232,55,42,0.20)',
+      blue:    'rgba(255,92,0,0.22)',
       gold:    'rgba(168,172,186,0.12)',
-      purple:  'rgba(232,55,42,0.18)',
-      cyan:    'rgba(232,55,42,0.20)',
+      purple:  'rgba(255,92,0,0.20)',
+      cyan:    'rgba(255,92,0,0.22)',
     };
 
     return (
@@ -45,7 +45,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
         onMouseEnter={() => setIsFocused(true)}
         onMouseLeave={() => setIsFocused(false)}
         className={cn(
-          "relative rounded-xl overflow-hidden glass-card bg-[#12151E] border border-[rgba(255,255,255,0.12)] shadow-xl transition-all duration-500",
+          "relative rounded-xl overflow-hidden glass-card border border-white/[0.09] shadow-xl transition-all duration-500",
           className
         )}
         {...props}

@@ -20,23 +20,17 @@ const ProcessCard: React.FC<ProcessCardProps> = ({ step, idx, nodeTargetProgress
     offset: ["start end", "center center"]
   });
 
-  const isBrownTransition = idx >= 1;
-
-  // Cinematic scroll interpolation to rich warm brown color
+  // Cinematic scroll interpolation to glowing orange glass
   const bg = useTransform(
     scrollYProgress,
     [0.15, 0.85],
-    isBrownTransition
-      ? ["rgba(255, 255, 255, 0.04)", "rgba(43, 22, 11, 0.65)"]
-      : ["rgba(255, 255, 255, 0.04)", "rgba(255, 255, 255, 0.04)"]
+    ["rgba(255, 255, 255, 0.03)", "rgba(45, 20, 10, 0.65)"]
   );
 
   const border = useTransform(
     scrollYProgress,
     [0.15, 0.85],
-    isBrownTransition
-      ? ["1px solid rgba(255, 255, 255, 0.08)", "1px solid rgba(139, 92, 26, 0.3)"]
-      : ["1px solid rgba(255, 255, 255, 0.08)", "1px solid rgba(255, 255, 255, 0.08)"]
+    ["1px solid rgba(255, 255, 255, 0.08)", "1px solid rgba(255, 92, 0, 0.35)"]
   );
 
   return (
@@ -65,15 +59,15 @@ const ProcessCard: React.FC<ProcessCardProps> = ({ step, idx, nodeTargetProgress
           style={{
             border: '1px solid rgba(255,255,255,0.10)',
             background: '#111318',
-            boxShadow: '0 0 12px rgba(232,55,42,0.15)',
+            boxShadow: '0 0 12px rgba(255,92,0,0.15)',
           }}
         >
-          <div className="h-2 w-2 rounded-full" style={{ background: '#E8372A' }} />
+          <div className="h-2 w-2 rounded-full" style={{ background: '#FF5C00' }} />
         </div>
 
         <div className="pl-14 md:pl-0 md:w-[45%] space-y-4">
           <div className="flex md:hidden items-center gap-3 text-xs font-mono mb-2" style={{ color: 'var(--text-disabled)' }}>
-            <span style={{ color: '#E8372A', fontWeight: 600 }}>STAGE {step.step}</span>
+            <span style={{ color: '#FF5C00', fontWeight: 600 }}>STAGE {step.step}</span>
             <span>•</span>
             <span>{step.duration}</span>
           </div>
@@ -82,7 +76,7 @@ const ProcessCard: React.FC<ProcessCardProps> = ({ step, idx, nodeTargetProgress
             <h3 className="text-lg md:text-xl font-semibold tracking-tight" style={{ color: '#F0F1F3' }}>
               {step.title}
             </h3>
-            <p className="text-sm leading-relaxed font-light" style={{ color: 'var(--text-tertiary)' }}>
+            <p className="text-base leading-relaxed font-light" style={{ color: 'var(--text-tertiary)' }}>
               {step.desc}
             </p>
           </div>
@@ -90,7 +84,7 @@ const ProcessCard: React.FC<ProcessCardProps> = ({ step, idx, nodeTargetProgress
           <ul className="space-y-2 pt-2" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
             {step.details.map((detail, dIdx) => (
               <li key={dIdx} className="flex items-start gap-2.5 text-xs font-light leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                <Check className="h-4 w-4 flex-shrink-0 mt-0.5" style={{ color: 'rgba(232,55,42,0.55)' }} />
+                <Check className="h-4 w-4 flex-shrink-0 mt-0.5" style={{ color: 'rgba(255,92,0,0.55)' }} />
                 <span>{detail}</span>
               </li>
             ))}
@@ -129,14 +123,14 @@ export const Process: React.FC = () => {
         {/* Section Header */}
         <CameraReactive depth="hero-title" sectionProgressTarget={0.72}>
           <div className="text-center max-w-3xl mx-auto mb-24 space-y-4">
-            <span className="text-xs font-mono uppercase tracking-widest font-semibold" style={{ color: '#E8372A' }}>
-              DEVELOPMENT PROCESS
+            <span className="text-xs font-mono uppercase tracking-widest font-semibold" style={{ color: '#FF5C00' }}>
+              OUR METHODOLOGY
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-sans" style={{ color: '#F0F1F3' }}>
-              How We Build Systems.
+              How We Build & Deploy.
             </h2>
-            <p className="text-sm sm:text-base leading-relaxed font-light" style={{ color: 'var(--text-tertiary)' }}>
-              Our systematic approach ensures all custom software assets are delivered on time, securely configured, and fully verified.
+            <p className="text-base sm:text-lg leading-relaxed font-light" style={{ color: 'var(--text-tertiary)' }}>
+              A disciplined, engineering-first development lifecycle designed to minimize risk and maximize speed.
             </p>
           </div>
         </CameraReactive>
@@ -149,7 +143,7 @@ export const Process: React.FC = () => {
             <motion.div
               style={{
                 height: progressLineHeight,
-                background: 'linear-gradient(to bottom, #E8372A, rgba(232,55,42,0.30))'
+                background: 'linear-gradient(to bottom, #FF5C00, rgba(255,92,0,0.30))'
               }}
               className="w-full origin-top rounded-full"
             />

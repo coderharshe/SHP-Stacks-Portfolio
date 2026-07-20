@@ -42,17 +42,17 @@ export const Footer: React.FC = () => {
     <footer
       className="relative pt-16 pb-12 z-10 overflow-hidden"
       style={{
-        borderTop: '1px solid rgba(255,255,255,0.06)',
-        background: 'transparent',
+        borderTop: '1px solid rgba(255,255,255,0.08)',
+        background: 'rgba(15, 17, 21, 0.92)',
       }}
     >
       {/* Subtle grid */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-[0.15] -z-10" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-[0.10] -z-10" />
 
-      {/* Red ambient blob */}
+      {/* Orange ambient blob */}
       <div
         className="absolute bottom-0 left-[-5%] h-[180px] w-[280px] rounded-full -z-10"
-        style={{ background: 'rgba(232,55,42,0.06)', filter: 'blur(80px)' }}
+        style={{ background: 'rgba(255,92,0,0.06)', filter: 'blur(80px)' }}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -89,7 +89,7 @@ export const TechStack: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-sans" style={{ color: '#F0F1F3' }}>
             Our Production Tech Stack.
           </h2>
-          <p className="text-sm sm:text-base leading-relaxed font-light" style={{ color: 'var(--text-tertiary)' }}>
+          <p className="text-base sm:text-lg leading-relaxed font-light" style={{ color: 'var(--text-tertiary)' }}>
             We build exclusively with modern, battle-tested technologies that ensure performance, type-safety, and seamless integrations.
           </p>
         </div>
@@ -100,7 +100,7 @@ export const TechStack: React.FC = () => {
             <button
               key={cat.name}
               onClick={() => setActiveCategory(cat.name)}
-              className={`px-4 py-2 text-xs font-mono rounded-full border transition-all duration-300 cursor-pointer ${
+              className={`px-4 py-2.5 text-xs sm:text-sm font-mono rounded-full border transition-all duration-300 cursor-pointer ${
                 activeCategory === cat.name
                   ? 'border-[rgba(255,255,255,0.15)]'
                   : 'border-[rgba(255,255,255,0.06)] hover:border-[rgba(255,255,255,0.12)]'

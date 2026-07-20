@@ -40,242 +40,257 @@ interface Capability {
 
 // 1. Enterprise Software Diagram
 const EnterpriseTopology: React.FC = () => (
-  <svg className="w-full h-full min-h-[220px] md:min-h-[300px]" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="300" rx="12" fill="rgba(10,11,13,0.4)" stroke="rgba(255,255,255,0.03)" />
+  <svg className="w-full h-full min-h-[380px] md:min-h-[460px]" viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="520" height="360" rx="16" fill="rgba(10,11,13,0.6)" stroke="rgba(255,255,255,0.06)" />
     
+    {/* Grid Lines */}
+    <path d="M 0 90 L 520 90 M 0 180 L 520 180 M 0 270 L 520 270" stroke="rgba(255,255,255,0.02)" strokeDasharray="4 4" />
+    <path d="M 130 0 L 130 360 M 260 0 L 260 360 M 390 0 L 390 360" stroke="rgba(255,255,255,0.02)" strokeDasharray="4 4" />
+
     {/* Load Balancer */}
-    <rect x="160" y="30" width="80" height="32" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" />
-    <text x="200" y="50" fill="#E2E8F0" fontSize="8" fontFamily="monospace" textAnchor="middle">LOAD BALANCER</text>
+    <rect x="185" y="25" width="150" height="46" rx="10" fill="rgba(255,92,0,0.08)" stroke="rgba(255,92,0,0.35)" />
+    <text x="260" y="52" fill="#FFFFFF" fontSize="12" fontWeight="bold" fontFamily="monospace" textAnchor="middle">LOAD BALANCER</text>
+    <text x="260" y="63" fill="#FF5C00" fontSize="9" fontFamily="monospace" textAnchor="middle">HA PROXY / NGINX</text>
     
     {/* API Nodes */}
-    <rect x="50" y="110" width="80" height="32" rx="6" fill="rgba(255,90,75,0.05)" stroke="rgba(255,90,75,0.2)" />
-    <text x="90" y="130" fill="#E2E8F0" fontSize="8" fontFamily="monospace" textAnchor="middle">API NODE 01</text>
+    <rect x="30" y="145" width="130" height="46" rx="10" fill="rgba(255,92,0,0.05)" stroke="rgba(255,92,0,0.25)" />
+    <text x="95" y="172" fill="#F0F1F3" fontSize="11" fontWeight="bold" fontFamily="monospace" textAnchor="middle">API NODE 01</text>
+    <text x="95" y="183" fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="monospace" textAnchor="middle">GO / GOLANG</text>
 
-    <rect x="160" y="110" width="80" height="32" rx="6" fill="rgba(255,90,75,0.05)" stroke="rgba(255,90,75,0.2)" />
-    <text x="200" y="130" fill="#E2E8F0" fontSize="8" fontFamily="monospace" textAnchor="middle">API NODE 02</text>
+    <rect x="195" y="145" width="130" height="46" rx="10" fill="rgba(255,92,0,0.08)" stroke="rgba(255,92,0,0.4)" />
+    <text x="260" y="172" fill="#FFFFFF" fontSize="11" fontWeight="bold" fontFamily="monospace" textAnchor="middle">API NODE 02</text>
+    <text x="260" y="183" fill="#FF5C00" fontSize="9" fontFamily="monospace" textAnchor="middle">ACTIVE WORKER</text>
 
-    <rect x="270" y="110" width="80" height="32" rx="6" fill="rgba(255,90,75,0.05)" stroke="rgba(255,90,75,0.2)" />
-    <text x="310" y="130" fill="#E2E8F0" fontSize="8" fontFamily="monospace" textAnchor="middle">API NODE 03</text>
+    <rect x="360" y="145" width="130" height="46" rx="10" fill="rgba(255,92,0,0.05)" stroke="rgba(255,92,0,0.25)" />
+    <text x="425" y="172" fill="#F0F1F3" fontSize="11" fontWeight="bold" fontFamily="monospace" textAnchor="middle">API NODE 03</text>
+    <text x="425" y="183" fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="monospace" textAnchor="middle">AUTO SCALED</text>
 
-    {/* Database replications */}
-    <rect x="100" y="210" width="90" height="32" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" />
-    <text x="145" y="230" fill="var(--text-secondary)" fontSize="8" fontFamily="monospace" textAnchor="middle">DB MASTER (WRITE)</text>
+    {/* Database Nodes */}
+    <rect x="100" y="270" width="145" height="48" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" />
+    <text x="172.5" y="297" fill="#FFFFFF" fontSize="11" fontWeight="bold" fontFamily="monospace" textAnchor="middle">DB MASTER (WRITE)</text>
+    <text x="172.5" y="308" fill="#FF5C00" fontSize="9" fontFamily="monospace" textAnchor="middle">POSTGRES 16</text>
 
-    <rect x="210" y="210" width="90" height="32" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" />
-    <text x="255" y="230" fill="var(--text-secondary)" fontSize="8" fontFamily="monospace" textAnchor="middle">DB REPLICA (READ)</text>
+    <rect x="275" y="270" width="145" height="48" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" />
+    <text x="347.5" y="297" fill="#FFFFFF" fontSize="11" fontWeight="bold" fontFamily="monospace" textAnchor="middle">DB REPLICA (READ)</text>
+    <text x="347.5" y="308" fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="monospace" textAnchor="middle">ASYNC SYNC</text>
 
-    {/* Connecting lines */}
-    <path d="M 200 62 L 90 110" stroke="rgba(255,255,255,0.1)" strokeDasharray="3 3" />
-    <path d="M 200 62 L 200 110" stroke="rgba(255,90,75,0.3)" />
-    <path d="M 200 62 L 310 110" stroke="rgba(255,255,255,0.1)" strokeDasharray="3 3" />
+    {/* Connecting Paths */}
+    <path d="M 260 71 L 95 145" stroke="rgba(255,255,255,0.15)" strokeDasharray="4 4" strokeWidth="1.5" />
+    <path d="M 260 71 L 260 145" stroke="#FF5C00" strokeWidth="2" />
+    <path d="M 260 71 L 425 145" stroke="rgba(255,255,255,0.15)" strokeDasharray="4 4" strokeWidth="1.5" />
     
-    <path d="M 90 142 L 145 210" stroke="rgba(255,255,255,0.1)" />
-    <path d="M 200 142 L 145 210" stroke="rgba(255,90,75,0.3)" />
-    <path d="M 310 142 L 255 210" stroke="rgba(255,255,255,0.1)" />
+    <path d="M 95 191 L 172.5 270" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" />
+    <path d="M 260 191 L 172.5 270" stroke="#FF5C00" strokeWidth="2" />
+    <path d="M 425 191 L 347.5 270" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" />
     
     {/* Animated Data Packets */}
-    <circle r="3" fill="#FF5A4B">
-      <animateMotion dur="2.4s" repeatCount="indefinite" path="M 200 62 L 200 110 L 145 210" />
+    <circle r="4.5" fill="#FF5C00">
+      <animateMotion dur="2.2s" repeatCount="indefinite" path="M 260 71 L 260 145 L 172.5 270" />
     </circle>
-    <circle r="2.5" fill="#FFA726">
-      <animateMotion dur="3.2s" repeatCount="indefinite" path="M 200 62 L 310 110 L 255 210" />
+    <circle r="3.5" fill="#FFA726">
+      <animateMotion dur="3.0s" repeatCount="indefinite" path="M 260 71 L 425 145 L 347.5 270" />
     </circle>
   </svg>
 );
 
 // 2. AI Systems Diagram (RAG Pipeline)
 const AISystemsTopology: React.FC = () => (
-  <svg className="w-full h-full min-h-[220px] md:min-h-[300px]" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="300" rx="12" fill="rgba(10,11,13,0.4)" stroke="rgba(255,255,255,0.03)" />
+  <svg className="w-full h-full min-h-[380px] md:min-h-[460px]" viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="520" height="360" rx="16" fill="rgba(10,11,13,0.6)" stroke="rgba(255,255,255,0.06)" />
     
-    {/* User Prompt */}
-    <circle cx="50" cy="150" r="18" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" />
-    <text x="50" y="153" fill="#E2E8F0" fontSize="7" fontFamily="monospace" textAnchor="middle">PROMPT</text>
+    {/* User Prompt Entry */}
+    <circle cx="70" cy="180" r="28" fill="rgba(255,92,0,0.12)" stroke="rgba(255,92,0,0.4)" strokeWidth="2" />
+    <text x="70" y="184" fill="#FFFFFF" fontSize="11" fontWeight="bold" fontFamily="monospace" textAnchor="middle">USER PROMPT</text>
     
     {/* Embedding Node */}
-    <rect x="110" y="70" width="80" height="30" rx="4" fill="rgba(255,90,75,0.05)" stroke="rgba(255,90,75,0.2)" />
-    <text x="150" y="88" fill="#E2E8F0" fontSize="7" fontFamily="monospace" textAnchor="middle">EMBEDDING</text>
-    
+    <rect x="150" y="75" width="140" height="46" rx="10" fill="rgba(255,92,0,0.08)" stroke="rgba(255,92,0,0.35)" />
+    <text x="220" y="102" fill="#FFFFFF" fontSize="12" fontWeight="bold" fontFamily="monospace" textAnchor="middle">EMBEDDINGS</text>
+    <text x="220" y="113" fill="#FF5C00" fontSize="9" fontFamily="monospace" textAnchor="middle">ADA-002 / TEXT-3</text>
+
     {/* Vector Database */}
-    <rect x="220" y="70" width="80" height="30" rx="4" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" />
-    <text x="260" y="88" fill="var(--text-secondary)" fontSize="7" fontFamily="monospace" textAnchor="middle">VECTOR DB</text>
+    <rect x="340" y="75" width="140" height="46" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" />
+    <text x="410" y="102" fill="#FFFFFF" fontSize="12" fontWeight="bold" fontFamily="monospace" textAnchor="middle">VECTOR DB</text>
+    <text x="410" y="113" fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="monospace" textAnchor="middle">PGVECTOR / PINECONE</text>
 
     {/* LLM Engine */}
-    <rect x="220" y="200" width="80" height="30" rx="4" fill="rgba(255,90,75,0.05)" stroke="rgba(255,90,75,0.2)" />
-    <text x="260" y="218" fill="#E2E8F0" fontSize="7" fontFamily="monospace" textAnchor="middle">LLM ENGINE</text>
+    <rect x="340" y="240" width="140" height="46" rx="10" fill="rgba(255,92,0,0.08)" stroke="rgba(255,92,0,0.4)" />
+    <text x="410" y="267" fill="#FFFFFF" fontSize="12" fontWeight="bold" fontFamily="monospace" textAnchor="middle">LLM ENGINE</text>
+    <text x="410" y="278" fill="#FF5C00" fontSize="9" fontFamily="monospace" textAnchor="middle">CLAUDE SONNET / GPT-4o</text>
 
-    {/* Context compiler */}
-    <rect x="110" y="200" width="80" height="30" rx="4" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" />
-    <text x="150" y="218" fill="var(--text-secondary)" fontSize="7" fontFamily="monospace" textAnchor="middle">CONTEXT WINDOW</text>
+    {/* Context Compiler */}
+    <rect x="150" y="240" width="140" height="46" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" />
+    <text x="220" y="267" fill="#FFFFFF" fontSize="12" fontWeight="bold" fontFamily="monospace" textAnchor="middle">CONTEXT WINDOW</text>
+    <text x="220" y="278" fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="monospace" textAnchor="middle">128K RAG INJECTION</text>
 
     {/* Paths */}
-    <path d="M 68 150 L 110 85" stroke="rgba(255,255,255,0.1)" />
-    <path d="M 190 85 L 220 85" stroke="rgba(255,90,75,0.3)" />
-    <path d="M 260 100 L 260 200" stroke="rgba(255,255,255,0.1)" strokeDasharray="3 3" />
-    <path d="M 220 215 L 190 215" stroke="rgba(255,90,75,0.3)" />
-    <path d="M 110 215 L 68 150" stroke="rgba(255,255,255,0.1)" />
+    <path d="M 98 180 L 150 98" stroke="#FF5C00" strokeWidth="2" />
+    <path d="M 290 98 L 340 98" stroke="#FF5C00" strokeWidth="2" />
+    <path d="M 410 121 L 410 240" stroke="rgba(255,255,255,0.2)" strokeDasharray="4 4" strokeWidth="1.5" />
+    <path d="M 340 263 L 290 263" stroke="#FF5C00" strokeWidth="2" />
+    <path d="M 150 263 L 98 180" stroke="#FF5C00" strokeWidth="2" />
 
-    {/* Animated pipeline particles */}
-    <circle r="3" fill="#FF5A4B">
-      <animateMotion dur="3s" repeatCount="indefinite" path="M 68 150 L 110 85 L 220 85 L 260 200 L 110 215 L 68 150" />
+    {/* Animated Pipeline Particle */}
+    <circle r="4.5" fill="#FF5C00">
+      <animateMotion dur="3.2s" repeatCount="indefinite" path="M 98 180 L 150 98 L 340 98 L 410 240 L 290 263 L 150 263 L 98 180" />
     </circle>
   </svg>
 );
 
 // 3. Automation Graph
 const AutomationTopology: React.FC = () => (
-  <svg className="w-full h-full min-h-[220px] md:min-h-[300px]" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="300" rx="12" fill="rgba(10,11,13,0.4)" stroke="rgba(255,255,255,0.03)" />
+  <svg className="w-full h-full min-h-[380px] md:min-h-[460px]" viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="520" height="360" rx="16" fill="rgba(10,11,13,0.6)" stroke="rgba(255,255,255,0.06)" />
     
     {/* Trigger Node */}
-    <rect x="25" y="130" width="70" height="40" rx="6" fill="rgba(255,90,75,0.05)" stroke="rgba(255,90,75,0.25)" />
-    <text x="60" y="150" fill="#E2E8F0" fontSize="8" fontFamily="monospace" textAnchor="middle">API TRIGGER</text>
-    <text x="60" y="160" fill="#FF5A4B" fontSize="6" fontFamily="monospace" textAnchor="middle">WEBHOOK</text>
+    <rect x="30" y="155" width="125" height="50" rx="10" fill="rgba(255,92,0,0.08)" stroke="rgba(255,92,0,0.4)" strokeWidth="1.5" />
+    <text x="92.5" y="181" fill="#FFFFFF" fontSize="12" fontWeight="bold" fontFamily="monospace" textAnchor="middle">API TRIGGER</text>
+    <text x="92.5" y="193" fill="#FF5C00" fontSize="9" fontFamily="monospace" textAnchor="middle">WEBHOOK / EVENT</text>
 
-    {/* Router */}
-    <rect x="145" y="130" width="70" height="40" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" />
-    <text x="180" y="153" fill="#E2E8F0" fontSize="8" fontFamily="monospace" textAnchor="middle">RULE ENGINE</text>
+    {/* Router / Rule Engine */}
+    <rect x="200" y="155" width="125" height="50" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.15)" />
+    <text x="262.5" y="181" fill="#FFFFFF" fontSize="12" fontWeight="bold" fontFamily="monospace" textAnchor="middle">RULE ENGINE</text>
+    <text x="262.5" y="193" fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="monospace" textAnchor="middle">n8n / TEMPORAL</text>
 
     {/* Integration targets */}
-    <rect x="270" y="40" width="90" height="30" rx="4" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" />
-    <text x="315" y="58" fill="var(--text-secondary)" fontSize="7" fontFamily="monospace" textAnchor="middle">CRM UPDATE</text>
+    <rect x="375" y="45" width="120" height="44" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" />
+    <text x="435" y="72" fill="rgba(255,255,255,0.8)" fontSize="11" fontWeight="bold" fontFamily="monospace" textAnchor="middle">CRM UPDATE</text>
 
-    <rect x="270" y="135" width="90" height="30" rx="4" fill="rgba(255,90,75,0.03)" stroke="rgba(255,90,75,0.15)" />
-    <text x="315" y="153" fill="#E2E8F0" fontSize="7" fontFamily="monospace" textAnchor="middle">VERIFY INVOICE</text>
+    <rect x="375" y="158" width="120" height="44" rx="8" fill="rgba(255,92,0,0.08)" stroke="rgba(255,92,0,0.3)" />
+    <text x="435" y="185" fill="#FFFFFF" fontSize="11" fontWeight="bold" fontFamily="monospace" textAnchor="middle">INVOICE SYNC</text>
 
-    <rect x="270" y="230" width="90" height="30" rx="4" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" />
-    <text x="315" y="248" fill="var(--text-secondary)" fontSize="7" fontFamily="monospace" textAnchor="middle">SLACK SYNC</text>
+    <rect x="375" y="270" width="120" height="44" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" />
+    <text x="435" y="297" fill="rgba(255,255,255,0.8)" fontSize="11" fontWeight="bold" fontFamily="monospace" textAnchor="middle">SLACK NOTIFY</text>
 
     {/* Links */}
-    <path d="M 95 150 L 145 150" stroke="#FF5A4B" strokeWidth="1.2" />
-    <path d="M 215 150 L 240 150 L 240 55 L 270 55" stroke="rgba(255,255,255,0.1)" strokeDasharray="2 2" />
-    <path d="M 215 150 L 270 150" stroke="rgba(255,90,75,0.3)" />
-    <path d="M 215 150 L 240 150 L 240 245 L 270 245" stroke="rgba(255,255,255,0.1)" strokeDasharray="2 2" />
+    <path d="M 155 180 L 200 180" stroke="#FF5C00" strokeWidth="2.5" />
+    <path d="M 325 180 L 350 180 L 350 67 L 375 67" stroke="rgba(255,255,255,0.15)" strokeDasharray="3 3" strokeWidth="1.5" />
+    <path d="M 325 180 L 375 180" stroke="#FF5C00" strokeWidth="2" />
+    <path d="M 325 180 L 350 180 L 350 292 L 375 292" stroke="rgba(255,255,255,0.15)" strokeDasharray="3 3" strokeWidth="1.5" />
 
     {/* Active pulse */}
-    <circle r="3" fill="#FF5A4B">
-      <animateMotion dur="2s" repeatCount="indefinite" path="M 95 150 L 145 150 L 270 150" />
+    <circle r="4.5" fill="#FF5C00">
+      <animateMotion dur="2.2s" repeatCount="indefinite" path="M 155 180 L 200 180 L 375 180" />
     </circle>
   </svg>
 );
 
 // 4. SaaS Platforms
 const SaaSPlatformsTopology: React.FC = () => (
-  <svg className="w-full h-full min-h-[220px] md:min-h-[300px]" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="300" rx="12" fill="rgba(10,11,13,0.4)" stroke="rgba(255,255,255,0.03)" />
+  <svg className="w-full h-full min-h-[380px] md:min-h-[460px]" viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="520" height="360" rx="16" fill="rgba(10,11,13,0.6)" stroke="rgba(255,255,255,0.06)" />
     
     {/* Tenant ingress */}
-    <circle cx="50" cy="80" r="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" />
-    <text x="50" y="94" fill="var(--text-secondary)" fontSize="5" fontFamily="monospace" textAnchor="middle">TENANT A</text>
+    <circle cx="65" cy="80" r="18" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" />
+    <text x="65" y="84" fill="rgba(255,255,255,0.8)" fontSize="9" fontWeight="bold" fontFamily="monospace" textAnchor="middle">TENANT A</text>
 
-    <circle cx="50" cy="150" r="10" fill="rgba(255,90,75,0.05)" stroke="rgba(255,90,75,0.2)" />
-    <text x="50" y="164" fill="#E2E8F0" fontSize="5" fontFamily="monospace" textAnchor="middle">TENANT B</text>
+    <circle cx="65" cy="180" r="22" fill="rgba(255,92,0,0.12)" stroke="rgba(255,92,0,0.4)" strokeWidth="2" />
+    <text x="65" y="184" fill="#FFFFFF" fontSize="10" fontWeight="bold" fontFamily="monospace" textAnchor="middle">TENANT B</text>
 
-    <circle cx="50" cy="220" r="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" />
-    <text x="50" y="234" fill="var(--text-secondary)" fontSize="5" fontFamily="monospace" textAnchor="middle">TENANT C</text>
+    <circle cx="65" cy="280" r="18" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" />
+    <text x="65" y="284" fill="rgba(255,255,255,0.8)" fontSize="9" fontWeight="bold" fontFamily="monospace" textAnchor="middle">TENANT C</text>
 
     {/* Edge Router */}
-    <rect x="110" y="110" width="70" height="80" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" />
-    <text x="145" y="145" fill="#E2E8F0" fontSize="7" fontFamily="monospace" textAnchor="middle">EDGE ROUTING</text>
-    <text x="145" y="155" fill="#FF5A4B" fontSize="6" fontFamily="monospace" textAnchor="middle">& ISOLATION</text>
+    <rect x="150" y="130" width="120" height="100" rx="12" fill="rgba(255,92,0,0.06)" stroke="rgba(255,92,0,0.3)" />
+    <text x="210" y="175" fill="#FFFFFF" fontSize="12" fontWeight="bold" fontFamily="monospace" textAnchor="middle">EDGE ROUTER</text>
+    <text x="210" y="190" fill="#FF5C00" fontSize="9" fontFamily="monospace" textAnchor="middle">& ISOLATION</text>
 
-    {/* Stripe / Middlewares */}
-    <rect x="210" y="55" width="80" height="30" rx="4" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" />
-    <text x="250" y="73" fill="var(--text-secondary)" fontSize="7" fontFamily="monospace" textAnchor="middle">STRIPE VERIFY</text>
+    {/* Stripe / Auth */}
+    <rect x="330" y="60" width="145" height="46" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" />
+    <text x="402.5" y="87" fill="#FFFFFF" fontSize="11" fontWeight="bold" fontFamily="monospace" textAnchor="middle">STRIPE / AUTH 0</text>
 
-    {/* Shared Schema DB */}
-    <rect x="210" y="135" width="80" height="30" rx="4" fill="rgba(255,90,75,0.05)" stroke="rgba(255,90,75,0.2)" />
-    <text x="250" y="153" fill="#E2E8F0" fontSize="7" fontFamily="monospace" textAnchor="middle">SCHEMA ROUTER</text>
+    {/* Schema Router DB */}
+    <rect x="330" y="157" width="145" height="46" rx="8" fill="rgba(255,92,0,0.08)" stroke="rgba(255,92,0,0.35)" />
+    <text x="402.5" y="184" fill="#FFFFFF" fontSize="11" fontWeight="bold" fontFamily="monospace" textAnchor="middle">SCHEMA ROUTER</text>
 
-    <rect x="310" y="135" width="70" height="30" rx="4" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" />
-    <text x="345" y="153" fill="var(--text-secondary)" fontSize="7" fontFamily="monospace" textAnchor="middle">POOLED DB</text>
+    <rect x="330" y="255" width="145" height="46" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" />
+    <text x="402.5" y="282" fill="rgba(255,255,255,0.8)" fontSize="11" fontWeight="bold" fontFamily="monospace" textAnchor="middle">POOLED RLS DB</text>
 
     {/* Connections */}
-    <path d="M 60 80 L 110 130" stroke="rgba(255,255,255,0.08)" />
-    <path d="M 60 150 L 110 150" stroke="rgba(255,90,75,0.3)" />
-    <path d="M 60 220 L 110 170" stroke="rgba(255,255,255,0.08)" />
+    <path d="M 83 80 L 150 150" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" />
+    <path d="M 87 180 L 150 180" stroke="#FF5C00" strokeWidth="2.5" />
+    <path d="M 83 280 L 150 210" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" />
     
-    <path d="M 180 140 L 210 70" stroke="rgba(255,255,255,0.08)" />
-    <path d="M 180 150 L 210 150" stroke="rgba(255,90,75,0.3)" />
-    <path d="M 290 150 L 310 150" stroke="#FF5A4B" />
+    <path d="M 270 160 L 330 83" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" />
+    <path d="M 270 180 L 330 180" stroke="#FF5C00" strokeWidth="2.5" />
+    <path d="M 270 200 L 330 278" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" />
 
     {/* Inbound data animation */}
-    <circle r="2.5" fill="#FF5A4B">
-      <animateMotion dur="2.2s" repeatCount="indefinite" path="M 60 150 L 110 150 L 180 150 L 210 150 L 310 150" />
+    <circle r="4.5" fill="#FF5C00">
+      <animateMotion dur="2.4s" repeatCount="indefinite" path="M 87 180 L 150 180 L 270 180 L 330 180" />
     </circle>
   </svg>
 );
 
 // 5. Cloud Infrastructure (AWS / K8s Cluster)
 const CloudTopology: React.FC = () => (
-  <svg className="w-full h-full min-h-[220px] md:min-h-[300px]" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="300" rx="12" fill="rgba(10,11,13,0.4)" stroke="rgba(255,255,255,0.03)" />
+  <svg className="w-full h-full min-h-[380px] md:min-h-[460px]" viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="520" height="360" rx="16" fill="rgba(10,11,13,0.6)" stroke="rgba(255,255,255,0.06)" />
     
     {/* ALB load balancer */}
-    <rect x="50" y="130" width="40" height="40" rx="20" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" />
-    <text x="70" y="153" fill="#E2E8F0" fontSize="7" fontFamily="monospace" textAnchor="middle">ALB</text>
+    <circle cx="65" cy="180" r="26" fill="rgba(255,92,0,0.1)" stroke="rgba(255,92,0,0.4)" strokeWidth="2" />
+    <text x="65" y="184" fill="#FFFFFF" fontSize="12" fontWeight="bold" fontFamily="monospace" textAnchor="middle">AWS ALB</text>
 
-    {/* Kubernetes Target Group */}
-    <rect x="140" y="40" width="220" height="220" rx="8" fill="rgba(255,90,75,0.02)" stroke="rgba(255,90,75,0.15)" strokeDasharray="4 4" />
-    <text x="250" y="55" fill="#FF5A4B" fontSize="7" fontFamily="monospace" textAnchor="middle">KUBERNETES CLUSTER (VPC)</text>
+    {/* Kubernetes Target Group Boundary */}
+    <rect x="150" y="45" width="345" height="270" rx="12" fill="rgba(255,92,0,0.02)" stroke="rgba(255,92,0,0.2)" strokeDasharray="6 6" />
+    <text x="322.5" y="68" fill="#FF5C00" fontSize="11" fontWeight="bold" fontFamily="monospace" textAnchor="middle">KUBERNETES CLUSTER (AWS VPC)</text>
 
     {/* Pods */}
-    <rect x="160" y="80" width="70" height="30" rx="4" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" />
-    <text x="195" y="98" fill="var(--text-secondary)" fontSize="7" fontFamily="monospace" textAnchor="middle">POD REPLICA</text>
+    <rect x="180" y="95" width="130" height="46" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" />
+    <text x="245" y="122" fill="rgba(255,255,255,0.8)" fontSize="11" fontWeight="bold" fontFamily="monospace" textAnchor="middle">POD REPLICA 01</text>
 
-    <rect x="160" y="135" width="70" height="30" rx="4" fill="rgba(255,90,75,0.05)" stroke="rgba(255,90,75,0.2)" />
-    <text x="195" y="153" fill="#E2E8F0" fontSize="7" fontFamily="monospace" textAnchor="middle">POD REPLICA</text>
+    <rect x="180" y="157" width="130" height="46" rx="8" fill="rgba(255,92,0,0.08)" stroke="rgba(255,92,0,0.4)" />
+    <text x="245" y="184" fill="#FFFFFF" fontSize="11" fontWeight="bold" fontFamily="monospace" textAnchor="middle">POD REPLICA 02</text>
 
-    <rect x="160" y="190" width="70" height="30" rx="4" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" />
-    <text x="195" y="208" fill="var(--text-secondary)" fontSize="7" fontFamily="monospace" textAnchor="middle">POD REPLICA</text>
+    <rect x="180" y="220" width="130" height="46" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" />
+    <text x="245" y="247" fill="rgba(255,255,255,0.8)" fontSize="11" fontWeight="bold" fontFamily="monospace" textAnchor="middle">POD REPLICA 03</text>
 
     {/* Auto-scaling group */}
-    <rect x="270" y="135" width="70" height="30" rx="4" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" />
-    <text x="305" y="153" fill="var(--text-secondary)" fontSize="6" fontFamily="monospace" textAnchor="middle">AUTO SCALER</text>
+    <rect x="355" y="157" width="120" height="46" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" />
+    <text x="415" y="184" fill="#FFFFFF" fontSize="11" fontWeight="bold" fontFamily="monospace" textAnchor="middle">AUTO SCALER</text>
 
     {/* Routing links */}
-    <path d="M 90 150 L 160 95" stroke="rgba(255,255,255,0.08)" />
-    <path d="M 90 150 L 160 150" stroke="rgba(255,90,75,0.3)" />
-    <path d="M 90 150 L 160 205" stroke="rgba(255,255,255,0.08)" />
+    <path d="M 91 180 L 180 118" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" />
+    <path d="M 91 180 L 180 180" stroke="#FF5C00" strokeWidth="2.5" />
+    <path d="M 91 180 L 180 243" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" />
     
-    <path d="M 230 150 L 270 150" stroke="rgba(255,90,75,0.3)" />
+    <path d="M 310 180 L 355 180" stroke="#FF5C00" strokeWidth="2.5" />
 
-    <circle r="3" fill="#FF5A4B">
-      <animateMotion dur="2.5s" repeatCount="indefinite" path="M 90 150 L 160 150 L 230 150 L 270 150" />
+    <circle r="4.5" fill="#FF5C00">
+      <animateMotion dur="2.4s" repeatCount="indefinite" path="M 91 180 L 180 180 L 310 180 L 355 180" />
     </circle>
   </svg>
 );
 
 // 6. Mobile Application (Offline sync topology)
 const MobileTopology: React.FC = () => (
-  <svg className="w-full h-full min-h-[220px] md:min-h-[300px]" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="300" rx="12" fill="rgba(10,11,13,0.4)" stroke="rgba(255,255,255,0.03)" />
+  <svg className="w-full h-full min-h-[380px] md:min-h-[460px]" viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="520" height="360" rx="16" fill="rgba(10,11,13,0.6)" stroke="rgba(255,255,255,0.06)" />
     
     {/* Smartphone boundary */}
-    <rect x="30" y="60" width="80" height="180" rx="12" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.12)" />
-    <text x="70" y="80" fill="var(--text-secondary)" fontSize="7" fontFamily="monospace" textAnchor="middle">MOBILE DEVICE</text>
+    <rect x="35" y="55" width="130" height="250" rx="16" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" />
+    <text x="100" y="82" fill="rgba(255,255,255,0.8)" fontSize="10" fontWeight="bold" fontFamily="monospace" textAnchor="middle">MOBILE DEVICE</text>
 
     {/* Local SQLite */}
-    <rect x="40" y="120" width="60" height="30" rx="4" fill="rgba(255,90,75,0.05)" stroke="rgba(255,90,75,0.2)" />
-    <text x="70" y="138" fill="#E2E8F0" fontSize="7" fontFamily="monospace" textAnchor="middle">SQLITE</text>
+    <rect x="50" y="155" width="100" height="46" rx="8" fill="rgba(255,92,0,0.08)" stroke="rgba(255,92,0,0.35)" />
+    <text x="100" y="182" fill="#FFFFFF" fontSize="11" fontWeight="bold" fontFamily="monospace" textAnchor="middle">SQLITE DB</text>
     
     {/* Sync Queue */}
-    <rect x="150" y="120" width="80" height="40" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" />
-    <text x="190" y="140" fill="#E2E8F0" fontSize="7" fontFamily="monospace" textAnchor="middle">SYNC QUEUE</text>
-    <text x="190" y="150" fill="#FF5A4B" fontSize="6" fontFamily="monospace" textAnchor="middle">(OFFLINE STORAGE)</text>
+    <rect x="210" y="150" width="125" height="56" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" />
+    <text x="272.5" y="177" fill="#FFFFFF" fontSize="12" fontWeight="bold" fontFamily="monospace" textAnchor="middle">SYNC QUEUE</text>
+    <text x="272.5" y="190" fill="#FF5C00" fontSize="9" fontFamily="monospace" textAnchor="middle">OFFLINE STORAGE</text>
 
     {/* WebSocket Gateway */}
-    <rect x="270" y="120" width="90" height="40" rx="6" fill="rgba(255,90,75,0.05)" stroke="rgba(255,90,75,0.2)" />
-    <text x="315" y="140" fill="#E2E8F0" fontSize="7" fontFamily="monospace" textAnchor="middle">WEBSOCKET</text>
-    <text x="315" y="150" fill="var(--text-secondary)" fontSize="6" fontFamily="monospace" textAnchor="middle">SYNC SERVER</text>
+    <rect x="375" y="150" width="125" height="56" rx="10" fill="rgba(255,92,0,0.08)" stroke="rgba(255,92,0,0.4)" />
+    <text x="437.5" y="177" fill="#FFFFFF" fontSize="12" fontWeight="bold" fontFamily="monospace" textAnchor="middle">WEBSOCKET</text>
+    <text x="437.5" y="190" fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="monospace" textAnchor="middle">GATEWAY SERVER</text>
 
     {/* Connectors */}
-    <path d="M 100 135 L 150 135" stroke="rgba(255,90,75,0.3)" />
-    <path d="M 230 140 L 270 140" stroke="#FF5A4B" strokeWidth="1.2" />
+    <path d="M 150 178 L 210 178" stroke="#FF5C00" strokeWidth="2.5" />
+    <path d="M 335 178 L 375 178" stroke="#FF5C00" strokeWidth="2.5" />
 
     {/* Sync flow indicator */}
-    <circle r="3" fill="#FF5A4B">
-      <animateMotion dur="2s" repeatCount="indefinite" path="M 100 135 L 150 135 L 230 135 L 270 135" />
+    <circle r="4.5" fill="#FF5C00">
+      <animateMotion dur="2.2s" repeatCount="indefinite" path="M 150 178 L 210 178 L 335 178 L 375 178" />
     </circle>
   </svg>
 );
@@ -486,13 +501,13 @@ export const Services: React.FC = () => {
         {/* Section Header */}
         <CameraReactive depth="hero-title" sectionProgressTarget={0.45} revealProgressOffset={-0.18}>
           <div className="max-w-3xl mb-16 space-y-4">
-            <span className="text-xs font-mono uppercase tracking-widest font-semibold" style={{ color: '#E8372A' }}>
+            <span className="text-xs font-mono uppercase tracking-widest font-semibold" style={{ color: '#FF5C00' }}>
               CAPABILITIES CONTROL CENTER
             </span>
             <h2 className="text-3xl sm:text-5xl font-bold tracking-tight font-sans leading-tight" style={{ color: '#F0F1F3' }}>
               Architecting Digital Ecosystems.
             </h2>
-            <p className="text-sm sm:text-base leading-relaxed font-light" style={{ color: 'var(--text-tertiary)' }}>
+            <p className="text-base sm:text-lg leading-relaxed font-light" style={{ color: 'var(--text-tertiary)' }}>
               We design, build, and deploy complete software infrastructures. Explore our system capabilities below.
             </p>
           </div>
@@ -503,8 +518,8 @@ export const Services: React.FC = () => {
           
           {/* LEFT PANEL: Capability Navigator */}
           <div className="md:col-span-12 lg:col-span-3 flex flex-col justify-center">
-            <div className="text-[10px] font-mono tracking-widest text-[var(--text-disabled)] uppercase mb-4">SYSTEM MODULES</div>
-            <div className="grid grid-cols-3 lg:flex lg:flex-col gap-2">
+            <div className="text-xs font-mono tracking-widest text-slate-400 font-semibold uppercase mb-4">SYSTEM MODULES</div>
+            <div className="grid grid-cols-3 lg:flex lg:flex-col gap-2.5">
               {CAPABILITIES_DATA.map((cap) => {
                 const Icon = cap.icon;
                 const isActive = cap.id === activeId;
@@ -514,31 +529,31 @@ export const Services: React.FC = () => {
                     onClick={() => setActiveId(cap.id)}
                     className={`relative text-left p-4 rounded-xl flex items-center gap-4 transition-all duration-300 border cursor-pointer select-none group ${
                       isActive 
-                        ? 'bg-white/[0.04] border-white/20 shadow-[0_4px_20px_-10px_rgba(255,255,255,0.05)]' 
-                        : 'bg-transparent border-white/[0.03] hover:bg-white/[0.01] hover:border-white/10'
+                        ? 'bg-white/[0.06] border-white/20 shadow-[0_4px_24px_-8px_rgba(255,92,0,0.15)]' 
+                        : 'bg-transparent border-white/[0.03] hover:bg-white/[0.02] hover:border-white/10'
                     }`}
                   >
                     {/* Active accent vertical line */}
                     <div 
-                      className="absolute left-0 top-3 bottom-3 w-[2px] rounded-r transition-all duration-300"
+                      className="absolute left-0 top-3 bottom-3 w-[3px] rounded-r transition-all duration-300"
                       style={{
-                        background: isActive ? 'linear-gradient(to bottom, #E8372A, #FF5A4B)' : 'transparent',
-                        boxShadow: isActive ? '0 0 8px rgba(232, 55, 42, 0.6)' : 'none'
+                        background: isActive ? 'linear-gradient(to bottom, #FF5C00, #FF8C00)' : 'transparent',
+                        boxShadow: isActive ? '0 0 10px rgba(255, 92, 0, 0.7)' : 'none'
                       }}
                     />
 
                     {/* Module Status Dot */}
                     <div 
-                      className={`h-1.5 w-1.5 rounded-full transition-all duration-300 ${
-                        isActive ? 'bg-[#E8372A] scale-110 animate-pulse' : 'bg-[var(--text-disabled)]'
+                      className={`h-2 w-2 rounded-full transition-all duration-300 ${
+                        isActive ? 'bg-[#FF5C00] scale-110 animate-pulse' : 'bg-slate-600'
                       }`}
                     />
 
                     {/* Icon */}
-                    <Icon className={`h-4.5 w-4.5 transition-colors duration-300 ${isActive ? 'text-[#FF5A4B]' : 'text-[var(--text-tertiary)] group-hover:text-[var(--text-secondary)]'}`} />
+                    <Icon className={`h-5 w-5 transition-colors duration-300 ${isActive ? 'text-[#FF5C00]' : 'text-slate-400 group-hover:text-slate-200'}`} />
 
                     {/* Text */}
-                    <span className={`text-xs font-semibold tracking-tight transition-colors duration-300 ${isActive ? 'text-white' : 'text-[#888B96] group-hover:text-white'}`}>
+                    <span className={`text-sm font-semibold tracking-tight transition-colors duration-300 ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-white'}`}>
                       {cap.title}
                     </span>
 
@@ -559,24 +574,24 @@ export const Services: React.FC = () => {
           </div>
 
           {/* CENTER PANEL: Live Topology Visualization */}
-          <div className="md:col-span-6 lg:col-span-5 flex flex-col justify-center border border-white/[0.04] bg-white/[0.01] rounded-2xl p-6 md:p-8 relative overflow-hidden backdrop-blur-md">
-            <div className="flex items-center justify-between border-b border-white/[0.04] pb-4 mb-6">
+          <div className="md:col-span-6 lg:col-span-5 flex flex-col justify-center border border-white/[0.06] bg-black/40 rounded-2xl p-6 md:p-8 relative overflow-hidden backdrop-blur-md min-h-[440px] md:min-h-[500px]">
+            <div className="flex items-center justify-between border-b border-white/[0.06] pb-4 mb-6">
               <div className="flex items-center gap-2.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#22C55E] animate-pulse" />
-                <span className="text-[10px] font-mono tracking-widest text-[var(--text-tertiary)] uppercase">LIVE TOPOLOGY MAP</span>
+                <span className="h-2 w-2 rounded-full bg-[#22C55E] animate-pulse" />
+                <span className="text-xs font-mono tracking-widest text-slate-300 font-semibold uppercase">LIVE TOPOLOGY MAP</span>
               </div>
-              <span className="text-[9px] font-mono text-[var(--text-disabled)]">NODE_STATUS: ACTIVE</span>
+              <span className="text-xs font-mono font-semibold text-[#FF5C00]">NODE_STATUS: ACTIVE</span>
             </div>
 
-            <div className="flex-grow flex items-center justify-center relative">
+            <div className="flex-grow flex items-center justify-center relative w-full h-full">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeId}
                   initial={{ opacity: 0, scale: 0.96 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.96 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="w-full flex items-center justify-center"
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="w-full h-full flex items-center justify-center"
                 >
                   <ActiveTopology />
                 </motion.div>
@@ -585,7 +600,7 @@ export const Services: React.FC = () => {
           </div>
 
           {/* RIGHT PANEL: Capability Intelligence Specs */}
-          <div className="md:col-span-6 lg:col-span-4 flex flex-col justify-between border border-white/[0.04] bg-white/[0.01] rounded-2xl p-6 md:p-8 backdrop-blur-md">
+          <div className="md:col-span-6 lg:col-span-4 flex flex-col justify-between border border-white/[0.06] bg-black/40 rounded-2xl p-6 md:p-8 backdrop-blur-md">
             
             <AnimatePresence mode="wait">
               <motion.div
@@ -593,62 +608,62 @@ export const Services: React.FC = () => {
                 initial={{ opacity: 0, x: 10 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -10 }}
-                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                 className="space-y-6 flex-grow"
               >
                 {/* Header */}
-                <div className="space-y-1.5 border-b border-white/[0.04] pb-4">
-                  <span className="text-[9px] font-mono text-[#E8372A] tracking-widest uppercase">MODULE SPECS</span>
-                  <h3 className="text-xl font-bold tracking-tight text-white">{activeCapability.title}</h3>
+                <div className="space-y-1.5 border-b border-white/[0.06] pb-4">
+                  <span className="text-xs font-mono text-[#FF5C00] font-semibold tracking-widest uppercase">MODULE SPECS</span>
+                  <h3 className="text-2xl font-bold tracking-tight text-white">{activeCapability.title}</h3>
                 </div>
 
                 {/* Specs Table */}
                 <div className="space-y-4 text-xs font-mono">
                   
-                  <div className="grid grid-cols-3 py-1.5 border-b border-white/[0.02]">
-                    <span className="text-[var(--text-disabled)] uppercase">OVERVIEW</span>
-                    <span className="col-span-2 text-[var(--text-secondary)] font-light leading-relaxed font-sans">{activeCapability.details.overview}</span>
+                  <div className="grid grid-cols-3 py-1.5 border-b border-white/[0.03]">
+                    <span className="text-slate-400 font-semibold uppercase">OVERVIEW</span>
+                    <span className="col-span-2 text-slate-200 font-normal leading-relaxed font-sans text-sm">{activeCapability.details.overview}</span>
                   </div>
 
-                  <div className="grid grid-cols-3 py-1.5 border-b border-white/[0.02]">
-                    <span className="text-[var(--text-disabled)] uppercase">VALUE PROP</span>
-                    <span className="col-span-2 text-[var(--text-secondary)] font-light leading-relaxed font-sans">{activeCapability.details.businessValue}</span>
+                  <div className="grid grid-cols-3 py-1.5 border-b border-white/[0.03]">
+                    <span className="text-slate-400 font-semibold uppercase">VALUE PROP</span>
+                    <span className="col-span-2 text-slate-200 font-normal leading-relaxed font-sans text-sm">{activeCapability.details.businessValue}</span>
                   </div>
 
-                  <div className="grid grid-cols-3 py-1.5 border-b border-white/[0.02]">
-                    <span className="text-[var(--text-disabled)] uppercase">CLIENT PROFILE</span>
-                    <span className="col-span-2 text-[var(--text-secondary)] font-sans font-light">{activeCapability.details.typicalClients}</span>
+                  <div className="grid grid-cols-3 py-1.5 border-b border-white/[0.03]">
+                    <span className="text-slate-400 font-semibold uppercase">CLIENT PROFILE</span>
+                    <span className="col-span-2 text-slate-200 font-sans font-normal text-sm">{activeCapability.details.typicalClients}</span>
                   </div>
 
-                  <div className="grid grid-cols-3 py-1.5 border-b border-white/[0.02]">
-                    <span className="text-[var(--text-disabled)] uppercase">TIMELINE</span>
-                    <span className="col-span-2 text-[#FF5A4B] font-semibold">{activeCapability.details.timeline}</span>
+                  <div className="grid grid-cols-3 py-1.5 border-b border-white/[0.03]">
+                    <span className="text-slate-400 font-semibold uppercase">TIMELINE</span>
+                    <span className="col-span-2 text-[#FF5C00] font-bold text-sm">{activeCapability.details.timeline}</span>
                   </div>
 
-                  <div className="grid grid-cols-3 py-1.5 border-b border-white/[0.02]">
-                    <span className="text-[var(--text-disabled)] uppercase">COMPLEXITY</span>
-                    <span className="col-span-2 text-white">{activeCapability.details.complexity}</span>
+                  <div className="grid grid-cols-3 py-1.5 border-b border-white/[0.03]">
+                    <span className="text-slate-400 font-semibold uppercase">COMPLEXITY</span>
+                    <span className="col-span-2 text-white font-semibold text-sm">{activeCapability.details.complexity}</span>
                   </div>
 
-                  <div className="grid grid-cols-3 py-1.5 border-b border-white/[0.02]">
-                    <span className="text-[var(--text-disabled)] uppercase">ESTIMATED ROI</span>
-                    <span className="col-span-2 text-white font-sans font-light">{activeCapability.details.roi}</span>
+                  <div className="grid grid-cols-3 py-1.5 border-b border-white/[0.03]">
+                    <span className="text-slate-400 font-semibold uppercase">ESTIMATED ROI</span>
+                    <span className="col-span-2 text-slate-200 font-sans font-normal text-sm">{activeCapability.details.roi}</span>
                   </div>
 
-                  <div className="grid grid-cols-3 py-1.5 border-b border-white/[0.02]">
-                    <span className="text-[var(--text-disabled)] uppercase">DEPLOY MODEL</span>
-                    <span className="col-span-2 text-[var(--text-secondary)] font-sans font-light">{activeCapability.details.deployment}</span>
+                  <div className="grid grid-cols-3 py-1.5 border-b border-white/[0.03]">
+                    <span className="text-slate-400 font-semibold uppercase">DEPLOY MODEL</span>
+                    <span className="col-span-2 text-slate-200 font-sans font-normal text-sm">{activeCapability.details.deployment}</span>
                   </div>
 
-                  <div className="grid grid-cols-3 py-1.5 border-b border-white/[0.02]">
-                    <span className="text-[var(--text-disabled)] uppercase">TARGET SEC</span>
-                    <span className="col-span-2 text-[var(--text-secondary)] font-sans font-light">{activeCapability.details.industries.join(', ')}</span>
+                  <div className="grid grid-cols-3 py-1.5 border-b border-white/[0.03]">
+                    <span className="text-slate-400 font-semibold uppercase">TARGET SEC</span>
+                    <span className="col-span-2 text-slate-200 font-sans font-normal text-sm">{activeCapability.details.industries.join(', ')}</span>
                   </div>
                 </div>
 
                 {/* Tech Chips */}
                 <div className="space-y-3 pt-3">
-                  <div className="text-[9px] font-mono tracking-widest text-[var(--text-disabled)] uppercase">STACK SPECIFICATION</div>
+                  <div className="text-xs font-mono tracking-widest text-slate-400 font-semibold uppercase">STACK SPECIFICATION</div>
                   <div className="flex flex-wrap gap-2">
                     {activeCapability.details.techStack.map((tech) => (
                       <div 
@@ -658,11 +673,11 @@ export const Services: React.FC = () => {
                         {tech.name}
 
                         {/* Tech Chip Hover Tooltip */}
-                        <div className="absolute bottom-[calc(100%+8px)] left-1/2 -translate-x-1/2 w-48 bg-[#0D0F12] border border-white/10 rounded-lg p-3 shadow-xl opacity-0 scale-95 group-hover/chip:opacity-100 group-hover/chip:scale-100 transition-all duration-200 pointer-events-none z-50 text-left">
-                          <div className="text-[9px] font-mono text-[#E8372A] uppercase mb-1">{tech.level}</div>
-                          <div className="text-[10px] font-bold text-white mb-2">{tech.name}</div>
-                          <div className="text-[9px] leading-relaxed text-[var(--text-tertiary)] font-light mb-1.5">Use Case: {tech.useCase}</div>
-                          <div className="text-[8px] font-mono text-[var(--text-secondary)] border-t border-white/5 pt-1.5">Projects built: {tech.built}</div>
+                        <div className="absolute bottom-[calc(100%+8px)] left-1/2 -translate-x-1/2 w-52 bg-black/60 backdrop-blur-md border border-white/10 rounded-lg p-3 shadow-xl opacity-0 scale-95 group-hover/chip:opacity-100 group-hover/chip:scale-100 transition-all duration-200 pointer-events-none z-50 text-left">
+                          <div className="text-[10px] font-mono font-semibold text-[#FF5C00] uppercase mb-1">{tech.level}</div>
+                          <div className="text-xs font-bold text-white mb-2">{tech.name}</div>
+                          <div className="text-[10px] leading-relaxed text-slate-300 font-light mb-1.5">Use Case: {tech.useCase}</div>
+                          <div className="text-[10px] font-mono text-slate-400 border-t border-white/10 pt-1.5">Projects built: {tech.built}</div>
                         </div>
                       </div>
                     ))}
@@ -675,10 +690,10 @@ export const Services: React.FC = () => {
             <div className="mt-8 pt-4 border-t border-white/[0.04]">
               <button 
                 onClick={() => document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-full py-3 rounded-xl bg-white/[0.03] hover:bg-[#E8372A] border border-white/10 hover:border-[#E8372A] text-xs font-mono font-semibold tracking-wider uppercase text-white hover:shadow-[0_0_20px_rgba(232,55,42,0.3)] transition-all duration-300 cursor-pointer flex items-center justify-center gap-2 group"
+                className="w-full py-3.5 rounded-xl bg-white/[0.04] hover:bg-[#FF5C00] border border-white/10 hover:border-[#FF5C00] text-xs font-mono font-bold tracking-wider uppercase text-white hover:shadow-[0_0_24px_rgba(255,92,0,0.4)] transition-all duration-300 cursor-pointer flex items-center justify-center gap-2 group"
               >
                 <span>Initialize Module Inquiry</span>
-                <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
+                <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
               </button>
             </div>
           </div>
@@ -687,7 +702,7 @@ export const Services: React.FC = () => {
 
         {/* 2. MOBILE VIEW (Accordion Layout with Sticky/Inline Visualization) */}
         <div className="block md:hidden space-y-4">
-          <div className="text-[10px] font-mono tracking-widest text-[var(--text-disabled)] uppercase mb-4">SYSTEM MODULES</div>
+          <div className="text-xs font-mono tracking-widest text-slate-400 font-semibold uppercase mb-4">SYSTEM MODULES</div>
           <div className="space-y-3">
             {CAPABILITIES_DATA.map((cap) => {
               const Icon = cap.icon;
@@ -707,9 +722,9 @@ export const Services: React.FC = () => {
                     className="w-full p-4 flex items-center justify-between text-left cursor-pointer"
                   >
                     <div className="flex items-center gap-3">
-                      <div className={`h-1.5 w-1.5 rounded-full ${isOpen ? 'bg-[#E8372A] animate-pulse' : 'bg-[var(--text-disabled)]'}`} />
-                      <Icon className={`h-4.5 w-4.5 ${isOpen ? 'text-[#FF5A4B]' : 'text-[var(--text-tertiary)]'}`} />
-                      <span className={`text-xs font-semibold tracking-tight ${isOpen ? 'text-white' : 'text-[#888B96]'}`}>
+                      <div className={`h-2 w-2 rounded-full ${isOpen ? 'bg-[#FF5C00] animate-pulse' : 'bg-slate-600'}`} />
+                      <Icon className={`h-5 w-5 ${isOpen ? 'text-[#FF5C00]' : 'text-slate-400'}`} />
+                      <span className={`text-sm font-semibold tracking-tight ${isOpen ? 'text-white' : 'text-slate-300'}`}>
                         {cap.title}
                       </span>
                     </div>

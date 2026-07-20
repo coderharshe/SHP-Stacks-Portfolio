@@ -29,7 +29,7 @@ export const Testimonials: React.FC = () => {
             <h3 className="text-xl md:text-2xl font-bold tracking-tight" style={{ color: '#F0F1F3' }}>
               Active Project Delivery
             </h3>
-            <p className="text-sm leading-relaxed font-light" style={{ color: 'var(--text-tertiary)' }}>
+            <p className="text-base leading-relaxed font-light" style={{ color: 'var(--text-tertiary)' }}>
               Currently delivering custom software architectures and intelligent AI applications for growing businesses. Client success stories and comprehensive case studies coming soon.
             </p>
           </div>

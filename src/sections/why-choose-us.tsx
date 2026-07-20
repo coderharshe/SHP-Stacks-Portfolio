@@ -90,7 +90,7 @@ export const WhyChooseUs: React.FC = () => {
         {/* Section Header */}
         <CameraReactive depth="hero-title" sectionProgressTarget={0.50}>
           <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
-            <span className="text-xs font-mono uppercase tracking-widest font-semibold" style={{ color: '#E8372A' }}>
+            <span className="text-xs font-mono uppercase tracking-widest font-semibold" style={{ color: '#FF5C00' }}>
               WHY SHP STACKS
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-sans" style={{ color: '#F0F1F3' }}>
@@ -130,7 +130,7 @@ export const WhyChooseUs: React.FC = () => {
                         <h3 className="text-base font-semibold tracking-tight" style={{ color: '#F0F1F3' }}>
                           {reason.title}
                         </h3>
-                        <p className="text-xs sm:text-sm leading-relaxed font-light" style={{ color: 'var(--text-tertiary)' }}>
+                        <p className="text-sm sm:text-base leading-relaxed font-light" style={{ color: 'var(--text-tertiary)' }}>
                           {reason.desc}
                         </p>
                       </div>

@@ -20,63 +20,82 @@ export const AboutCard = React.forwardRef<HTMLElement, AboutCardProps>(
       <article
         ref={ref as React.Ref<HTMLElement>}
         aria-label={`About card ${index + 1}: ${title}`}
-        style={{
-          transformStyle: "preserve-3d",
-          transform: isActive
-            ? "perspective(1000px) translate3d(0, 0, 0px) rotateY(0deg) scale(1)"
-            : "perspective(1000px) translate3d(0, 0, -40px) rotateY(4deg) scale(0.92)",
-          borderColor: isActive ? 'rgba(252,97,0,0.8)' : 'rgba(43,22,10,0.9)',
-          ...style
-        }}
+        style={style}
         className={cn(
-          "relative flex flex-col gap-6 rounded-2xl p-8 md:p-10",
+          "relative flex flex-col gap-5 p-8 md:p-10 rounded-3xl backdrop-blur-md",
           "w-[min(80vw,360px)] flex-shrink-0",
-          "wood-tray-card",
-          isActive && "active",
           "transition-all duration-300 ease-out",
-          isActive ? "opacity-100" : "opacity-45"
+          isActive 
+            ? "bg-white/[0.05] border border-[#FF5C00]/40 shadow-[0_0_35px_rgba(255,92,0,0.20),inset_0_0_15px_rgba(255,92,0,0.08)]"
+            : "bg-black/20 border border-white/[0.03]"
         )}
       >
-        {/* Icon badge */}
+        {/* Orange glow behind active card */}
+        {isActive && (
+          <div
+            className="absolute inset-0 rounded-3xl pointer-events-none -z-10"
+            style={{
+              background: 'radial-gradient(ellipse 90% 90% at 50% 50%, rgba(255,92,0,0.18) 0%, rgba(255,92,0,0.04) 60%, transparent 80%)',
+            }}
+            aria-hidden="true"
+          />
+        )}
+
+        {/* Icon with orange ring */}
         <div
-          className="w-12 h-12 rounded-xl flex items-center justify-center border transition-colors duration-300"
+          className="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300"
           style={{
-            borderColor: isActive ? 'rgba(252,97,0,0.4)' : 'rgba(255,255,255,0.08)',
-            background: isActive ? 'rgba(252,97,0,0.15)' : 'rgba(255,255,255,0.03)',
+            background: isActive
+              ? 'linear-gradient(135deg, rgba(255,92,0,0.30) 0%, rgba(255,107,0,0.18) 100%)'
+              : 'rgba(255,255,255,0.04)',
+            boxShadow: isActive ? '0 0 24px rgba(255,92,0,0.35)' : 'none',
+            border: isActive ? '1px solid rgba(255,92,0,0.40)' : '1px solid rgba(255,255,255,0.05)',
           }}
         >
           <Icon
-            className="h-5 w-5 transition-colors duration-300"
-            style={{ color: isActive ? 'var(--blaze-orange)' : '#7D6A5E' }}
+            className="h-6 w-6 transition-colors duration-300"
+            style={{ color: isActive ? '#FF5C00' : 'rgba(255,255,255,0.35)' }}
             aria-hidden="true"
           />
         </div>
 
+        {/* Orange active bar */}
+        <div
+          className="h-0.5 rounded-full transition-all duration-500"
+          style={{
+            background: isActive
+              ? 'linear-gradient(90deg, #FF5C00, #FF8C00)'
+              : 'rgba(255,255,255,0.08)',
+            width: isActive ? '2.5rem' : '1rem',
+          }}
+          aria-hidden="true"
+        />
+
         {/* Text content */}
-        <div className="space-y-3 flex-1">
-          <h3 
-            className="text-lg font-bold tracking-tight transition-all duration-300" 
-            style={{ 
-              color: isActive ? 'var(--vanilla-custard)' : '#F5EFEB',
-              textShadow: '0 2px 4px rgba(0,0,0,0.5)'
+        <div className="space-y-2.5 flex-1">
+          <h3
+            className="text-xl font-bold tracking-tight transition-all duration-300"
+            style={{
+              color: isActive ? '#FFFFFF' : 'rgba(255,255,255,0.4)',
             }}
           >
             {title}
           </h3>
-          <p 
-            className="text-sm leading-relaxed font-light transition-colors duration-300" 
-            style={{ color: isActive ? '#DED4CC' : '#A3958C' }}
+          <p
+            className="text-base leading-relaxed transition-colors duration-300"
+            style={{ color: isActive ? 'rgba(255,255,255,0.85)' : 'rgba(255,255,255,0.28)' }}
           >
             {description}
           </p>
         </div>
 
-        {/* Active accent underline */}
+        {/* Subtle bottom separator line */}
         <div
-          className="absolute bottom-0 left-8 right-8 h-[2.5px] rounded-full transition-all duration-300"
+          className="absolute bottom-0 left-8 right-8 h-px transition-all duration-300"
           style={{
-            background: 'linear-gradient(90deg, var(--blaze-orange), var(--vanilla-custard))',
-            opacity: isActive ? 1 : 0
+            background: isActive
+              ? 'linear-gradient(90deg, transparent, rgba(255,92,0,0.5), transparent)'
+              : 'linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent)',
           }}
           aria-hidden="true"
         />
@@ -86,3 +105,4 @@ export const AboutCard = React.forwardRef<HTMLElement, AboutCardProps>(
 );
 
 AboutCard.displayName = "AboutCard";
+

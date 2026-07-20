@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  CheckCircle, ArrowRight, ChevronRight, Wifi, Clock, Compass, Activity, 
-  MapPin, Cpu, Server, Shield, Radio, Sparkles
+  CheckCircle, ArrowRight, Compass, Activity, Wifi, Clock,
+  MapPin, Cpu, Shield, Radio
 } from 'lucide-react';
 import { PROJECTS_DATA, ProjectItem } from '@/constants/data';
 import { Button } from '@/components/ui/button';
@@ -155,24 +155,24 @@ export const Projects: React.FC = () => {
     switch (project.id) {
       case 'oceon-wms':
         return (
-          <div className="relative w-full h-full min-h-[220px] bg-neutral-950/80 rounded-xl p-3 overflow-hidden border border-white/5 font-mono text-[9px] text-[#A0A5B5] flex flex-col justify-between">
+          <div className="relative w-full h-full min-h-[220px] bg-black/30 backdrop-blur-md rounded-xl p-3 overflow-hidden border border-white/5 font-mono text-[9px] text-[#A0A5B5] flex flex-col justify-between">
             <div className="flex justify-between items-center border-b border-white/5 pb-2">
-              <span className="text-[#E8372A] font-semibold flex items-center gap-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#E8372A] animate-pulse" />
+              <span className="text-[#FF5C00] font-semibold flex items-center gap-1.5 text-xs">
+                <span className="h-2 w-2 rounded-full bg-[#FF5C00] animate-pulse" />
                 ● WMS RACK MAPPING
               </span>
-              <span className="text-white/40">SYS_ID: OCEON_WMS_09</span>
+              <span className="text-white/40 text-xs font-mono">SYS_ID: OCEON_WMS_09</span>
             </div>
-            <div className="grid grid-cols-8 gap-1 my-3 flex-grow justify-center items-center">
+            <div className="grid grid-cols-8 gap-1.5 my-3 flex-grow justify-center items-center">
               {Array.from({ length: 24 }).map((_, i) => {
                 const isActive = [2, 5, 11, 14, 18, 21].includes(i);
                 return (
                   <div
                     key={i}
-                    className={`h-5 rounded flex items-center justify-center border transition-all duration-500 text-[8px] ${
+                    className={`h-6 rounded flex items-center justify-center border transition-all duration-500 text-[10px] ${
                       isActive
-                        ? 'bg-[#E8372A]/10 border-[#E8372A]/40 text-[#E8372A] shadow-[0_0_8px_rgba(232,55,42,0.15)] font-bold'
-                        : 'bg-white/5 border-white/5 text-white/20'
+                        ? 'bg-[#FF5C00]/15 border-[#FF5C00]/50 text-[#FF5C00] shadow-[0_0_10px_rgba(255,92,0,0.25)] font-bold'
+                        : 'bg-white/5 border-white/5 text-white/30'
                     }`}
                   >
                     {isActive ? 'SLOT' : 'EMPTY'}
@@ -180,13 +180,13 @@ export const Projects: React.FC = () => {
                 );
               })}
             </div>
-            <div className="border-t border-white/5 pt-2 flex justify-between items-center text-[7.5px] text-white/30">
-              <div className="flex gap-2">
+            <div className="border-t border-white/5 pt-2 flex justify-between items-center text-xs text-white/40 font-mono">
+              <div className="flex gap-3">
                 <span>RACK: ZONE_F3</span>
                 <span>CAPACITY: 79.4%</span>
               </div>
-              <div className="flex items-center gap-1 text-emerald-400">
-                <div className="h-1 w-1 rounded-full bg-emerald-500 animate-pulse" />
+              <div className="flex items-center gap-1.5 text-emerald-400">
+                <div className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 <span>LEDGER FEED OK</span>
               </div>
             </div>
@@ -195,31 +195,31 @@ export const Projects: React.FC = () => {
 
       case 'ai-barcode-intelligence':
         return (
-          <div className="relative w-full h-full min-h-[220px] bg-neutral-950/80 rounded-xl overflow-hidden border border-white/5 font-mono text-[9px] text-[#A0A5B5] flex flex-col justify-between">
-            <div className="absolute inset-x-0 h-[1px] bg-[#E8372A]/40 animate-[hud-scan-line_2.5s_linear_infinite] shadow-[0_0_6px_#E8372A] z-10" />
+          <div className="relative w-full h-full min-h-[220px] bg-black/30 backdrop-blur-md rounded-xl overflow-hidden border border-white/5 font-mono text-xs text-[#A0A5B5] flex flex-col justify-between">
+            <div className="absolute inset-x-0 h-[1.5px] bg-[#FF5C00]/50 animate-[hud-scan-line_2.5s_linear_infinite] shadow-[0_0_8px_#FF5C00] z-10" />
             <div className="p-3 z-10 flex flex-col justify-between h-full flex-grow">
               <div className="flex justify-between items-center border-b border-white/5 pb-2">
-                <span className="flex items-center gap-1.5 text-[#E8372A] font-semibold">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#E8372A] animate-ping" />
+                <span className="flex items-center gap-1.5 text-[#FF5C00] font-semibold text-xs">
+                  <span className="h-2 w-2 rounded-full bg-[#FF5C00] animate-ping" />
                   VISION_SCANNER_CONNECTED
                 </span>
-                <span className="text-white/40">LATENCY: 42ms</span>
+                <span className="text-white/40 text-xs">LATENCY: 42ms</span>
               </div>
               
-              <div className="relative w-32 h-16 border border-emerald-500/50 bg-emerald-500/5 mx-auto rounded my-3 flex flex-col justify-between p-1.5 shadow-[0_0_10px_rgba(16,185,129,0.1)]">
-                <div className="absolute -top-1 -left-1 w-2.5 h-2.5 border-t-2 border-l-2 border-emerald-400" />
-                <div className="absolute -top-1 -right-1 w-2.5 h-2.5 border-t-2 border-r-2 border-emerald-400" />
-                <div className="absolute -bottom-1 -left-1 w-2.5 h-2.5 border-b-2 border-l-2 border-emerald-400" />
-                <div className="absolute -bottom-1 -right-1 w-2.5 h-2.5 border-b-2 border-r-2 border-emerald-400" />
-                <div className="text-[6.5px] text-emerald-400 bg-neutral-900/90 px-1 py-0.5 rounded self-start">
+              <div className="relative w-36 h-20 border border-emerald-500/50 bg-emerald-500/5 mx-auto rounded my-3 flex flex-col justify-between p-2 shadow-[0_0_12px_rgba(16,185,129,0.15)]">
+                <div className="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-emerald-400" />
+                <div className="absolute -top-1 -right-1 w-3 h-3 border-t-2 border-r-2 border-emerald-400" />
+                <div className="absolute -bottom-1 -left-1 w-3 h-3 border-b-2 border-l-2 border-emerald-400" />
+                <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-emerald-400" />
+                <div className="text-[9px] text-emerald-400 font-bold bg-neutral-900/90 px-1.5 py-0.5 rounded self-start">
                   TAG: DEPOSIT_BOX
                 </div>
-                <div className="text-[6.5px] text-emerald-400 font-bold self-end bg-neutral-900/90 px-1 py-0.5 rounded">
+                <div className="text-[9px] text-emerald-400 font-bold self-end bg-neutral-900/90 px-1.5 py-0.5 rounded">
                   UPC: 99.8% ACC
                 </div>
               </div>
 
-              <div className="flex justify-between text-[7.5px] text-white/30 border-t border-white/5 pt-2">
+              <div className="flex justify-between text-xs text-white/40 border-t border-white/5 pt-2">
                 <span>BARCODE ID: 9780134</span>
                 <span>DEVICES: 4 APES ACTIVE</span>
               </div>
@@ -229,23 +229,23 @@ export const Projects: React.FC = () => {
 
       case 'face-recognition-photo':
         return (
-          <div className="relative w-full h-full min-h-[220px] bg-neutral-950/80 rounded-xl p-3 overflow-hidden border border-white/5 font-mono text-[9px] text-[#A0A5B5] flex flex-col justify-between">
+          <div className="relative w-full h-full min-h-[220px] bg-black/30 backdrop-blur-md rounded-xl p-3 overflow-hidden border border-white/5 font-mono text-xs text-[#A0A5B5] flex flex-col justify-between">
             <div className="flex justify-between items-center border-b border-white/5 pb-2">
-              <span className="text-[#E8372A] font-semibold">● COSINE VECTOR ALIGNMENT</span>
-              <span className="text-white/40">DB_NODE: PGVECTOR</span>
+              <span className="text-[#FF5C00] font-semibold text-xs">● COSINE VECTOR ALIGNMENT</span>
+              <span className="text-white/40 text-xs">DB_NODE: PGVECTOR</span>
             </div>
             
-            <div className="relative h-24 my-2 border border-white/5 rounded bg-black/40 flex items-center justify-center">
-              <svg className="absolute inset-0 w-full h-full opacity-35" viewBox="0 0 200 100">
-                <circle cx="40" cy="30" r="2.5" fill="#E8372A" />
-                <circle cx="160" cy="35" r="2.5" fill="#888899" />
-                <circle cx="95" cy="65" r="2.5" fill="#888899" />
-                <circle cx="105" cy="20" r="3" fill="#E8372A" className="animate-pulse" />
-                <line x1="105" y1="20" x2="40" y2="30" stroke="#E8372A" strokeWidth="0.75" strokeDasharray="3,3" />
-                <line x1="105" y1="20" x2="95" y2="65" stroke="#888899" strokeWidth="0.5" />
-                <line x1="160" y1="35" x2="95" y2="65" stroke="#888899" strokeWidth="0.5" />
+            <div className="relative h-28 my-2 border border-white/5 rounded bg-black/40 flex items-center justify-center">
+              <svg className="absolute inset-0 w-full h-full opacity-45" viewBox="0 0 200 100">
+                <circle cx="40" cy="30" r="3" fill="#FF5C00" />
+                <circle cx="160" cy="35" r="3" fill="#888899" />
+                <circle cx="95" cy="65" r="3" fill="#888899" />
+                <circle cx="105" cy="20" r="4" fill="#FF5C00" className="animate-pulse" />
+                <line x1="105" y1="20" x2="40" y2="30" stroke="#FF5C00" strokeWidth="1" strokeDasharray="3,3" />
+                <line x1="105" y1="20" x2="95" y2="65" stroke="#888899" strokeWidth="0.75" />
+                <line x1="160" y1="35" x2="95" y2="65" stroke="#888899" strokeWidth="0.75" />
               </svg>
-              <div className="absolute bottom-2 left-2 text-[6.5px] text-white/50 bg-neutral-900/90 px-1 py-0.5 rounded border border-white/5">
+              <div className="absolute bottom-2 left-2 text-[9px] font-bold text-white/70 bg-neutral-900/90 px-1.5 py-0.5 rounded border border-white/10">
                 INDEX DISTANCE: 0.124 (MATCH)
               </div>
               <div className="absolute top-2 right-2 text-[6.5px] text-emerald-400 bg-neutral-900/90 px-1 py-0.5 rounded border border-white/5">
@@ -262,9 +262,9 @@ export const Projects: React.FC = () => {
 
       case 'business-portfolio-websites':
         return (
-          <div className="relative w-full h-full min-h-[220px] bg-neutral-950/80 rounded-xl p-3 overflow-hidden border border-white/5 font-mono text-[9px] text-[#A0A5B5] flex flex-col justify-between">
+          <div className="relative w-full h-full min-h-[220px] bg-black/30 backdrop-blur-md rounded-xl p-3 overflow-hidden border border-white/5 font-mono text-[9px] text-[#A0A5B5] flex flex-col justify-between">
             <div className="flex justify-between items-center border-b border-white/5 pb-2">
-              <span className="text-[#E8372A] font-semibold">● WEB PERFORMANCE METRICS</span>
+              <span className="text-[#FF5C00] font-semibold">● WEB PERFORMANCE METRICS</span>
               <span className="text-white/40">EDGE RUNTIME: OK</span>
             </div>
             
@@ -296,33 +296,40 @@ export const Projects: React.FC = () => {
 
       case 'ai-automation-platform':
         return (
-          <div className="relative w-full h-full min-h-[220px] bg-neutral-950/80 rounded-xl p-3 overflow-hidden border border-white/5 font-mono text-[9px] text-[#A0A5B5] flex flex-col justify-between">
+          <div className="relative w-full h-full min-h-[220px] bg-black/30 backdrop-blur-md rounded-xl p-3 overflow-hidden border border-white/5 font-mono text-[9px] text-[#A0A5B5] flex flex-col justify-between">
             <div className="flex justify-between items-center border-b border-white/5 pb-2">
-              <span className="text-[#E8372A] font-semibold">● COGNITIVE AGENT PIPELINE</span>
-              <span className="text-white/40">SERVER: SELF-HOSTED</span>
+              <span className="text-[#FF5C00] font-semibold text-xs">● COGNITIVE AGENT PIPELINE</span>
+              <span className="text-white/40 text-xs">PIPELINE: ACTIVE</span>
             </div>
             
-            <div className="flex items-center justify-between gap-1 my-3 flex-grow px-2">
-              {[
-                { name: 'TRIGGER', active: true },
-                { name: 'RAG_LLM', active: true },
-                { name: 'OUTCOME', active: true }
-              ].map((node, i) => (
-                <React.Fragment key={i}>
-                  <div className="border border-white/10 rounded px-2 py-1.5 bg-black/60 text-center shadow-md relative">
-                    <span className="text-[6px] block text-white/30">NODE_0{i+1}</span>
-                    <span className="text-white font-bold text-[7.5px] tracking-tight">{node.name}</span>
-                  </div>
-                  {i < 2 && (
-                    <div className="flex-grow h-0.5 bg-[#E8372A]/40 relative">
-                      <div className="absolute top-1/2 -translate-y-1/2 left-0 h-1.5 w-1.5 bg-[#E8372A] rounded-full animate-ping" />
-                    </div>
-                  )}
-                </React.Fragment>
-              ))}
+            <div className="flex items-center justify-between gap-2 my-3 px-2">
+              <div className="flex flex-col items-center">
+                <div className="w-8 h-8 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-[10px] text-white">
+                  IN
+                </div>
+                <span className="text-[9px] text-white/30 mt-1 font-bold">DOCS</span>
+              </div>
+              <div className="flex-grow h-0.5 bg-[#FF5C00]/40 relative">
+                <div className="absolute top-1/2 -translate-y-1/2 left-0 h-2 w-2 bg-[#FF5C00] rounded-full animate-ping" />
+              </div>
+              <div className="flex flex-col items-center">
+                <div className="w-10 h-10 rounded-full border border-[#FF5C00]/40 bg-[#FF5C00]/10 flex items-center justify-center text-xs font-bold text-[#FF5C00]">
+                  RAG
+                </div>
+                <span className="text-[9px] text-[#FF5C00] mt-1 font-bold">EMBED</span>
+              </div>
+              <div className="flex-grow h-0.5 bg-[#FF5C00]/40 relative">
+                <div className="absolute top-1/2 -translate-y-1/2 left-0 h-2 w-2 bg-[#FF5C00] rounded-full animate-ping" />
+              </div>
+              <div className="flex flex-col items-center">
+                <div className="w-8 h-8 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-[10px] text-white">
+                  OUT
+                </div>
+                <span className="text-[9px] text-white/30 mt-1 font-bold">JSON</span>
+              </div>
             </div>
 
-            <div className="border-t border-white/5 pt-2 text-[7px] text-[#E8372A] truncate">
+            <div className="border-t border-white/5 pt-2 text-[9px] text-[#FF5C00] font-bold truncate">
               &gt; WORKFLOW_LOG: &quot;Executing structured context assembly...&quot;
             </div>
           </div>
@@ -330,7 +337,7 @@ export const Projects: React.FC = () => {
 
       case 'custom-erp-dashboard':
         return (
-          <div className="relative w-full h-full min-h-[220px] bg-neutral-950/80 rounded-xl p-3 overflow-hidden border border-white/5 font-mono text-[9px] text-[#A0A5B5] flex flex-col justify-between">
+          <div className="relative w-full h-full min-h-[220px] bg-black/30 backdrop-blur-md rounded-xl p-3 overflow-hidden border border-white/5 font-mono text-[9px] text-[#A0A5B5] flex flex-col justify-between">
             <div className="flex justify-between items-center border-b border-white/5 pb-2">
               <span className="text-[#E8372A] font-semibold">● MASTER DATA LEDGER</span>
               <span className="text-white/40">ENCRYPTION: SHIELD</span>
@@ -359,7 +366,7 @@ export const Projects: React.FC = () => {
 
       case 'inventory-mgmt-system':
         return (
-          <div className="relative w-full h-full min-h-[220px] bg-neutral-950/80 rounded-xl p-3 overflow-hidden border border-white/5 font-mono text-[9px] text-[#A0A5B5] flex flex-col justify-between">
+          <div className="relative w-full h-full min-h-[220px] bg-black/30 backdrop-blur-md rounded-xl p-3 overflow-hidden border border-white/5 font-mono text-[9px] text-[#A0A5B5] flex flex-col justify-between">
             <div className="flex justify-between items-center border-b border-white/5 pb-2">
               <span className="text-[#E8372A] font-semibold">● MULTI-CHANNEL WEBHOOKS</span>
               <span className="text-white/40">SYNC_CLOCK: 4.8ms</span>
@@ -392,7 +399,7 @@ export const Projects: React.FC = () => {
       case 'future-saas-products':
       default:
         return (
-          <div className="relative w-full h-full min-h-[220px] bg-neutral-950/80 rounded-xl p-3 overflow-hidden border border-white/5 font-mono text-[9px] text-[#A0A5B5] flex flex-col justify-between">
+          <div className="relative w-full h-full min-h-[220px] bg-black/30 backdrop-blur-md rounded-xl p-3 overflow-hidden border border-white/5 font-mono text-[9px] text-[#A0A5B5] flex flex-col justify-between">
             <div className="flex justify-between items-center border-b border-white/5 pb-2">
               <span className="text-[#E8372A] font-semibold">● NEXTJS EDGE SANDBOX</span>
               <span className="text-white/40">US-EAST-1 (VERCEL)</span>
@@ -419,7 +426,7 @@ export const Projects: React.FC = () => {
   const renderGPSRoute = (project: ProjectItem) => {
     const ext = PROJECT_DETAILS_EXT[project.id] || { distance: '20 km' };
     return (
-      <div className="relative w-full h-full min-h-[220px] bg-neutral-950/80 rounded-xl p-3 overflow-hidden border border-white/5 font-mono text-[9px] text-[#A0A5B5] flex flex-col justify-between">
+      <div className="relative w-full h-full min-h-[220px] bg-black/30 backdrop-blur-md rounded-xl p-3 overflow-hidden border border-white/5 font-mono text-[9px] text-[#A0A5B5] flex flex-col justify-between">
         <div className="flex justify-between items-center border-b border-white/5 pb-2">
           <span className="text-[#E8372A] font-semibold flex items-center gap-1.5">
             <Compass className="h-3 w-3 animate-spin-slow" />
@@ -481,7 +488,7 @@ export const Projects: React.FC = () => {
   const renderTelemetryDiagnostics = (project: ProjectItem) => {
     const ext = PROJECT_DETAILS_EXT[project.id] || { latency: '12ms', sprint: 'S-24', buildVer: 'v2.4.1' };
     return (
-      <div className="relative w-full h-full min-h-[220px] bg-neutral-950/80 rounded-xl p-3 overflow-hidden border border-white/5 font-mono text-[9px] text-[#A0A5B5] flex flex-col justify-between">
+      <div className="relative w-full h-full min-h-[220px] bg-black/30 backdrop-blur-md rounded-xl p-3 overflow-hidden border border-white/5 font-mono text-[9px] text-[#A0A5B5] flex flex-col justify-between">
         <div className="flex justify-between items-center border-b border-white/5 pb-2">
           <span className="text-[#E8372A] font-semibold flex items-center gap-1.5">
             <Cpu className="h-3 w-3" />
@@ -681,33 +688,33 @@ export const Projects: React.FC = () => {
                         onClick={() => setSelectedProject(project)}
                         className={`relative w-[210px] lg:w-full shrink-0 text-left p-3 rounded-xl border font-mono transition-all duration-500 cursor-pointer flex flex-col justify-between gap-1.5 select-none ${
                           isSelected
-                            ? 'bg-neutral-950/60 border-[#E8372A]/40 text-white hud-glow-red'
+                            ? 'bg-neutral-950/60 border-[#FF5C00]/50 text-white hud-glow-orange'
                             : 'bg-transparent border-white/5 text-white/30 hover:bg-white/5 hover:text-white/55'
                         }`}
                       >
-                        <div className="flex justify-between items-center text-[8px] tracking-wider uppercase font-semibold">
-                          <span className={`flex items-center gap-1 ${isSelected ? 'text-[#E8372A]' : 'text-white/30'}`}>
-                            <span className={`h-1.5 w-1.5 rounded-full ${isSelected ? 'bg-[#E8372A] animate-pulse' : 'bg-white/20'}`} />
+                        <div className="flex justify-between items-center text-xs tracking-wider uppercase font-semibold">
+                          <span className={`flex items-center gap-1.5 ${isSelected ? 'text-[#FF5C00]' : 'text-white/40'}`}>
+                            <span className={`h-2 w-2 rounded-full ${isSelected ? 'bg-[#FF5C00] animate-pulse' : 'bg-white/20'}`} />
                             {project.category}
                           </span>
-                          <span className="text-[7px] opacity-75">{ext.distance}</span>
+                          <span className="text-[9px] opacity-75 font-mono">{ext.distance}</span>
                         </div>
 
-                        <h3 className={`text-xs font-semibold truncate transition-colors duration-300 ${
+                        <h3 className={`text-sm font-semibold truncate transition-colors duration-300 ${
                           isSelected ? 'text-white font-bold' : 'text-white/50'
                         }`}>
                           {project.title}
                         </h3>
 
-                        <div className="flex justify-between items-center gap-2 mt-0.5 text-[6.5px] opacity-70">
+                        <div className="flex justify-between items-center gap-2 mt-0.5 text-xs opacity-70">
                           <div className="flex-grow h-[3px] bg-white/5 rounded-full overflow-hidden flex">
                             <div 
                               className={`h-full transition-all duration-1000 ${
-                                isSelected ? 'bg-[#E8372A] w-[100%]' : 'bg-white/10 w-[40%]'
+                                isSelected ? 'bg-[#FF5C00] w-[100%]' : 'bg-white/10 w-[40%]'
                               }`} 
                             />
                           </div>
-                          <span className="text-[7px] uppercase font-bold shrink-0">{isSelected ? 'ACTIVE DEST' : 'STANDBY'}</span>
+                          <span className="text-[9px] uppercase font-bold shrink-0">{isSelected ? 'ACTIVE DEST' : 'STANDBY'}</span>
                         </div>
                       </button>
                     );
@@ -721,7 +728,7 @@ export const Projects: React.FC = () => {
           <div className="lg:col-span-5 flex flex-col">
             <CameraReactive depth="landmark" className="flex flex-col h-full">
               <div className="flex flex-col justify-between bg-[#0F1115]/30 border border-[#2D313A]/25 border-t-[#3D4250]/40 rounded-2xl p-4 backdrop-blur-md shadow-lg relative overflow-hidden min-h-[460px] flex-grow">
-                <div className="absolute top-0 left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-[#E8372A]/40 to-transparent" />
+                <div className="absolute top-0 left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-[#FF5C00]/50 to-transparent" />
                 
                 {/* Infotainment Tab Selector bar */}
                 <div className="flex justify-between items-center border-b border-white/5 pb-2.5">
@@ -730,10 +737,10 @@ export const Projects: React.FC = () => {
                       <button
                         key={tab}
                         onClick={() => setActiveTab(tab)}
-                        className={`px-2.5 py-1 rounded text-[8px] font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
+                        className={`px-3 py-1.5 rounded text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
                           activeTab === tab
-                            ? 'bg-[#E8372A]/10 border border-[#E8372A]/40 text-[#E8372A] shadow-[0_0_8px_rgba(232,55,42,0.12)]'
-                            : 'bg-transparent border border-white/5 text-white/35 hover:text-white/60'
+                            ? 'bg-[#FF5C00]/15 border border-[#FF5C00]/50 text-[#FF5C00] shadow-[0_0_12px_rgba(255,92,0,0.2)]'
+                            : 'bg-transparent border border-white/5 text-white/40 hover:text-white/70'
                         }`}
                       >
                         {tab === 'console' ? 'Console App' : tab === 'gps' ? 'Route Guidance' : 'Telemetry'}
@@ -788,7 +795,7 @@ export const Projects: React.FC = () => {
           <div className="lg:col-span-4 flex flex-col">
             <CameraReactive depth="card" className="flex flex-col h-full">
               <div className="flex flex-col justify-between bg-[#0F1115]/30 border border-[#2D313A]/25 border-t-[#3D4250]/40 rounded-2xl p-4.5 backdrop-blur-md shadow-lg font-mono text-[9px] relative overflow-hidden min-h-[460px] flex-grow">
-                <div className="absolute top-0 left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-[#E8372A]/40 to-transparent" />
+                <div className="absolute top-0 left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-[#FF5C00]/50 to-transparent" />
 
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -802,58 +809,58 @@ export const Projects: React.FC = () => {
                     <div>
                       <div className="flex justify-between items-start border-b border-white/5 pb-2.5 mb-3">
                         <div>
-                          <span className="text-[7px] uppercase tracking-widest text-white/25 block">MISSION TARGET</span>
-                          <h3 className="text-sm font-bold text-white tracking-tight">{selectedProject.title}</h3>
+                          <span className="text-xs uppercase tracking-widest text-white/40 font-mono block">MISSION TARGET</span>
+                          <h3 className="text-base font-bold text-white tracking-tight">{selectedProject.title}</h3>
                         </div>
-                        <span className="text-[7.5px] bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 px-1.5 py-0.5 rounded flex items-center gap-1 font-bold tracking-widest animate-pulse uppercase">
+                        <span className="text-xs bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 px-2 py-0.5 rounded flex items-center gap-1.5 font-bold tracking-widest animate-pulse uppercase">
                           ● ONLINE
                         </span>
                       </div>
 
                       <div className="mb-3">
-                        <span className="block text-[7px] text-white/25 uppercase tracking-widest mb-0.5 font-bold flex items-center gap-1">
-                          <Radio className="h-3 w-3 text-[#E8372A]" />
+                        <span className="block text-xs text-white/40 uppercase tracking-widest mb-1 font-bold font-mono flex items-center gap-1.5">
+                          <Radio className="h-4 w-4 text-[#FF5C00]" />
                           MISSION OBJECTIVE
                         </span>
-                        <p className="text-white/70 leading-relaxed text-[8px] font-sans font-medium">
+                        <p className="text-slate-200 leading-relaxed text-sm font-sans font-normal">
                           {extDetails.objective}
                         </p>
                       </div>
 
                       <div className="mb-3">
-                        <span className="block text-[7px] text-white/25 uppercase tracking-widest mb-0.5 font-bold flex items-center gap-1">
-                          <Shield className="h-3 w-3 text-white/30" />
+                        <span className="block text-xs text-white/40 uppercase tracking-widest mb-1 font-bold font-mono flex items-center gap-1.5">
+                          <Shield className="h-4 w-4 text-white/40" />
                           SYSTEM BOTTLENECK
                         </span>
-                        <p className="text-white/60 leading-relaxed text-[8px] font-sans">
+                        <p className="text-slate-300 leading-relaxed text-sm font-sans font-normal">
                           {selectedProject.problem}
                         </p>
                       </div>
 
                       <div className="mb-3.5">
-                        <span className="block text-[7px] text-white/25 uppercase tracking-widest mb-0.5 font-bold flex items-center gap-1">
-                          <Activity className="h-3 w-3 text-white/30" />
+                        <span className="block text-xs text-white/40 uppercase tracking-widest mb-1 font-bold font-mono flex items-center gap-1.5">
+                          <Activity className="h-4 w-4 text-white/40" />
                           ENGINEERING SOLUTION
                         </span>
-                        <p className="text-white/60 leading-relaxed text-[8px] font-sans">
+                        <p className="text-slate-300 leading-relaxed text-sm font-sans font-normal">
                           {selectedProject.solution}
                         </p>
                       </div>
 
-                      <div className="border-t border-white/5 pt-3.5 space-y-1.5">
-                        <span className="block text-[7px] text-white/25 uppercase tracking-widest font-bold">OPERATIONAL METRICS</span>
+                      <div className="border-t border-white/5 pt-3.5 space-y-2">
+                        <span className="block text-xs text-white/40 uppercase tracking-widest font-bold font-mono">OPERATIONAL METRICS</span>
                         {selectedProject.results.map((result, idx) => (
-                          <div key={idx} className="flex items-start gap-1.5 text-[7.5px] text-white/65">
-                            <CheckCircle className="h-3 w-3 text-[#E8372A] flex-shrink-0 mt-0.5" />
-                            <span className="font-sans leading-tight">{result}</span>
+                          <div key={idx} className="flex items-start gap-2 text-xs text-slate-200">
+                            <CheckCircle className="h-4 w-4 text-[#FF5C00] flex-shrink-0 mt-0.5" />
+                            <span className="font-sans leading-relaxed">{result}</span>
                           </div>
                         ))}
                       </div>
                     </div>
 
-                    <div className="border-t border-white/5 pt-2.5 flex justify-between items-center text-[7px] text-white/25">
+                    <div className="border-t border-white/5 pt-2.5 flex justify-between items-center text-xs text-white/40 font-mono">
                       <span>INFRA DEPLOYMENT</span>
-                      <span className="text-white/70 font-bold uppercase tracking-wider">{selectedProject.techStack.slice(0, 3).join(' / ')}</span>
+                      <span className="text-white/80 font-bold uppercase tracking-wider">{selectedProject.techStack.slice(0, 3).join(' / ')}</span>
                     </div>
                   </motion.div>
                 </AnimatePresence>
@@ -866,10 +873,10 @@ export const Projects: React.FC = () => {
                       const el = document.getElementById('cta');
                       el?.scrollIntoView({ behavior: 'smooth' });
                     }}
-                    className="group w-full text-[8px] font-bold py-1.5 border-white/5 text-white/70 hover:border-[#E8372A]/40 hover:text-white uppercase transition-all duration-300 flex items-center justify-center gap-1 cursor-pointer bg-neutral-950/20"
+                    className="group w-full text-xs font-bold py-2.5 border-white/10 text-white/80 hover:border-[#FF5C00]/50 hover:text-white uppercase transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer bg-neutral-950/40"
                   >
                     <span>Activate Interface Routing</span>
-                    <ArrowRight className="h-3 w-3 text-[#E8372A] opacity-75 group-hover:translate-x-0.5 transition-transform" />
+                    <ArrowRight className="h-3.5 w-3.5 text-[#FF5C00] group-hover:translate-x-0.5 transition-transform" />
                   </Button>
                 </div>
               </div>

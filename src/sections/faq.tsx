@@ -23,7 +23,7 @@ export const FAQ: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-sans" style={{ color: '#F0F1F3' }}>
             Frequently Asked Questions.
           </h2>
-          <p className="text-sm sm:text-base leading-relaxed font-light" style={{ color: 'var(--text-tertiary)' }}>
+          <p className="text-base leading-relaxed font-light" style={{ color: 'var(--text-tertiary)' }}>
             Find immediate answers regarding pricing, project timelines, hosting arrangements, and codebase ownership.
           </p>
         </div>

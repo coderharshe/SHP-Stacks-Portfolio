@@ -57,7 +57,7 @@ h1 {
 
   /* Surfaces (elevation ladder) */
   --surface-default:  #0F1117;
-  --surface-glass:    #12141C;
+  --surface-glass:    rgba(15, 17, 23, 0.42);
   --surface-elevated: #161923;
   --surface-modal:    #0E1015;
   --surface-nav:      rgba(10,11,13,0.92);
@@ -105,16 +105,67 @@ body {
   font-family: var(--font-sans);
   position: relative;
   min-height: 100vh;
-  font-size: 1.125rem;
-  line-height: 1.7;
+  font-size: 1.2rem;
+  line-height: 1.75;
   letter-spacing: 0.015em;
 }
 
-/* ── Global Body Text Highlight & Bold ── */
+/* ── Global Body Text Standard Typography ── */
 p {
-  font-weight: 700 !important;
-  color: #F0F1F3 !important;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
 }
+
+/* ── Body text scale-up (non-heading elements) ── */
+/* Promotes text-sm → ~1rem, text-base → ~1.125rem globally          */
+/* Headings (h1–h4) are excluded via element specificity              */
+/* Mono/label/badge text (font-mono, tracking-widest) stays untouched */
+
+/* Paragraph and list body text */
+p:not(h1 p):not(h2 p):not(h3 p):not(h4 p),
+li,
+blockquote {
+  font-size: 1.0rem;
+  line-height: 1.8;
+}
+
+/* Inline body spans used in section descriptions */
+section span:not([class*="text-[10px]"]):not([class*="font-mono"]):not([class*="tracking-wider"]):not([class*="tracking-widest"]):not([class*="uppercase"]) {
+  font-size: inherit;
+}
+
+@layer utilities {
+  /* text-sm used on body descriptions → 1rem */
+  .text-sm {
+    font-size: 1rem !important;
+    line-height: 1.75rem !important;
+  }
+
+  /* text-xs used on body descriptions → 0.875rem (only when combined with leading-relaxed) */
+  .text-xs.leading-relaxed {
+    font-size: 0.875rem !important;
+    line-height: 1.625rem !important;
+  }
+
+  /* text-base used on section prose → 1.125rem */
+  .text-base {
+    font-size: 1.125rem !important;
+    line-height: 1.85rem !important;
+  }
+
+  /* sm:text-base at sm breakpoint stays 1.125rem */
+  @media (min-width: 640px) {
+    .sm\:text-base {
+      font-size: 1.125rem !important;
+      line-height: 1.85rem !important;
+    }
+    .sm\:text-sm {
+      font-size: 1rem !important;
+      line-height: 1.75rem !important;
+    }
+  }
+}
+
 
 /* ── Custom Scrollbar ── */
 ::-webkit-scrollbar { width: 5px; }
@@ -160,8 +211,8 @@ p {
 /* ── Glassmorphism — Card ── */
 .glass-card {
   background: var(--ui-glass-bg, var(--surface-glass));
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--ui-glass-border, var(--border-default));
   box-shadow:
     var(--ui-shadow-x, 0px) var(--ui-shadow-y, 4px) 24px 0 rgba(0,0,0,0.25),
@@ -319,8 +370,9 @@ p {
     stroke-dashoffset: -100;
   }
 }
-.hud-glow-red {
-  box-shadow: 0 0 20px rgba(232, 55, 42, 0.12), inset 0 0 10px rgba(232, 55, 42, 0.05);
+.hud-glow-red,
+.hud-glow-orange {
+  box-shadow: 0 0 20px rgba(255, 92, 0, 0.25), inset 0 0 10px rgba(255, 92, 0, 0.08);
 }
 .animate-spin-slow {
   animation: spin 16s linear infinite;

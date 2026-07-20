@@ -57,12 +57,12 @@ export const Navbar: React.FC = () => {
           scrollY > 20 ? "glass-nav py-3" : "bg-transparent py-5 border-b border-transparent"
         )}
       >
-        {/* Scroll Progress Bar — SHP Red */}
+        {/* Scroll Progress Bar — SHP Orange */}
         <div
           className="absolute top-0 left-0 h-[2px] transition-all duration-75"
           style={{
             width: `${scrollProgress}%`,
-            background: 'linear-gradient(90deg, #E8372A, #F04438)',
+            background: 'linear-gradient(90deg, #FF5C00, #FF8C00)',
           }}
         />
 
@@ -75,12 +75,12 @@ export const Navbar: React.FC = () => {
               onClick={(e) => handleLinkClick(e, '#hero')}
               className="flex items-center gap-2.5 group cursor-pointer"
             >
-              <div className="relative h-8 w-8 flex-shrink-0">
-                <SHPLogoMark className="h-8 w-8" />
+              <div className="relative h-11 w-11 flex-shrink-0">
+                <SHPLogoMark className="h-11 w-11" />
               </div>
-              <span className="font-sans text-base leading-none">
+              <span className="font-sans text-lg leading-none">
                 <span className="font-black tracking-tight" style={{ color: '#F0F1F3' }}>SHP</span>
-                <span className="font-light tracking-tight" style={{ color: '#E8372A' }}>Stacks</span>
+                <span className="font-light tracking-tight" style={{ color: '#FF5C00' }}>Stacks</span>
               </span>
             </a>
 
@@ -103,7 +103,7 @@ export const Navbar: React.FC = () => {
                       <motion.span
                         layoutId="activeNavIndicator"
                         className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full"
-                        style={{ background: '#E8372A' }}
+                        style={{ background: '#FF5C00' }}
                         transition={{ type: "spring", stiffness: 350, damping: 30 }}
                       />
                     )}
