@@ -2,15 +2,8 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { CameraRig } from './CameraRig';
-import { Lighting } from './Lighting';
-import { Fog } from './Fog';
-import { Road } from './Road';
-import { Mountains } from './Mountains';
-import { Environment } from './Environment';
-import { CelestialSystem } from './CelestialSystem';
-import { Birds } from './Birds';
 import { ScrollController } from './ScrollController';
+import { GalaxySceneContents } from './GalaxySceneContents';
 
 export function Scene() {
   const scrollProgressRef = useRef<number>(0);
@@ -27,26 +20,18 @@ export function Scene() {
 
   return (
     <ScrollController scrollProgressRef={scrollProgressRef}>
-      {/* 3D Fixed Background Canvas */}
+      {/* 3D Fixed Background Canvas — Galaxy */}
       <div className="fixed inset-0 w-full h-full -z-20 pointer-events-none overflow-hidden">
         <Canvas
-          shadows
-          camera={{ position: [0, 4, 0], fov: 60, near: 0.1, far: 800 }}
+          camera={{ position: [0, 40, 350], fov: 75, near: 0.1, far: 1200 }}
           dpr={[1, 1.5]}
           gl={{
             antialias: true,
             alpha: false,
-            powerPreference: 'high-performance'
+            powerPreference: 'high-performance',
           }}
         >
-          <CameraRig scrollProgressRef={scrollProgressRef} />
-          <Lighting scrollProgressRef={scrollProgressRef} />
-          <Fog scrollProgressRef={scrollProgressRef} />
-          <Road />
-          <Mountains />
-          <Environment />
-          <CelestialSystem />
-          <Birds />
+          <GalaxySceneContents scrollProgressRef={scrollProgressRef} />
         </Canvas>
       </div>
     </ScrollController>
