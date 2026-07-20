@@ -71,7 +71,12 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }
             </div>
 
             {/* Scrollable Content */}
-            <div className="overflow-y-auto p-6 md:p-8 no-scrollbar">
+            <div 
+              className="overflow-y-auto p-6 md:p-8 custom-scrollbar"
+              data-lenis-prevent="true"
+              onWheel={(e) => e.stopPropagation()}
+              onTouchMove={(e) => e.stopPropagation()}
+            >
               {children}
             </div>
           </motion.div>

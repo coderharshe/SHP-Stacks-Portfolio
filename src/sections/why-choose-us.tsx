@@ -117,20 +117,19 @@ export const WhyChooseUs: React.FC = () => {
                 <motion.div variants={cardVariants} className="group h-full">
                   <Card
                     glowColor={reason.color}
-                    className="p-6 h-full flex flex-col justify-start hover:border-[rgba(255,255,255,0.13)] glass-card"
+                    className="p-6 sm:p-7 h-full flex flex-col justify-start border border-[rgba(255,255,255,0.16)] bg-[#161B22] shadow-[0_8px_30px_rgba(0,0,0,0.6)] hover:bg-[#1A202A] hover:border-[rgba(255,255,255,0.28)] transition-all duration-300 rounded-xl"
                   >
                     <div className="space-y-4">
                       <div
-                        className="h-10 w-10 rounded-lg flex items-center justify-center transition-colors"
-                        style={{ border: '1px solid rgba(255,255,255,0.07)', background: 'rgba(255,255,255,0.02)' }}
+                        className="h-11 w-11 rounded-lg flex items-center justify-center border border-white/10 bg-white/5 group-hover:border-[#E8372A]/40 group-hover:bg-[#E8372A]/10 transition-all shadow-sm"
                       >
-                        <Icon className="h-5 w-5" style={{ color: '#6B7080' }} />
+                        <Icon className="h-5 w-5 text-[#F0F1F3] group-hover:text-[#E8372A] transition-colors" />
                       </div>
                       <div className="space-y-2">
-                        <h3 className="text-base font-semibold tracking-tight" style={{ color: '#F0F1F3' }}>
+                        <h3 className="text-base sm:text-lg font-bold tracking-tight text-white group-hover:text-[#E8372A] transition-colors drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">
                           {reason.title}
                         </h3>
-                        <p className="text-xs sm:text-sm leading-relaxed font-bold" style={{ color: '#F0F1F3' }}>
+                        <p className="text-xs sm:text-sm leading-relaxed font-bold text-[#E2E8F0] drop-shadow-sm">
                           {reason.desc}
                         </p>
                       </div>

@@ -194,7 +194,10 @@ export const CommandMenu: React.FC = () => {
               {/* Items List */}
               <div
                 ref={scrollRef}
-                className="max-h-[320px] overflow-y-auto p-2 no-scrollbar"
+                className="max-h-[320px] overflow-y-auto p-2 custom-scrollbar"
+                data-lenis-prevent="true"
+                onWheel={(e) => e.stopPropagation()}
+                onTouchMove={(e) => e.stopPropagation()}
               >
                 {filteredItems.length > 0 ? (
                   filteredItems.map((item, idx) => {

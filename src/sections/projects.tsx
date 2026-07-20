@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Laptop, Smartphone, Tablet, Monitor, CheckCircle, 
@@ -12,6 +12,37 @@ import { CameraReactive } from '@/components/ui/CameraReactive';
 
 export const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectItem>(PROJECTS_DATA[0]);
+  const infoPaneRef = useRef<HTMLDivElement | null>(null);
+  const navPaneRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const infoEl = infoPaneRef.current;
+    const navEl = navPaneRef.current;
+
+    const stopPropagation = (e: Event) => {
+      e.stopPropagation();
+    };
+
+    if (infoEl) {
+      infoEl.addEventListener('wheel', stopPropagation, { passive: true });
+      infoEl.addEventListener('touchmove', stopPropagation, { passive: true });
+    }
+    if (navEl) {
+      navEl.addEventListener('wheel', stopPropagation, { passive: true });
+      navEl.addEventListener('touchmove', stopPropagation, { passive: true });
+    }
+
+    return () => {
+      if (infoEl) {
+        infoEl.removeEventListener('wheel', stopPropagation);
+        infoEl.removeEventListener('touchmove', stopPropagation);
+      }
+      if (navEl) {
+        navEl.removeEventListener('wheel', stopPropagation);
+        navEl.removeEventListener('touchmove', stopPropagation);
+      }
+    };
+  }, []);
 
 
   // CSS Mockup components inside
@@ -226,7 +257,15 @@ export const Projects: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           {/* Navigation list (col span 4) */}
-          <div className="lg:col-span-4 flex flex-row lg:flex-col overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 gap-3 no-scrollbar lg:h-[600px] lg:justify-start">
+          <div 
+            ref={navPaneRef}
+            className="lg:col-span-4 flex flex-row lg:flex-col overflow-x-auto lg:overflow-y-auto pb-4 lg:pb-0 gap-3 custom-scrollbar lg:h-[560px] lg:justify-start"
+            data-lenis-prevent="true"
+            data-lenis-prevent-wheel="true"
+            data-lenis-prevent-touch="true"
+            onWheel={(e) => e.stopPropagation()}
+            onTouchMove={(e) => e.stopPropagation()}
+          >
             {PROJECTS_DATA.map((project) => {
               const isSelected = selectedProject.id === project.id;
               const btnClass = isSelected
@@ -276,7 +315,15 @@ export const Projects: React.FC = () => {
             </div>
 
             {/* Project Details Info pane */}
-            <div className="w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-between overflow-y-auto no-scrollbar max-h-[600px]">
+            <div 
+              ref={infoPaneRef}
+              className="w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-between overflow-y-auto custom-scrollbar h-[460px] md:h-[520px] lg:h-[560px] select-text"
+              data-lenis-prevent="true"
+              data-lenis-prevent-wheel="true"
+              data-lenis-prevent-touch="true"
+              onWheel={(e) => e.stopPropagation()}
+              onTouchMove={(e) => e.stopPropagation()}
+            >
               <AnimatePresence mode="wait">
                 <motion.div
                   key={selectedProject.id}
@@ -291,7 +338,7 @@ export const Projects: React.FC = () => {
                     <span className="text-[10px] font-mono tracking-widest text-accent-purple uppercase">
                       {selectedProject.category}
                     </span>
-                    <h3 className="text-xl md:text-2xl font-bold text-[#111827] tracking-tight">
+                    <h3 className="text-xl md:text-2xl font-bold text-[#F0F1F3] tracking-tight">
                       {selectedProject.title}
                     </h3>
                   </div>
