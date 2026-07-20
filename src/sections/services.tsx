@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
@@ -10,6 +10,7 @@ import { Card } from '@/components/ui/card';
 import { Modal } from '@/components/ui/modal';
 import { SERVICES_DATA, ServiceItem } from '@/constants/data';
 import { Button } from '@/components/ui/button';
+import { CameraReactive } from '@/components/ui/CameraReactive';
 
 const iconMap: Record<string, React.ComponentType<any>> = {
   Code,
@@ -28,6 +29,16 @@ const iconMap: Record<string, React.ComponentType<any>> = {
   Wrench
 };
 
+const getRevealOffset = (idx: number): number => {
+  if (idx === 0) return -0.15;
+  if (idx === 1) return -0.07;
+  if (idx === 2) return -0.01;
+  if (idx >= 3 && idx <= 5) return 0.01 + ((idx - 3) / 2) * 0.04;
+  if (idx >= 6 && idx <= 9) return 0.07 + ((idx - 6) / 3) * 0.06;
+  if (idx >= 10 && idx <= 12) return 0.15 + ((idx - 10) / 2) * 0.04;
+  return 0.21 + (idx - 13) * 0.02;
+};
+
 export const Services: React.FC = () => {
   const [activeService, setActiveService] = useState<ServiceItem | null>(null);
 
@@ -41,80 +52,92 @@ export const Services: React.FC = () => {
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 14 },
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }
+      transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] as const }
     }
   };
 
   return (
-    <section id="services" className="relative py-24 sm:py-32 border-t border-border overflow-hidden bg-transparent" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2500&auto=format&fit=crop')", backgroundSize: 'cover', backgroundAttachment: 'fixed', backgroundPosition: 'center' }}>
-      {/* Parallax Overlay */}
-      <div className="absolute inset-0 bg-[#F8FAF9]/90 -z-10" />
+    <section id="services" className="relative py-24 sm:py-32 border-t border-border overflow-hidden bg-transparent">
+      {/* Section background overlay */}
+      <div className="absolute inset-0 -z-10" />
 
       {/* Decorative Blur Blob */}
       <div className="absolute top-[20%] right-[-10%] h-[350px] w-[350px] rounded-full bg-accent-cyan/5 blur-[120px] -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
-          <span className="text-xs font-mono uppercase tracking-widest text-accent-cyan font-semibold">
-            SERVICES
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#111827] font-sans">
-            Complete Engineering Capabilities.
-          </h2>
-          <p className="text-sm sm:text-base text-foreground/50 leading-relaxed font-light">
-            We handle everything from initial system design and database modeling to high-scale deployment and active performance auditing.
-          </p>
-        </div>
+        <CameraReactive depth="hero-title" sectionProgressTarget={0.45} revealProgressOffset={-0.18}>
+          <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
+            <span className="text-xs font-mono uppercase tracking-widest font-semibold" style={{ color: '#E8372A' }}>
+              SERVICES
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-sans" style={{ color: '#F0F1F3' }}>
+              Complete Engineering Capabilities.
+            </h2>
+            <p className="text-sm sm:text-base leading-relaxed font-light" style={{ color: '#6B7080' }}>
+              We handle everything from initial system design and database modeling to high-scale deployment and active performance auditing.
+            </p>
+          </div>
+        </CameraReactive>
 
         {/* Services Grid */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-5%" }}
+          viewport={{ once: true, margin: "-2%" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {SERVICES_DATA.map((service) => {
+          {SERVICES_DATA.map((service, idx) => {
             const Icon = iconMap[service.iconName] || Code;
             return (
-              <motion.div 
-                key={service.id} 
-                variants={cardVariants}
-                className="group cursor-pointer"
-                onClick={() => setActiveService(service)}
+              <CameraReactive
+                key={service.id}
+                depth="card"
+                tiltOnHover={true}
+                sectionProgressTarget={0.45}
+                revealProgressOffset={getRevealOffset(idx)}
               >
-                <Card 
-                  glowColor="default" 
-                  className="p-6 md:p-8 h-full flex flex-col justify-between hover:border-[#111827]/15 transition-all"
+                <motion.div 
+                  variants={cardVariants}
+                  className="group cursor-pointer h-full"
+                  onClick={() => setActiveService(service)}
                 >
-                  <div className="space-y-4">
-                    {/* Icon wrapper */}
-                    <div className="h-11 w-11 rounded-lg border border-border bg-white/2 flex items-center justify-center group-hover:border-[#111827]/20 transition-colors">
-                      <Icon className="h-5 w-5 text-[#111827]/80 group-hover:text-[#111827] transition-colors" />
+                  <Card
+                    glowColor="default"
+                    className="p-6 md:p-8 h-full flex flex-col justify-between hover:border-[rgba(255,255,255,0.14)] transition-all glass-card"
+                  >
+                    <div className="space-y-4">
+                      <div
+                        className="h-11 w-11 rounded-lg flex items-center justify-center group-hover:border-[rgba(232,55,42,0.20)] transition-colors"
+                        style={{ border: '1px solid rgba(255,255,255,0.07)', background: 'rgba(255,255,255,0.02)' }}
+                      >
+                        <Icon className="h-5 w-5 transition-colors" style={{ color: '#6B7080' }}
+                          onMouseEnter={(e: React.MouseEvent<SVGSVGElement>) => (e.currentTarget.style.color = '#F0F1F3')}
+                          onMouseLeave={(e: React.MouseEvent<SVGSVGElement>) => (e.currentTarget.style.color = '#6B7080')}
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <h3 className="text-base sm:text-lg font-semibold tracking-tight transition-colors group-hover:text-[#E8372A]" style={{ color: '#F0F1F3' }}>
+                          {service.title}
+                        </h3>
+                        <p className="text-xs sm:text-sm leading-relaxed font-light line-clamp-3" style={{ color: '#6B7080' }}>
+                          {service.shortDesc}
+                        </p>
+                      </div>
                     </div>
-                    <div className="space-y-2">
-                      <h3 className="text-base sm:text-lg font-semibold text-[#111827] tracking-tight group-hover:text-accent-cyan transition-colors">
-                        {service.title}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-foreground/50 leading-relaxed font-light line-clamp-3">
-                        {service.shortDesc}
-                      </p>
+                    <div className="mt-6 flex items-center gap-1 text-xs font-mono transition-colors group-hover:text-[#A8ACBA]" style={{ color: '#3D4150' }}>
+                      <span>EXPLORE SPECS</span>
+                      <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
                     </div>
-                  </div>
-
-                  {/* Read More link */}
-                  <div className="mt-6 flex items-center gap-1 text-xs font-mono text-[#111827]/40 group-hover:text-[#111827] transition-colors">
-                    <span>EXPLORE SPECS</span>
-                    <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
-                  </div>
-                </Card>
+                  </Card>
               </motion.div>
-            );
+            </CameraReactive>
+          );
           })}
         </motion.div>
       </div>
@@ -127,18 +150,18 @@ export const Services: React.FC = () => {
       >
         {activeService && (
           <div className="space-y-6">
-            <p className="text-sm sm:text-base text-foreground/75 leading-relaxed font-light">
+            <p className="text-sm sm:text-base leading-relaxed font-light" style={{ color: '#A8ACBA' }}>
               {activeService.longDesc}
             </p>
-            
-            <div className="border-t border-border pt-6">
-              <h4 className="text-xs font-mono uppercase tracking-widest text-[#111827]/50 mb-4">
+
+            <div className="border-t pt-6" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
+              <h4 className="text-xs font-mono uppercase tracking-widest mb-4" style={{ color: '#3D4150' }}>
                 Core Capabilities
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {activeService.features.map((feature, idx) => (
-                  <div key={idx} className="flex items-center gap-2 text-sm text-foreground/80 font-light">
-                    <CheckCircle2 className="h-4 w-4 text-accent-cyan flex-shrink-0" />
+                  <div key={idx} className="flex items-center gap-2 text-sm font-light" style={{ color: '#A8ACBA' }}>
+                    <CheckCircle2 className="h-4 w-4 flex-shrink-0" style={{ color: '#E8372A' }} />
                     <span>{feature}</span>
                   </div>
                 ))}

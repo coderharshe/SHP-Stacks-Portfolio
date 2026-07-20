@@ -1,105 +1,146 @@
 @import "tailwindcss";
 
 @theme {
-  /* ── Brand Colors (Light Theme) ── */
-  --color-background:  #F8FAF9;
-  --color-foreground:  #111827;
-  --color-card:        #FFFFFF;
-  --color-border:      rgba(17, 24, 39, 0.08);
+  /* ── Dark Design System Tokens ── */
 
-  /* ── Brand Accents ── */
-  --color-accent-red:   #EF4444;   /* Vibrant Red from PDF */
-  --color-accent-blue:  #EF4444;   /* Alias to Red for legacy support */
-  --color-accent-gold:  #111827;   /* Alias to Dark for secondary accents */
-  --color-accent-mint:  #FFFFFF;   /* Alias to White */
-  --color-accent-purple: #EF4444;  /* maps to red */
-  --color-accent-cyan:   #EF4444;  /* maps to red */
+  /* 60% — Dominant Neutrals */
+  --color-background:       #0A0B0D;
+  --color-background-alt:   #0D0F12;
+  --color-background-deep:  #111318;
+
+  /* 30% — Secondary Surfaces */
+  --color-card:    rgba(255,255,255,0.04);
+  --color-border:  rgba(255,255,255,0.08);
+
+  /* 10% — SHP Red Accent */
+  --color-accent-red:    #E8372A;
+  --color-accent-blue:   #E8372A;
+  --color-accent-purple: #E8372A;
+  --color-accent-cyan:   #E8372A;
+  --color-accent-gold:   #A8ACBA;
+  --color-accent-mint:   #F0F1F3;
+
+  /* Foreground */
+  --color-foreground: #F0F1F3;
 
   --font-sans: var(--font-geist-sans), var(--font-inter), sans-serif;
   --font-mono: var(--font-geist-mono), monospace;
 }
 
+/* ── Design Token Custom Properties ── */
 :root {
-  --background: #F8FAF9;
-  --foreground: #111827;
+  /* Backgrounds */
+  --bg-primary:   #0A0B0D;
+  --bg-secondary: #0D0F12;
+  --bg-deep:      #111318;
+
+  /* Surfaces (elevation ladder) */
+  --surface-default:  rgba(255,255,255,0.03);
+  --surface-glass:    rgba(255,255,255,0.05);
+  --surface-elevated: rgba(255,255,255,0.07);
+  --surface-modal:    rgba(14,16,21,0.97);
+  --surface-nav:      rgba(10,11,13,0.82);
+
+  /* Borders */
+  --border-subtle:  rgba(255,255,255,0.05);
+  --border-default: rgba(255,255,255,0.08);
+  --border-strong:  rgba(255,255,255,0.13);
+  --border-accent:  rgba(232,55,42,0.30);
+
+  /* Text hierarchy — no pure white */
+  --text-primary:   #F0F1F3;
+  --text-secondary: #A8ACBA;
+  --text-tertiary:  #6B7080;
+  --text-disabled:  #3D4150;
+  --text-accent:    #E8372A;
+
+  /* Accent — SHP Red */
+  --accent-primary: #E8372A;
+  --accent-hover:   #F04438;
+  --accent-active:  #C42F22;
+  --accent-glow:    rgba(232,55,42,0.18);
+  --accent-subtle:  rgba(232,55,42,0.07);
+
+  /* Semantic */
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --danger:  #E8372A;
+
+  /* Legacy compat (consumed by tailwind's foreground/background vars) */
+  --background: #0A0B0D;
+  --foreground: #F0F1F3;
 }
 
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
-  background-color: #F8FAF9;
-  color: #111827;
-  overflow-x: hidden;
+  background-color: #0A0B0D;
+  color: var(--text-primary);
 }
 
 body {
-  background: #F8FAF9;
-  color: #111827;
+  background: transparent;
+  color: var(--text-primary);
   font-family: var(--font-sans);
-  overflow-x: hidden;
   position: relative;
   min-height: 100vh;
 }
 
-
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #F8FAF9;
-}
+/* ── Custom Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #0A0B0D; }
 ::-webkit-scrollbar-thumb {
-  background: rgba(17, 24, 39, 0.15);
+  background: rgba(255,255,255,0.08);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(239, 68, 68, 0.5); /* Red on hover */
+  background: rgba(232,55,42,0.50);
 }
 
-/* Noise overlay */
+/* ── Noise Overlay ── */
 .noise-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  content: "";
-  opacity: 0.03;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  opacity: 0.025;
   pointer-events: none;
   z-index: 9999;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* Background Grid Pattern */
+/* ── Background Grid Pattern ── */
 .bg-grid-pattern {
   background-size: 48px 48px;
-  background-image: 
-    linear-gradient(to right, rgba(17, 24, 39, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(17, 24, 39, 0.04) 1px, transparent 1px);
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
   mask-image: radial-gradient(ellipse at 50% 50%, black 40%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 40%, transparent 100%);
 }
 
-/* Glassmorphism — Navbar */
+/* ── Glassmorphism — Navbar ── */
 .glass-nav {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(17, 24, 39, 0.06);
+  background: var(--ui-glass-bg, var(--surface-nav));
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom: 1px solid var(--ui-glass-border, var(--border-subtle));
+  transition: background 0.4s ease, border-color 0.4s ease;
 }
 
-/* Glassmorphism — Card */
+/* ── Glassmorphism — Card ── */
 .glass-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(17, 24, 39, 0.08);
-  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.03);
+  background: var(--ui-glass-bg, var(--surface-glass));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--ui-glass-border, var(--border-default));
+  box-shadow:
+    var(--ui-shadow-x, 0px) var(--ui-shadow-y, 4px) 24px 0 rgba(0,0,0,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.04);
+  background-image: var(--ui-glass-reflection, none);
+  transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* Animations */
+/* ── Animations ── */
 @keyframes float {
   0%, 100% { transform: translateY(0px) scale(1); }
   50%       { transform: translateY(-25px) scale(1.03); }
@@ -110,50 +151,51 @@ body {
 .animate-float-fast   { animation: float  7s ease-in-out infinite; }
 
 /* ── Text Gradients ── */
+/* Primary heading gradient: bright → muted */
 .text-gradient-white {
-  background: linear-gradient(180deg, #111827 0%, rgba(17, 24, 39, 0.75) 100%);
+  background: linear-gradient(180deg, #F0F1F3 0%, rgba(168,172,186,0.85) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Headline: Vibrant Red accent line */
+/* Accent heading gradient: SHP Red */
 .text-gradient-blue-purple {
-  background: linear-gradient(135deg, #EF4444 0%, #F87171 100%);
+  background: linear-gradient(135deg, #E8372A 0%, #F04438 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-gold {
-  background: linear-gradient(135deg, #111827 0%, #374151 100%);
+  background: linear-gradient(135deg, #A8ACBA 0%, #6B7080 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-blue-gold {
-  background: linear-gradient(135deg, #EF4444 0%, #111827 100%);
+  background: linear-gradient(135deg, #E8372A 0%, #A8ACBA 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-purple-cyan {
-  background: linear-gradient(135deg, #EF4444 0%, #F87171 100%);
+  background: linear-gradient(135deg, #E8372A 0%, #F04438 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Hide scrollbar utility */
+/* ── Hide scrollbar utility ── */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
-/* Marquee */
+/* ── Marquee ── */
 @keyframes marquee {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-33.33333333333333%); }

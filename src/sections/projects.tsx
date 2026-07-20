@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -8,9 +8,11 @@ import {
 } from 'lucide-react';
 import { PROJECTS_DATA, ProjectItem } from '@/constants/data';
 import { Button } from '@/components/ui/button';
+import { CameraReactive } from '@/components/ui/CameraReactive';
 
 export const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectItem>(PROJECTS_DATA[0]);
+
 
   // CSS Mockup components inside
   const renderMockup = (project: ProjectItem) => {
@@ -195,9 +197,9 @@ export const Projects: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="relative py-24 sm:py-32 border-t border-border overflow-hidden bg-transparent" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2500&auto=format&fit=crop')", backgroundSize: 'cover', backgroundAttachment: 'fixed', backgroundPosition: 'center' }}>
-      {/* Parallax Overlay */}
-      <div className="absolute inset-0 bg-[#F8FAF9]/90 -z-10" />
+    <section id="projects" className="relative py-24 sm:py-32 border-t border-border overflow-hidden bg-transparent">
+      {/* Section background overlay */}
+      <div className="absolute inset-0 -z-10" />
 
       {/* Background blobs */}
       <div className="absolute top-[40%] left-[-10%] h-[300px] w-[300px] rounded-full bg-accent-purple/5 blur-[100px] -z-10 animate-float-slow" />
@@ -205,47 +207,49 @@ export const Projects: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
-          <span className="text-xs font-mono uppercase tracking-widest text-accent-purple font-semibold">
-            FEATURED PROJECTS
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#111827] font-sans">
-            Products Built to Perform.
-          </h2>
-          <p className="text-sm sm:text-base text-foreground/50 leading-relaxed font-light">
-            Review the real technical outcomes, database architectures, and business impact of applications engineered by SHP Stacks.
-          </p>
-        </div>
+        <CameraReactive depth="hero-title" sectionProgressTarget={0.60}>
+          <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
+            <span className="text-xs font-mono uppercase tracking-widest font-semibold" style={{ color: '#E8372A' }}>
+              FEATURED PROJECTS
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-sans" style={{ color: '#F0F1F3' }}>
+              Products Built to Perform.
+            </h2>
+            <p className="text-sm sm:text-base leading-relaxed font-light" style={{ color: '#6B7080' }}>
+              Review the real technical outcomes, database architectures, and business impact of applications engineered by SHP Stacks.
+            </p>
+          </div>
+        </CameraReactive>
 
-        {/* Project Pane Container */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        {/* Project Pane Container (Landmark Perspective Event) */}
+        <CameraReactive depth="landmark" tiltOnHover={true} sectionProgressTarget={0.60}>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           {/* Navigation list (col span 4) */}
           <div className="lg:col-span-4 flex flex-row lg:flex-col overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 gap-3 no-scrollbar lg:h-[600px] lg:justify-start">
             {PROJECTS_DATA.map((project) => {
               const isSelected = selectedProject.id === project.id;
+              const btnClass = isSelected
+                ? 'bg-[rgba(255,255,255,0.06)] border-[rgba(255,255,255,0.12)] shadow-lg'
+                : 'bg-transparent border-transparent hover:bg-[rgba(255,255,255,0.03)]';
               return (
                 <button
                   key={project.id}
                   onClick={() => setSelectedProject(project)}
-                  className={`flex-shrink-0 text-left px-5 py-4 rounded-xl border transition-all duration-300 cursor-pointer lg:w-full flex items-center justify-between group ${
-                    isSelected 
-                      ? 'bg-card border-[#111827]/10 text-[#111827] shadow-lg' 
-                      : 'bg-transparent border-transparent text-foreground/50 hover:text-[#111827]/80 hover:bg-white/2'
-                  }`}
+                  className={`flex-shrink-0 text-left px-5 py-4 rounded-xl border transition-all duration-300 cursor-pointer lg:w-full flex items-center justify-between group ${btnClass}`}
                 >
                   <div className="space-y-1 overflow-hidden">
                     <span className={`text-[10px] font-mono tracking-wider uppercase block ${
-                      isSelected ? 'text-accent-purple' : 'text-foreground/30'
+                      isSelected ? 'text-[#E8372A]' : 'text-[#3D4150]'
                     }`}>
                       {project.category}
                     </span>
-                    <h3 className="text-sm sm:text-base font-semibold truncate">
+                    <h3 className="text-sm sm:text-base font-semibold truncate" style={{ color: isSelected ? '#F0F1F3' : '#6B7080' }}>
                       {project.title}
                     </h3>
                   </div>
                   <ChevronRight className={`hidden lg:block h-4 w-4 transition-transform duration-300 ${
-                    isSelected ? 'translate-x-0.5 text-accent-purple' : 'opacity-0 group-hover:opacity-20 group-hover:translate-x-0.5'
+                    isSelected ? 'translate-x-0.5 text-[#E8372A]' : 'opacity-0 group-hover:opacity-20 group-hover:translate-x-0.5'
                   }`} />
                 </button>
               );
@@ -355,6 +359,7 @@ export const Projects: React.FC = () => {
 
           </div>
         </div>
+      </CameraReactive>
       </div>
     </section>
   );

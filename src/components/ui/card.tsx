@@ -21,20 +21,21 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
       setCoords({ x: e.clientX - rect.left, y: e.clientY - rect.top });
     };
 
+    // Dark-system spotlight map — subtle, not garish
     const spotlightColorMap = {
-      default: 'rgba(17, 24, 39, 0.03)',
-      blue:    'rgba(239, 68, 68, 0.05)',  // Red
-      gold:    'rgba(17, 24, 39, 0.05)',   // Dark gray
-      purple:  'rgba(17, 24, 39, 0.05)',
-      cyan:    'rgba(239, 68, 68, 0.05)',
+      default: 'rgba(255,255,255,0.03)',
+      blue:    'rgba(232,55,42,0.06)',   // Red glow on dark
+      gold:    'rgba(168,172,186,0.04)',
+      purple:  'rgba(232,55,42,0.05)',
+      cyan:    'rgba(232,55,42,0.06)',
     };
 
     const borderGlowMap = {
-      default: 'rgba(17, 24, 39, 0.08)',
-      blue:    'rgba(239, 68, 68, 0.20)',  // Red border
-      gold:    'rgba(17, 24, 39, 0.20)',   // Dark gray border
-      purple:  'rgba(17, 24, 39, 0.20)',
-      cyan:    'rgba(239, 68, 68, 0.20)',
+      default: 'rgba(255,255,255,0.06)',
+      blue:    'rgba(232,55,42,0.20)',
+      gold:    'rgba(168,172,186,0.12)',
+      purple:  'rgba(232,55,42,0.18)',
+      cyan:    'rgba(232,55,42,0.20)',
     };
 
     return (
@@ -49,7 +50,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
         )}
         {...props}
       >
-        {/* Spotlight spotlight overlay */}
+        {/* Cursor spotlight overlay */}
         {glow && isFocused && (
           <>
             <div

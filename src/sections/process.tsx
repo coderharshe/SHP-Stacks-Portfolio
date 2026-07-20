@@ -1,9 +1,10 @@
-﻿"use client";
+"use client";
 
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { TIMELINE_PROCESS } from '@/constants/data';
 import { Check } from 'lucide-react';
+import { CameraReactive } from '@/components/ui/CameraReactive';
 
 export const Process: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -22,93 +23,105 @@ export const Process: React.FC = () => {
       id="process" 
       ref={containerRef} 
       className="relative py-24 sm:py-32 border-t border-border overflow-hidden bg-transparent"
-     style={{ backgroundImage: "url('https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=2500&auto=format&fit=crop')", backgroundSize: 'cover', backgroundAttachment: 'fixed', backgroundPosition: 'center' }}>
-      {/* Parallax Overlay */}
-      <div className="absolute inset-0 bg-[#F8FAF9]/90 -z-10" />
+    >
+      {/* Section background overlay */}
+      <div className="absolute inset-0 -z-10" />
 
       <div className="absolute inset-0 bg-grid-pattern opacity-10 -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-24 space-y-4">
-          <span className="text-xs font-mono uppercase tracking-widest text-accent-blue font-semibold">
-            DEVELOPMENT PROCESS
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#111827] font-sans">
-            How We Build Systems.
-          </h2>
-          <p className="text-sm sm:text-base text-foreground/50 leading-relaxed font-light">
-            Our systematic approach ensures all custom software assets are delivered on time, securely configured, and fully verified.
-          </p>
-        </div>
+        <CameraReactive depth="hero-title" sectionProgressTarget={0.72}>
+          <div className="text-center max-w-3xl mx-auto mb-24 space-y-4">
+            <span className="text-xs font-mono uppercase tracking-widest font-semibold" style={{ color: '#E8372A' }}>
+              DEVELOPMENT PROCESS
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-sans" style={{ color: '#F0F1F3' }}>
+              How We Build Systems.
+            </h2>
+            <p className="text-sm sm:text-base leading-relaxed font-light" style={{ color: '#6B7080' }}>
+              Our systematic approach ensures all custom software assets are delivered on time, securely configured, and fully verified.
+            </p>
+          </div>
+        </CameraReactive>
 
         {/* Timeline Container */}
         <div className="relative max-w-4xl mx-auto">
           
           {/* Vertical Progress Line (Desktop & Tablet) */}
-          <div className="absolute left-[30px] md:left-1/2 top-4 bottom-4 w-[2px] bg-white/10 -translate-x-1/2 -z-10">
-            <motion.div 
-              style={{ height: progressLineHeight }}
-              className="w-full bg-gradient-to-b from-accent-blue via-accent-purple to-accent-cyan origin-top rounded-full"
+          <div className="absolute left-[30px] md:left-1/2 top-4 bottom-4 w-[2px] -translate-x-1/2 -z-10" style={{ background: 'rgba(255,255,255,0.06)' }}>
+            <motion.div
+              style={{
+                height: progressLineHeight,
+                background: 'linear-gradient(to bottom, #E8372A, rgba(232,55,42,0.30))'
+              }}
+              className="w-full origin-top rounded-full"
             />
           </div>
 
           {/* Timeline Nodes */}
           <div className="space-y-20">
             {TIMELINE_PROCESS.map((step, idx) => {
-              const isEven = idx % 2 === 0;
+              const nodeTargetProgress = 0.72 + idx * 0.03;
               return (
-                <div 
+                <CameraReactive
                   key={step.step}
-                  className="relative flex flex-col md:flex-row items-start md:justify-between"
+                  depth="card"
+                  tiltOnHover={true}
+                  sectionProgressTarget={nodeTargetProgress}
                 >
-                  
-                  {/* Left Side Content (Desktop: step & duration, Mobile: stacked above) */}
-                  <div className="hidden md:flex w-[45%] flex-col items-end text-right pr-12 space-y-1">
-                    <span className="text-xs font-mono text-foreground/35 uppercase tracking-widest">
-                      STAGE {step.step}
-                    </span>
-                    <span className="text-sm font-mono text-accent-blue font-medium">
-                      {step.duration}
-                    </span>
-                  </div>
-
-                  {/* Center Node Bullet */}
-                  <div className="absolute left-[30px] md:left-1/2 top-1.5 h-6.5 w-6.5 rounded-full border border-border bg-neutral-900 flex items-center justify-center -translate-x-1/2 z-10 shadow-lg">
-                    <div className="h-2 w-2 rounded-full bg-accent-blue" />
-                  </div>
-
-                  {/* Right Side / Content Card (Mobile: offsets from left line, Desktop: left or right depending on parity) */}
-                  <div className="pl-14 md:pl-0 md:w-[45%] space-y-4">
-                    {/* Mobile Stage Badge */}
-                    <div className="flex md:hidden items-center gap-3 text-xs font-mono text-foreground/40 mb-2">
-                      <span className="text-accent-blue font-semibold">STAGE {step.step}</span>
-                      <span>•</span>
-                      <span>{step.duration}</span>
+                  <div className="relative flex flex-col md:flex-row items-start md:justify-between glass-card p-6 md:p-8 rounded-2xl">
+                    
+                    {/* Left Side Content (Desktop: step & duration, Mobile: stacked above) */}
+                    <div className="hidden md:flex w-[45%] flex-col items-end text-right pr-12 space-y-1">
+                      <span className="text-xs font-mono text-foreground/35 uppercase tracking-widest">
+                        STAGE {step.step}
+                      </span>
+                      <span className="text-sm font-mono text-accent-blue font-medium">
+                        {step.duration}
+                      </span>
                     </div>
 
-                    <div className="space-y-2">
-                      <h3 className="text-lg md:text-xl font-semibold text-[#111827] tracking-tight">
-                        {step.title}
-                      </h3>
-                      <p className="text-sm text-foreground/50 leading-relaxed font-light">
-                        {step.desc}
-                      </p>
+                    <div
+                      className="absolute left-[30px] md:left-1/2 top-1.5 h-6 w-6 rounded-full flex items-center justify-center -translate-x-1/2 z-10"
+                      style={{
+                        border: '1px solid rgba(255,255,255,0.10)',
+                        background: '#111318',
+                        boxShadow: '0 0 12px rgba(232,55,42,0.15)',
+                      }}
+                    >
+                      <div className="h-2 w-2 rounded-full" style={{ background: '#E8372A' }} />
                     </div>
 
-                    {/* Bullet Specs List */}
-                    <ul className="space-y-2 pt-2 border-t border-[#111827]/5">
-                      {step.details.map((detail, dIdx) => (
-                        <li key={dIdx} className="flex items-start gap-2.5 text-xs text-foreground/75 font-light leading-relaxed">
-                          <Check className="h-4 w-4 text-accent-blue/60 flex-shrink-0 mt-0.5" />
-                          <span>{detail}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                      <div className="pl-14 md:pl-0 md:w-[45%] space-y-4">
+                        <div className="flex md:hidden items-center gap-3 text-xs font-mono mb-2" style={{ color: '#3D4150' }}>
+                          <span style={{ color: '#E8372A', fontWeight: 600 }}>STAGE {step.step}</span>
+                          <span>•</span>
+                          <span>{step.duration}</span>
+                        </div>
 
-                </div>
+                        <div className="space-y-2">
+                          <h3 className="text-lg md:text-xl font-semibold tracking-tight" style={{ color: '#F0F1F3' }}>
+                            {step.title}
+                          </h3>
+                          <p className="text-sm leading-relaxed font-light" style={{ color: '#6B7080' }}>
+                            {step.desc}
+                          </p>
+                        </div>
+
+                        <ul className="space-y-2 pt-2" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+                          {step.details.map((detail, dIdx) => (
+                            <li key={dIdx} className="flex items-start gap-2.5 text-xs font-light leading-relaxed" style={{ color: '#A8ACBA' }}>
+                              <Check className="h-4 w-4 flex-shrink-0 mt-0.5" style={{ color: 'rgba(232,55,42,0.55)' }} />
+                              <span>{detail}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                  </div>
+                </CameraReactive>
               );
             })}
           </div>

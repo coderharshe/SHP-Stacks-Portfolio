@@ -6,6 +6,7 @@ import {
   Shield, Layers, Zap, Layout, ShieldCheck, BarChart3, Brain, Wrench 
 } from 'lucide-react';
 import { Card } from '@/components/ui/card';
+import { CameraReactive } from '@/components/ui/CameraReactive';
 
 export const WhyChooseUs: React.FC = () => {
   const reasons = [
@@ -69,67 +70,74 @@ export const WhyChooseUs: React.FC = () => {
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 14 },
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }
+      transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] as const }
     }
   };
 
   return (
-    <section id="why-choose-us" className="relative py-24 sm:py-32 border-t border-border overflow-hidden bg-background" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2500&auto=format&fit=crop')", backgroundSize: 'cover', backgroundAttachment: 'fixed', backgroundPosition: 'center' }}>
-      {/* Parallax Overlay */}
-      <div className="absolute inset-0 bg-[#F8FAF9]/90 -z-10" />
+    <section id="why-choose-us" className="relative py-24 sm:py-32 border-t border-border overflow-hidden bg-transparent">
+      {/* Section background overlay */}
+      <div className="absolute inset-0 -z-10" />
 
       {/* Decorative Blur Blob */}
       <div className="absolute top-[30%] left-[-10%] h-[350px] w-[350px] rounded-full bg-accent-purple/5 blur-[120px] -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
-          <span className="text-xs font-mono uppercase tracking-widest text-accent-blue font-semibold">
-            WHY SHP STACKS
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#111827] font-sans">
-            Built for Serious Operations.
-          </h2>
-          <p className="text-sm sm:text-base text-foreground/50 leading-relaxed font-light">
-            We operate as your core technical co-founders, building software designed to secure user trust and drive long-term business value.
-          </p>
-        </div>
+        <CameraReactive depth="hero-title" sectionProgressTarget={0.50}>
+          <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
+            <span className="text-xs font-mono uppercase tracking-widest font-semibold" style={{ color: '#E8372A' }}>
+              WHY SHP STACKS
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-sans" style={{ color: '#F0F1F3' }}>
+              Built for Serious Operations.
+            </h2>
+            <p className="text-sm sm:text-base leading-relaxed font-light" style={{ color: '#6B7080' }}>
+              We operate as your core technical co-founders, building software designed to secure user trust and drive long-term business value.
+            </p>
+          </div>
+        </CameraReactive>
 
         {/* Reasons Grid */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-5%" }}
+          viewport={{ once: true, margin: "-2%" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {reasons.map((reason, idx) => {
             const Icon = reason.icon;
             return (
-              <motion.div key={idx} variants={cardVariants} className="group">
-                <Card 
-                  glowColor={reason.color} 
-                  className="p-6 h-full flex flex-col justify-start border-[#111827]/5 hover:border-[#111827]/10"
-                >
-                  <div className="space-y-4">
-                    <div className="h-10 w-10 rounded-lg border border-border bg-white/2 flex items-center justify-center group-hover:border-[#111827]/10 transition-colors">
-                      <Icon className="h-5 w-5 text-[#111827]/80 group-hover:text-[#111827] transition-colors" />
+              <CameraReactive key={idx} depth="card" tiltOnHover={true} sectionProgressTarget={0.50}>
+                <motion.div variants={cardVariants} className="group h-full">
+                  <Card
+                    glowColor={reason.color}
+                    className="p-6 h-full flex flex-col justify-start hover:border-[rgba(255,255,255,0.13)] glass-card"
+                  >
+                    <div className="space-y-4">
+                      <div
+                        className="h-10 w-10 rounded-lg flex items-center justify-center transition-colors"
+                        style={{ border: '1px solid rgba(255,255,255,0.07)', background: 'rgba(255,255,255,0.02)' }}
+                      >
+                        <Icon className="h-5 w-5" style={{ color: '#6B7080' }} />
+                      </div>
+                      <div className="space-y-2">
+                        <h3 className="text-base font-semibold tracking-tight" style={{ color: '#F0F1F3' }}>
+                          {reason.title}
+                        </h3>
+                        <p className="text-xs sm:text-sm leading-relaxed font-light" style={{ color: '#6B7080' }}>
+                          {reason.desc}
+                        </p>
+                      </div>
                     </div>
-                    <div className="space-y-2">
-                      <h3 className="text-base font-semibold text-[#111827] tracking-tight">
-                        {reason.title}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-foreground/50 leading-relaxed font-light">
-                        {reason.desc}
-                      </p>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
+                  </Card>
+                </motion.div>
+              </CameraReactive>
             );
           })}
         </motion.div>

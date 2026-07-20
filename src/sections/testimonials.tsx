@@ -6,9 +6,9 @@ import { Sparkles } from 'lucide-react';
 
 export const Testimonials: React.FC = () => {
   return (
-    <section className="relative py-20 border-t border-border overflow-hidden bg-background" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1556761175-5973dc0f32b7?q=80&w=2500&auto=format&fit=crop')", backgroundSize: 'cover', backgroundAttachment: 'fixed', backgroundPosition: 'center' }}>
-      {/* Parallax Overlay */}
-      <div className="absolute inset-0 bg-[#F8FAF9]/90 -z-10" />
+    <section className="relative py-20 border-t border-border overflow-hidden bg-transparent">
+      {/* Section background overlay */}
+      <div className="absolute inset-0 -z-10" />
 
       <div className="absolute inset-0 bg-grid-pattern opacity-10 -z-10" />
       
@@ -21,23 +21,20 @@ export const Testimonials: React.FC = () => {
           <div className="absolute -top-12 -left-12 h-24 w-24 rounded-full bg-accent-purple/5 blur-xl" />
           <div className="absolute -bottom-12 -right-12 h-24 w-24 rounded-full bg-accent-blue/5 blur-xl" />
 
-          {/* Icon */}
-          <div className="h-12 w-12 rounded-full border border-border bg-white/2 flex items-center justify-center">
-            <Sparkles className="h-5 w-5 text-accent-purple animate-pulse" />
+          <div className="h-12 w-12 rounded-full flex items-center justify-center" style={{ border: '1px solid rgba(255,255,255,0.07)', background: 'rgba(255,255,255,0.03)' }}>
+            <Sparkles className="h-5 w-5 animate-pulse" style={{ color: '#E8372A' }} />
           </div>
 
-          {/* Copy block */}
           <div className="space-y-3.5 max-w-lg">
-            <h3 className="text-xl md:text-2xl font-bold text-[#111827] tracking-tight">
+            <h3 className="text-xl md:text-2xl font-bold tracking-tight" style={{ color: '#F0F1F3' }}>
               Active Project Delivery
             </h3>
-            <p className="text-sm text-foreground/50 leading-relaxed font-light">
+            <p className="text-sm leading-relaxed font-light" style={{ color: '#6B7080' }}>
               Currently delivering custom software architectures and intelligent AI applications for growing businesses. Client success stories and comprehensive case studies coming soon.
             </p>
           </div>
 
-          {/* Subtext info */}
-          <div className="text-[10px] font-mono text-foreground/30 uppercase tracking-widest pt-4 border-t border-[#111827]/5 w-full max-w-xs">
+          <div className="text-[10px] font-mono uppercase tracking-widest pt-4 w-full max-w-xs" style={{ color: '#3D4150', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
             NDAs STRICTLY OBSERVED
           </div>
         </Card>

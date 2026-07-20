@@ -4,6 +4,8 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { CommandMenu } from "@/components/ui/command-menu";
 import { CustomCursor } from "@/components/ui/custom-cursor";
+import { BackgroundWrapper } from "@/components/3d/BackgroundWrapper";
+import { CameraMotionProvider } from "@/context/CameraMotionContext";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -88,24 +90,30 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col bg-transparent text-foreground antialiased relative">
-        {/* Grain overlay */}
-        <div className="noise-overlay" />
+        <CameraMotionProvider>
+          {/* Cinematic 3D Highway WebGL Scene */}
+          <BackgroundWrapper />
 
-        {/* Global Nav */}
-        <Navbar />
+          {/* Grain overlay */}
+          <div className="noise-overlay" />
 
-        {/* Home / Section Contents */}
-        <div className="flex-grow">
-          {children}
-        </div>
+          {/* Global Nav */}
+          <Navbar />
 
-        {/* Global Footer */}
-        <Footer />
+          {/* Home / Section Contents */}
+          <div className="flex-grow">
+            {children}
+          </div>
 
-        {/* Premium Interactive Addons */}
-        <CommandMenu />
-        <CustomCursor />
+          {/* Global Footer */}
+          <Footer />
+
+          {/* Premium Interactive Addons */}
+          <CommandMenu />
+          <CustomCursor />
+        </CameraMotionProvider>
       </body>
     </html>
   );
 }
+

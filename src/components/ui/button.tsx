@@ -14,36 +14,31 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         className={cn(
-          "relative inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium transition-all duration-300 active:scale-[0.97] cursor-pointer overflow-hidden focus:outline-none",
+          "relative inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium transition-all duration-200 active:scale-[0.97] cursor-pointer overflow-hidden focus:outline-none",
 
-          // ── Primary: Red ──
+          // ── Primary: SHP Red ──
           variant === 'primary' &&
-            "bg-[#EF4444] text-white hover:bg-[#dc2626] border border-[#EF4444]/80 shadow-[0_4px_24px_rgba(239,68,68,0.3)]",
+            "bg-[#E8372A] text-white hover:bg-[#F04438] active:bg-[#C42F22] border border-[#E8372A]/60 shadow-[0_4px_20px_rgba(232,55,42,0.25)]",
 
-          // ── Secondary: White card ──
+          // ── Secondary: Dark glass ──
           variant === 'secondary' &&
-            "bg-[#FFFFFF] text-[#111827] hover:bg-gray-50 border border-[#111827]/10",
+            "bg-[rgba(255,255,255,0.06)] text-[#F0F1F3] hover:bg-[rgba(255,255,255,0.09)] border border-[rgba(255,255,255,0.10)]",
 
-          // ── Outline: Dark border ──
+          // ── Outline: Hairline border ──
           variant === 'outline' &&
-            "bg-transparent text-[#111827] border border-[#111827]/20 hover:bg-[#111827]/05 hover:border-[#111827]/40",
+            "bg-transparent text-[#A8ACBA] border border-[rgba(255,255,255,0.12)] hover:border-[rgba(255,255,255,0.22)] hover:text-[#F0F1F3]",
 
           // ── Ghost ──
           variant === 'ghost' &&
-            "bg-transparent text-[#111827]/70 hover:text-[#111827] hover:bg-[#111827]/05",
+            "bg-transparent text-[#6B7080] hover:text-[#F0F1F3] hover:bg-[rgba(255,255,255,0.04)]",
 
           className
         )}
         {...props}
       >
-        {/* Red glow for primary */}
+        {/* Red ambient glow for primary */}
         {glow && variant === 'primary' && (
-          <span className="absolute inset-0 -z-10 block rounded-lg bg-[#EF4444] opacity-50 blur-xl transition-opacity duration-300 hover:opacity-70" />
-        )}
-
-        {/* Subtle shadow glow for secondary */}
-        {glow && variant === 'secondary' && (
-          <span className="absolute inset-0 -z-10 block rounded-lg bg-[#111827] opacity-5 blur-xl transition-opacity duration-300 hover:opacity-10" />
+          <span className="absolute inset-0 -z-10 block rounded-lg bg-[#E8372A] opacity-40 blur-xl transition-opacity duration-300 hover:opacity-60" />
         )}
 
         <span className="relative z-10 flex items-center gap-2">

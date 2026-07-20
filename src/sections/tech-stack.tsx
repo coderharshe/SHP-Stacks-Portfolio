@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
@@ -72,9 +72,9 @@ export const TechStack: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('Frontend');
 
   return (
-    <section id="tech-stack" className="relative py-24 sm:py-32 border-t border-border overflow-hidden bg-transparent" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2500&auto=format&fit=crop')", backgroundSize: 'cover', backgroundAttachment: 'fixed', backgroundPosition: 'center' }}>
-      {/* Parallax Overlay */}
-      <div className="absolute inset-0 bg-[#F8FAF9]/90 -z-10" />
+    <section id="tech-stack" className="relative py-24 sm:py-32 border-t border-border overflow-hidden bg-transparent">
+      {/* Section background overlay */}
+      <div className="absolute inset-0 -z-10" />
 
       {/* Background blobs */}
       <div className="absolute top-[20%] right-[-10%] h-[300px] w-[300px] rounded-full bg-accent-purple/5 blur-[100px] -z-10" />
@@ -83,13 +83,13 @@ export const TechStack: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
-          <span className="text-xs font-mono uppercase tracking-widest text-accent-cyan font-semibold">
+          <span className="text-xs font-mono uppercase tracking-widest font-semibold" style={{ color: '#E8372A' }}>
             TECHNOLOGY HUB
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#111827] font-sans">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-sans" style={{ color: '#F0F1F3' }}>
             Our Production Tech Stack.
           </h2>
-          <p className="text-sm sm:text-base text-foreground/50 leading-relaxed font-light">
+          <p className="text-sm sm:text-base leading-relaxed font-light" style={{ color: '#6B7080' }}>
             We build exclusively with modern, battle-tested technologies that ensure performance, type-safety, and seamless integrations.
           </p>
         </div>
@@ -102,9 +102,13 @@ export const TechStack: React.FC = () => {
               onClick={() => setActiveCategory(cat.name)}
               className={`px-4 py-2 text-xs font-mono rounded-full border transition-all duration-300 cursor-pointer ${
                 activeCategory === cat.name
-                  ? 'bg-white text-black border-[#111827]'
-                  : 'bg-transparent text-foreground/60 border-border hover:text-[#111827] hover:border-[#111827]/20'
+                  ? 'border-[rgba(255,255,255,0.15)]'
+                  : 'border-[rgba(255,255,255,0.06)] hover:border-[rgba(255,255,255,0.12)]'
               }`}
+              style={{
+                background: activeCategory === cat.name ? 'rgba(255,255,255,0.08)' : 'transparent',
+                color: activeCategory === cat.name ? '#F0F1F3' : '#6B7080',
+              }}
             >
               {cat.name.toUpperCase()}
             </button>
@@ -118,29 +122,29 @@ export const TechStack: React.FC = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 15 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] as const }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
             className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"
           >
             {categories
               .find((cat) => cat.name === activeCategory)
               ?.techs.map((tech, idx) => (
-                <Card
-                  key={idx}
-                  glowColor="cyan"
-                  className="p-6 flex flex-col justify-between h-36 border-[#111827]/5 hover:border-[#111827]/12"
-                >
-                  <div className="space-y-1">
-                    <span className="text-xs font-mono text-accent-cyan font-medium block">
-                      {tech.tag}
-                    </span>
-                    <h3 className="text-lg font-bold text-[#111827] tracking-tight">
-                      {tech.name}
-                    </h3>
-                  </div>
-                  <div className="text-[10px] font-mono text-foreground/30">
-                    VERIFIED PRODUCTIVE
-                  </div>
-                </Card>
+                  <Card
+                    key={idx}
+                    glowColor="cyan"
+                    className="p-6 flex flex-col justify-between h-36 hover:border-[rgba(255,255,255,0.14)]"
+                  >
+                    <div className="space-y-1">
+                      <span className="text-xs font-mono font-medium block" style={{ color: '#E8372A' }}>
+                        {tech.tag}
+                      </span>
+                      <h3 className="text-lg font-bold tracking-tight" style={{ color: '#F0F1F3' }}>
+                        {tech.name}
+                      </h3>
+                    </div>
+                    <div className="text-[10px] font-mono" style={{ color: '#3D4150' }}>
+                      VERIFIED PRODUCTIVE
+                    </div>
+                  </Card>
               ))}
           </motion.div>
         </div>
