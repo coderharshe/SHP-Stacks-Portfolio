@@ -31,11 +31,11 @@ export const AboutCard = React.forwardRef<HTMLElement, AboutCardProps>(
         className={cn(
           "relative flex flex-col gap-6 rounded-2xl border p-8 md:p-10",
           "w-[min(80vw,360px)] flex-shrink-0",
-          "glass-card",
+          "glass-card bg-[#12151E]/95 border border-[rgba(255,255,255,0.12)] shadow-xl",
           "transition-all duration-300 ease-out",
           isActive
             ? "opacity-100 shadow-[0_8px_40px_rgba(0,0,0,0.4)]"
-            : "opacity-35 shadow-none",
+            : "opacity-85 shadow-none",
         )}
       >
         {/* Icon badge */}

@@ -160,7 +160,6 @@ export const Navbar: React.FC = () => {
               className="md:hidden overflow-hidden absolute top-full left-0 right-0"
               style={{
                 background: 'rgba(10,11,13,0.97)',
-                backdropFilter: 'blur(20px)',
                 borderBottom: '1px solid rgba(255,255,255,0.06)',
               }}
             >

@@ -230,8 +230,8 @@ export const Projects: React.FC = () => {
             {PROJECTS_DATA.map((project) => {
               const isSelected = selectedProject.id === project.id;
               const btnClass = isSelected
-                ? 'bg-[rgba(255,255,255,0.06)] border-[rgba(255,255,255,0.12)] shadow-lg'
-                : 'bg-transparent border-transparent hover:bg-[rgba(255,255,255,0.03)]';
+                ? 'bg-[#181C26]/95 border border-[#E8372A]/50 shadow-xl'
+                : 'bg-[#12151E]/95 border border-[rgba(255,255,255,0.12)] shadow-md hover:border-[rgba(255,255,255,0.25)] hover:bg-[#151822]/95';
               return (
                 <button
                   key={project.id}
@@ -257,10 +257,10 @@ export const Projects: React.FC = () => {
           </div>
 
           {/* Project Details and Mockup Showcase (col span 8) */}
-          <div className="lg:col-span-8 bg-card border border-border rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-[0_15px_40px_rgba(0,0,0,0.5)] min-h-[500px]">
+          <div className="lg:col-span-8 glass-card bg-[#12151E]/95 border border-[rgba(255,255,255,0.12)] rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-xl min-h-[500px]">
             
             {/* Mockup screen pane (left on md+, top on mobile) */}
-            <div className="w-full md:w-1/2 border-b md:border-b-0 md:border-r border-border bg-black/40 flex items-center justify-center min-h-[300px]">
+            <div className="w-full md:w-1/2 border-b md:border-b-0 md:border-r border-border bg-[#0D0F14]/95 flex items-center justify-center min-h-[300px]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={selectedProject.id}
@@ -306,7 +306,7 @@ export const Projects: React.FC = () => {
                     {selectedProject.techStack.map((tech, idx) => (
                       <span 
                         key={idx} 
-                        className="text-[9px] font-mono bg-white/5 border border-[#111827]/5 text-foreground/70 px-2 py-0.5 rounded-md"
+                        className="text-[10px] font-mono bg-[#1A1E29]/95 border border-[rgba(255,255,255,0.14)] text-[#F0F1F3] px-2.5 py-1 rounded-md font-bold shadow-sm"
                       >
                         {tech}
                       </span>
@@ -314,25 +314,25 @@ export const Projects: React.FC = () => {
                   </div>
 
                   {/* Problem & Solution block */}
-                  <div className="space-y-3.5 border-t border-border pt-4 text-xs">
+                  <div className="space-y-3.5 bg-[#181C26]/95 border border-[rgba(255,255,255,0.12)] p-4 rounded-xl shadow-md text-xs">
                     <div className="space-y-1">
-                      <span className="font-bold text-[#A8ACBA] block">The Challenge</span>
+                      <span className="font-bold text-[#E8372A] block uppercase text-[10px] tracking-wider">The Challenge</span>
                       <p className="text-[#F0F1F3] leading-relaxed font-bold">{selectedProject.problem}</p>
                     </div>
-                    <div className="space-y-1">
-                      <span className="font-bold text-[#A8ACBA] block">The Engineering Outcome</span>
+                    <div className="space-y-1 pt-2 border-t border-[rgba(255,255,255,0.06)]">
+                      <span className="font-bold text-[#E8372A] block uppercase text-[10px] tracking-wider">The Engineering Outcome</span>
                       <p className="text-[#F0F1F3] leading-relaxed font-bold">{selectedProject.solution}</p>
                     </div>
                   </div>
 
                   {/* Results Bullet points */}
-                  <div className="border-t border-border pt-4 space-y-2">
+                  <div className="bg-[#181C26]/95 border border-[rgba(255,255,255,0.12)] p-4 rounded-xl shadow-md space-y-2.5">
                     <span className="text-[10px] font-mono uppercase tracking-widest text-[#A8ACBA] block mb-2 font-bold">
-                      Key Metrics
+                      Key Metrics & Impact
                     </span>
                     {selectedProject.results.map((result, idx) => (
-                      <div key={idx} className="flex items-start gap-2 text-xs text-[#F0F1F3] font-bold leading-relaxed">
-                        <CheckCircle className="h-4 w-4 text-accent-purple flex-shrink-0 mt-0.5" />
+                      <div key={idx} className="flex items-start gap-2.5 text-xs text-[#F0F1F3] font-bold leading-relaxed">
+                        <CheckCircle className="h-4 w-4 text-[#E8372A] flex-shrink-0 mt-0.5" />
                         <span>{result}</span>
                       </div>
                     ))}

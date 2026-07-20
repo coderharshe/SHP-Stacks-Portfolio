@@ -71,7 +71,7 @@ export const Process: React.FC = () => {
                   tiltOnHover={true}
                   sectionProgressTarget={nodeTargetProgress}
                 >
-                  <div className="relative flex flex-col md:flex-row items-start md:justify-between glass-card p-6 md:p-8 rounded-2xl">
+                  <div className="relative flex flex-col md:flex-row items-start md:justify-between glass-card bg-[#12151E]/95 border border-[rgba(255,255,255,0.12)] shadow-xl p-6 md:p-8 rounded-2xl">
                     
                     {/* Left Side Content (Desktop: step & duration, Mobile: stacked above) */}
                     <div className="hidden md:flex w-[45%] flex-col items-end text-right pr-12 space-y-1">

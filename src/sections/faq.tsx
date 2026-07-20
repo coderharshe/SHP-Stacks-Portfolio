@@ -29,7 +29,7 @@ export const FAQ: React.FC = () => {
         </div>
 
         {/* Accordions */}
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto rounded-2xl p-6 md:p-8 glass-card bg-[#12151E]/95 border border-[rgba(255,255,255,0.12)] shadow-xl">
           <Accordion items={FAQ_DATA} />
         </div>
         

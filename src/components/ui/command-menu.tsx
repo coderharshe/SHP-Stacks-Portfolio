@@ -141,7 +141,7 @@ export const CommandMenu: React.FC = () => {
       {/* Floating CMD+K Indicator in bottom-right corner for mouse users */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-20 z-40 hidden md:flex items-center gap-2 rounded-full border border-border bg-card/85 px-4 py-2 text-xs text-foreground/50 hover:text-white hover:border-white/20 transition-all duration-300 backdrop-blur-md cursor-pointer shadow-lg"
+        className="fixed bottom-6 right-20 z-40 hidden md:flex items-center gap-2 rounded-full border border-border bg-[#12151E]/95 px-4 py-2 text-xs text-foreground/50 hover:text-white hover:border-white/20 transition-all duration-300 cursor-pointer shadow-lg"
       >
         <Search className="h-3.5 w-3.5" />
         <span>Search site</span>
@@ -157,7 +157,7 @@ export const CommandMenu: React.FC = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/80 backdrop-blur-sm"
+              className="fixed inset-0 bg-black/85"
             />
 
             {/* Dialog Panel */}
@@ -167,7 +167,7 @@ export const CommandMenu: React.FC = () => {
               exit={{ opacity: 0, scale: 0.97, y: -10 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
               ref={containerRef}
-              className="relative w-full max-w-lg overflow-hidden rounded-xl border border-border bg-card/95 shadow-[0_32px_64px_rgba(0,0,0,0.6)] backdrop-blur-md flex flex-col"
+              className="relative w-full max-w-lg overflow-hidden rounded-xl border border-border bg-[#12151E]/95 shadow-[0_32px_64px_rgba(0,0,0,0.6)] flex flex-col"
             >
               {/* Search Header */}
               <div className="flex items-center border-b border-border px-4 py-3.5">
