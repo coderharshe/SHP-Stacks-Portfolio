@@ -1,23 +1,15 @@
 "use client";
 
 import React from 'react';
+import { cn } from '@/lib/utils';
 import { ArrowUp, Github, Linkedin, Mail } from 'lucide-react';
 
 const SHPLogoMark = ({ className }: { className?: string }) => (
-  <svg
-    viewBox="0 0 100 100"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className={className}
-    aria-hidden="true"
-  >
-    <polygon points="15,30 50,13 85,30 50,47" fill="currentColor" />
-    <polygon points="15,30 15,40 50,57 50,47" fill="currentColor" opacity="0.6" />
-    <polygon points="85,30 85,40 50,57 50,47" fill="currentColor" opacity="0.4" />
-    <polygon points="15,58 50,41 85,58 50,75" fill="currentColor" />
-    <polygon points="15,58 15,68 50,85 50,75" fill="currentColor" opacity="0.6" />
-    <polygon points="85,58 85,68 50,85 50,75" fill="currentColor" opacity="0.4" />
-  </svg>
+  <img
+    src="/shp-stacks-logo.png"
+    alt="SHP Stacks Logo"
+    className={cn('object-contain', className)}
+  />
 );
 
 export const Footer: React.FC = () => {
@@ -69,7 +61,7 @@ export const Footer: React.FC = () => {
           {/* Brand */}
           <div className="lg:col-span-2 space-y-6">
             <a href="#hero" onClick={(e) => handleSectionScroll(e, '#hero')} className="flex items-center gap-2.5 group w-fit">
-              <SHPLogoMark className="h-8 w-8 text-[#E8372A] group-hover:text-[#F04438] transition-colors duration-300" />
+              <SHPLogoMark className="h-9 w-9" />
               <span className="font-sans text-base leading-none">
                 <span className="font-black tracking-tight" style={{ color: '#F0F1F3' }}>SHP</span>
                 <span className="font-light tracking-tight" style={{ color: '#E8372A' }}>Stacks</span>
