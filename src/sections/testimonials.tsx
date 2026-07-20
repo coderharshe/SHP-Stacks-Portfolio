@@ -29,12 +29,12 @@ export const Testimonials: React.FC = () => {
             <h3 className="text-xl md:text-2xl font-bold tracking-tight" style={{ color: '#F0F1F3' }}>
               Active Project Delivery
             </h3>
-            <p className="text-sm leading-relaxed font-light" style={{ color: '#6B7080' }}>
+            <p className="text-sm leading-relaxed font-bold" style={{ color: '#F0F1F3' }}>
               Currently delivering custom software architectures and intelligent AI applications for growing businesses. Client success stories and comprehensive case studies coming soon.
             </p>
           </div>
 
-          <div className="text-[10px] font-mono uppercase tracking-widest pt-4 w-full max-w-xs" style={{ color: '#3D4150', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+          <div className="text-[10px] font-mono font-bold uppercase tracking-widest pt-4 w-full max-w-xs" style={{ color: '#A8ACBA', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
             NDAs STRICTLY OBSERVED
           </div>
         </Card>

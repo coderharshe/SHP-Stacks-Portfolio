@@ -89,7 +89,7 @@ export const TechStack: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-sans" style={{ color: '#F0F1F3' }}>
             Our Production Tech Stack.
           </h2>
-          <p className="text-sm sm:text-base leading-relaxed font-light" style={{ color: '#6B7080' }}>
+          <p className="text-sm sm:text-base leading-relaxed font-bold" style={{ color: '#F0F1F3' }}>
             We build exclusively with modern, battle-tested technologies that ensure performance, type-safety, and seamless integrations.
           </p>
         </div>
@@ -105,10 +105,11 @@ export const TechStack: React.FC = () => {
                   ? 'border-[rgba(255,255,255,0.15)]'
                   : 'border-[rgba(255,255,255,0.06)] hover:border-[rgba(255,255,255,0.12)]'
               }`}
-              style={{
-                background: activeCategory === cat.name ? 'rgba(255,255,255,0.08)' : 'transparent',
-                color: activeCategory === cat.name ? '#F0F1F3' : '#6B7080',
-              }}
+                style={{
+                  background: activeCategory === cat.name ? 'rgba(255,255,255,0.08)' : 'transparent',
+                  color: activeCategory === cat.name ? '#F0F1F3' : '#A8ACBA',
+                  fontWeight: 700,
+                }}
             >
               {cat.name.toUpperCase()}
             </button>
@@ -141,7 +142,7 @@ export const TechStack: React.FC = () => {
                         {tech.name}
                       </h3>
                     </div>
-                    <div className="text-[10px] font-mono" style={{ color: '#3D4150' }}>
+                    <div className="text-[10px] font-mono font-bold" style={{ color: '#A8ACBA' }}>
                       VERIFIED PRODUCTIVE
                     </div>
                   </Card>

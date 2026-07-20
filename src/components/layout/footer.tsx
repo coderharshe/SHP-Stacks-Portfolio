@@ -77,7 +77,7 @@ export const Footer: React.FC = () => {
               </span>
             </a>
 
-            <p className="text-sm sm:text-base font-semibold max-w-sm leading-relaxed" style={{ color: '#A8ACBA' }}>
+            <p className="text-sm sm:text-base font-bold max-w-sm leading-relaxed" style={{ color: '#F0F1F3' }}>
               Engineering Modern Software. Building Businesses. We combine strict engineering
               standards with high-end design to solve complex industrial problems.
             </p>
@@ -182,7 +182,7 @@ export const Footer: React.FC = () => {
           className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4"
           style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}
         >
-          <div className="text-xs sm:text-sm font-mono font-bold" style={{ color: '#6B7080' }}>
+          <div className="text-xs sm:text-sm font-mono font-bold" style={{ color: '#A8ACBA' }}>
             &copy; {currentYear} SHP Stacks. All rights reserved.
           </div>
 

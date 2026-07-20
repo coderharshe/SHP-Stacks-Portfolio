@@ -78,7 +78,7 @@ export const Services: React.FC = () => {
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-sans" style={{ color: '#F0F1F3' }}>
               Complete Engineering Capabilities.
             </h2>
-            <p className="text-sm sm:text-base leading-relaxed font-light" style={{ color: '#6B7080' }}>
+            <p className="text-sm sm:text-base leading-relaxed font-bold" style={{ color: '#F0F1F3' }}>
               We handle everything from initial system design and database modeling to high-scale deployment and active performance auditing.
             </p>
           </div>
@@ -125,7 +125,7 @@ export const Services: React.FC = () => {
                         <h3 className="text-base sm:text-lg font-semibold tracking-tight transition-colors group-hover:text-[#E8372A]" style={{ color: '#F0F1F3' }}>
                           {service.title}
                         </h3>
-                        <p className="text-xs sm:text-sm leading-relaxed font-light line-clamp-3" style={{ color: '#6B7080' }}>
+                        <p className="text-xs sm:text-sm leading-relaxed font-bold line-clamp-3" style={{ color: '#F0F1F3' }}>
                           {service.shortDesc}
                         </p>
                       </div>
@@ -150,7 +150,7 @@ export const Services: React.FC = () => {
       >
         {activeService && (
           <div className="space-y-6">
-            <p className="text-sm sm:text-base leading-relaxed font-light" style={{ color: '#A8ACBA' }}>
+            <p className="text-sm sm:text-base leading-relaxed font-bold" style={{ color: '#F0F1F3' }}>
               {activeService.longDesc}
             </p>
 
@@ -160,7 +160,7 @@ export const Services: React.FC = () => {
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {activeService.features.map((feature, idx) => (
-                  <div key={idx} className="flex items-center gap-2 text-sm font-light" style={{ color: '#A8ACBA' }}>
+                  <div key={idx} className="flex items-center gap-2 text-sm font-bold" style={{ color: '#F0F1F3' }}>
                     <CheckCircle2 className="h-4 w-4 flex-shrink-0" style={{ color: '#E8372A' }} />
                     <span>{feature}</span>
                   </div>

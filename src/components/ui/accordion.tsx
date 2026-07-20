@@ -46,8 +46,8 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({ question, answer, 
             transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] as const }}
           >
             <div
-              className="pb-5 text-sm leading-relaxed font-light pr-8"
-              style={{ color: '#6B7080' }}
+              className="pb-5 text-sm leading-relaxed font-bold pr-8"
+              style={{ color: '#F0F1F3' }}
             >
               {answer}
             </div>

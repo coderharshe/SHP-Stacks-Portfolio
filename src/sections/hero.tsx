@@ -96,7 +96,8 @@ export const Hero: React.FC = () => {
           <CameraReactive depth="paragraph" sectionProgressTarget={0.0}>
             <motion.p
               variants={itemVariants}
-              className="text-base sm:text-lg md:text-xl text-[#111827]/50 max-w-2xl mb-10 leading-relaxed font-light"
+              className="text-base sm:text-lg md:text-xl font-bold max-w-2xl mb-10 leading-relaxed"
+              style={{ color: '#F0F1F3' }}
             >
               We build enterprise software, AI solutions, SaaS platforms, automation systems,
               and high-performance web applications for ambitious businesses.
@@ -141,7 +142,7 @@ export const Hero: React.FC = () => {
                   <span className="text-2xl sm:text-4xl font-bold font-sans tracking-tight mb-1.5 tabular-nums" style={{ color: '#F0F1F3' }}>
                     {stat.value}
                   </span>
-                  <span className="text-[9px] sm:text-[10px] uppercase tracking-widest font-mono text-center leading-tight" style={{ color: '#3D4150' }}>
+                  <span className="text-xs sm:text-sm uppercase tracking-widest font-mono font-bold text-center leading-tight" style={{ color: '#A8ACBA' }}>
                     {stat.label}
                   </span>
                 </div>
@@ -171,10 +172,10 @@ export const Hero: React.FC = () => {
           {[...technologies, ...technologies, ...technologies].map((tech, idx) => (
             <div
               key={idx}
-              className="text-xs sm:text-sm font-mono tracking-wider transition-colors duration-300"
-              style={{ color: '#3D4150' }}
-              onMouseEnter={e => (e.currentTarget.style.color = '#A8ACBA')}
-              onMouseLeave={e => (e.currentTarget.style.color = '#3D4150')}
+              className="text-xs sm:text-sm font-mono tracking-wider font-bold transition-colors duration-300"
+              style={{ color: '#A8ACBA' }}
+              onMouseEnter={e => (e.currentTarget.style.color = '#F0F1F3')}
+              onMouseLeave={e => (e.currentTarget.style.color = '#A8ACBA')}
             >
               {tech}
             </div>

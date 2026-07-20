@@ -49,7 +49,7 @@ export const CTA: React.FC = () => {
               <h2 className="text-3xl sm:text-5xl font-bold tracking-tight font-sans leading-tight" style={{ color: '#F0F1F3' }}>
                 Ready to Build Your Next Product?
               </h2>
-              <p className="text-base sm:text-lg leading-relaxed font-semibold" style={{ color: '#A8ACBA' }}>
+              <p className="text-base sm:text-lg leading-relaxed font-bold" style={{ color: '#F0F1F3' }}>
                 Let&rsquo;s engineer software that drives actual growth for your company. Whether you need a warehouse management system, custom ERP, or an AI agent platform, our team is equipped to deliver.
               </p>
             </div>
@@ -71,7 +71,7 @@ export const CTA: React.FC = () => {
                     <h4 className="text-base sm:text-lg font-bold transition-colors group-hover:text-[#E8372A]" style={{ color: '#F0F1F3' }}>
                       Book a Discovery Call
                     </h4>
-                    <p className="text-sm sm:text-base font-semibold" style={{ color: '#A8ACBA' }}>Choose a time slot to review your specs.</p>
+                    <p className="text-sm sm:text-base font-bold" style={{ color: '#F0F1F3' }}>Choose a time slot to review your specs.</p>
                   </div>
                 </a>
 
@@ -125,7 +125,7 @@ export const CTA: React.FC = () => {
                     <h3 className="text-2xl font-bold tracking-tight" style={{ color: '#F0F1F3' }}>
                       Requirements Received
                     </h3>
-                    <p className="text-base font-semibold max-w-sm leading-relaxed" style={{ color: '#A8ACBA' }}>
+                    <p className="text-base font-bold max-w-sm leading-relaxed" style={{ color: '#F0F1F3' }}>
                       Thank you. We have received your project details and will review them within 12 business hours.
                     </p>
                   </div>

@@ -215,7 +215,7 @@ export const Projects: React.FC = () => {
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-sans" style={{ color: '#F0F1F3' }}>
               Products Built to Perform.
             </h2>
-            <p className="text-sm sm:text-base leading-relaxed font-light" style={{ color: '#6B7080' }}>
+            <p className="text-sm sm:text-base leading-relaxed font-bold" style={{ color: '#F0F1F3' }}>
               Review the real technical outcomes, database architectures, and business impact of applications engineered by SHP Stacks.
             </p>
           </div>
@@ -297,7 +297,7 @@ export const Projects: React.FC = () => {
                   </div>
 
                   {/* Overview */}
-                  <p className="text-xs sm:text-sm text-foreground/60 leading-relaxed font-light">
+                  <p className="text-xs sm:text-sm text-[#F0F1F3] leading-relaxed font-bold">
                     {selectedProject.overview}
                   </p>
 
@@ -316,22 +316,22 @@ export const Projects: React.FC = () => {
                   {/* Problem & Solution block */}
                   <div className="space-y-3.5 border-t border-border pt-4 text-xs">
                     <div className="space-y-1">
-                      <span className="font-semibold text-[#111827]/80 block">The Challenge</span>
-                      <p className="text-foreground/50 leading-relaxed font-light">{selectedProject.problem}</p>
+                      <span className="font-bold text-[#A8ACBA] block">The Challenge</span>
+                      <p className="text-[#F0F1F3] leading-relaxed font-bold">{selectedProject.problem}</p>
                     </div>
                     <div className="space-y-1">
-                      <span className="font-semibold text-[#111827]/80 block">The Engineering Outcome</span>
-                      <p className="text-foreground/50 leading-relaxed font-light">{selectedProject.solution}</p>
+                      <span className="font-bold text-[#A8ACBA] block">The Engineering Outcome</span>
+                      <p className="text-[#F0F1F3] leading-relaxed font-bold">{selectedProject.solution}</p>
                     </div>
                   </div>
 
                   {/* Results Bullet points */}
                   <div className="border-t border-border pt-4 space-y-2">
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#111827]/40 block mb-2">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#A8ACBA] block mb-2 font-bold">
                       Key Metrics
                     </span>
                     {selectedProject.results.map((result, idx) => (
-                      <div key={idx} className="flex items-start gap-2 text-xs text-foreground/80 font-light leading-relaxed">
+                      <div key={idx} className="flex items-start gap-2 text-xs text-[#F0F1F3] font-bold leading-relaxed">
                         <CheckCircle className="h-4 w-4 text-accent-purple flex-shrink-0 mt-0.5" />
                         <span>{result}</span>
                       </div>

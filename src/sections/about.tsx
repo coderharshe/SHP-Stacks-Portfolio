@@ -67,7 +67,7 @@ function SectionHeader() {
       <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-sans leading-tight" style={{ color: '#F0F1F3' }}>
         We Build Software<br />That Scales Businesses.
       </h2>
-      <p className="text-sm sm:text-base leading-relaxed font-light max-w-sm" style={{ color: '#6B7080' }}>
+      <p className="text-sm sm:text-base leading-relaxed font-bold max-w-sm" style={{ color: '#F0F1F3' }}>
         SHP Stacks is a premium software development firm. We partner with
         ambitious enterprises and scaling SaaS companies to build
         mission&#8209;critical digital products.

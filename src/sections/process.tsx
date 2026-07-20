@@ -40,7 +40,7 @@ export const Process: React.FC = () => {
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-sans" style={{ color: '#F0F1F3' }}>
               How We Build Systems.
             </h2>
-            <p className="text-sm sm:text-base leading-relaxed font-light" style={{ color: '#6B7080' }}>
+            <p className="text-sm sm:text-base leading-relaxed font-bold" style={{ color: '#F0F1F3' }}>
               Our systematic approach ensures all custom software assets are delivered on time, securely configured, and fully verified.
             </p>
           </div>
@@ -105,14 +105,14 @@ export const Process: React.FC = () => {
                           <h3 className="text-lg md:text-xl font-semibold tracking-tight" style={{ color: '#F0F1F3' }}>
                             {step.title}
                           </h3>
-                          <p className="text-sm leading-relaxed font-light" style={{ color: '#6B7080' }}>
+                          <p className="text-sm leading-relaxed font-bold" style={{ color: '#F0F1F3' }}>
                             {step.desc}
                           </p>
                         </div>
 
                         <ul className="space-y-2 pt-2" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
                           {step.details.map((detail, dIdx) => (
-                            <li key={dIdx} className="flex items-start gap-2.5 text-xs font-light leading-relaxed" style={{ color: '#A8ACBA' }}>
+                            <li key={dIdx} className="flex items-start gap-2.5 text-xs font-bold leading-relaxed" style={{ color: '#F0F1F3' }}>
                               <Check className="h-4 w-4 flex-shrink-0 mt-0.5" style={{ color: 'rgba(232,55,42,0.55)' }} />
                               <span>{detail}</span>
                             </li>

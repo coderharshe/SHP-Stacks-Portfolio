@@ -86,6 +86,12 @@ body {
   min-height: 100vh;
 }
 
+/* ── Global Body Text Highlight & Bold ── */
+p {
+  font-weight: 700 !important;
+  color: #F0F1F3 !important;
+}
+
 /* ── Custom Scrollbar ── */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: #0A0B0D; }

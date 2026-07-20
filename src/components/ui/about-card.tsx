@@ -58,7 +58,7 @@ export const AboutCard = React.forwardRef<HTMLElement, AboutCardProps>(
           <h3 className="text-lg font-semibold tracking-tight" style={{ color: '#F0F1F3' }}>
             {title}
           </h3>
-          <p className="text-sm leading-relaxed font-light" style={{ color: '#6B7080' }}>
+          <p className="text-sm leading-relaxed font-bold" style={{ color: '#F0F1F3' }}>
             {description}
           </p>
         </div>
