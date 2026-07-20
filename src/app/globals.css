@@ -9,7 +9,7 @@
   --color-background-deep:  #111318;
 
   /* 30% — Secondary Surfaces */
-  --color-card:    rgba(18, 20, 28, 0.92);
+  --color-card:    #12141C;
   --color-border:  rgba(255,255,255,0.08);
 
   /* 10% — SHP Red Accent */
@@ -35,11 +35,11 @@
   --bg-deep:      #111318;
 
   /* Surfaces (elevation ladder) */
-  --surface-default:  rgba(15, 17, 23, 0.92);
-  --surface-glass:    rgba(18, 20, 28, 0.92);
-  --surface-elevated: rgba(22, 25, 35, 0.95);
-  --surface-modal:    rgba(14,16,21,0.97);
-  --surface-nav:      rgba(10,11,13,0.82);
+  --surface-default:  #0F1117;
+  --surface-glass:    #12141C;
+  --surface-elevated: #161923;
+  --surface-modal:    #0E1015;
+  --surface-nav:      rgba(10,11,13,0.92);
 
   /* Borders */
   --border-subtle:  rgba(255,255,255,0.05);

@@ -134,7 +134,7 @@ export const Hero: React.FC = () => {
           <CameraReactive depth="card" sectionProgressTarget={0.0}>
             <motion.div
               variants={itemVariants}
-              className="grid grid-cols-3 gap-4 md:gap-16 border-t border-b py-8 w-full max-w-3xl glass-card bg-[#12151E]/95 border border-[rgba(255,255,255,0.12)] shadow-xl rounded-xl px-6"
+              className="grid grid-cols-3 gap-4 md:gap-16 border-t border-b py-8 w-full max-w-3xl glass-card bg-[#12151E] border border-[rgba(255,255,255,0.12)] shadow-xl rounded-xl px-6"
               style={{ borderColor: 'rgba(255,255,255,0.06)' }}
             >
               {stats.map((stat, idx) => (

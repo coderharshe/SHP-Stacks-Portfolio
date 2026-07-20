@@ -45,7 +45,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
         onMouseEnter={() => setIsFocused(true)}
         onMouseLeave={() => setIsFocused(false)}
         className={cn(
-          "relative rounded-xl overflow-hidden glass-card bg-[#12151E]/95 border border-[rgba(255,255,255,0.12)] shadow-xl transition-all duration-500",
+          "relative rounded-xl overflow-hidden glass-card bg-[#12151E] border border-[rgba(255,255,255,0.12)] shadow-xl transition-all duration-500",
           className
         )}
         {...props}

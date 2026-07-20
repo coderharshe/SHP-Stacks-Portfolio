@@ -230,8 +230,8 @@ export const Projects: React.FC = () => {
             {PROJECTS_DATA.map((project) => {
               const isSelected = selectedProject.id === project.id;
               const btnClass = isSelected
-                ? 'bg-[#181C26]/95 border border-[#E8372A]/50 shadow-xl'
-                : 'bg-[#12151E]/95 border border-[rgba(255,255,255,0.12)] shadow-md hover:border-[rgba(255,255,255,0.25)] hover:bg-[#151822]/95';
+                ? 'bg-[#181C26] border border-[#E8372A]/50 shadow-xl'
+                : 'bg-[#12151E] border border-[rgba(255,255,255,0.12)] shadow-md hover:border-[rgba(255,255,255,0.25)] hover:bg-[#151822]';
               return (
                 <button
                   key={project.id}
@@ -257,10 +257,10 @@ export const Projects: React.FC = () => {
           </div>
 
           {/* Project Details and Mockup Showcase (col span 8) */}
-          <div className="lg:col-span-8 glass-card bg-[#12151E]/95 border border-[rgba(255,255,255,0.12)] rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-xl min-h-[500px]">
+          <div className="lg:col-span-8 glass-card bg-[#12151E] border border-[rgba(255,255,255,0.12)] rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-xl min-h-[500px]">
             
             {/* Mockup screen pane (left on md+, top on mobile) */}
-            <div className="w-full md:w-1/2 border-b md:border-b-0 md:border-r border-border bg-[#0D0F14]/95 flex items-center justify-center min-h-[300px]">
+            <div className="w-full md:w-1/2 border-b md:border-b-0 md:border-r border-border bg-[#0D0F14] flex items-center justify-center min-h-[300px]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={selectedProject.id}
@@ -306,7 +306,7 @@ export const Projects: React.FC = () => {
                     {selectedProject.techStack.map((tech, idx) => (
                       <span 
                         key={idx} 
-                        className="text-[10px] font-mono bg-[#1A1E29]/95 border border-[rgba(255,255,255,0.14)] text-[#F0F1F3] px-2.5 py-1 rounded-md font-bold shadow-sm"
+                        className="text-[10px] font-mono bg-[#1A1E29] border border-[rgba(255,255,255,0.14)] text-[#F0F1F3] px-2.5 py-1 rounded-md font-bold shadow-sm"
                       >
                         {tech}
                       </span>
@@ -314,7 +314,7 @@ export const Projects: React.FC = () => {
                   </div>
 
                   {/* Problem & Solution block */}
-                  <div className="space-y-3.5 bg-[#181C26]/95 border border-[rgba(255,255,255,0.12)] p-4 rounded-xl shadow-md text-xs">
+                  <div className="space-y-3.5 bg-[#181C26] border border-[rgba(255,255,255,0.12)] p-4 rounded-xl shadow-md text-xs">
                     <div className="space-y-1">
                       <span className="font-bold text-[#E8372A] block uppercase text-[10px] tracking-wider">The Challenge</span>
                       <p className="text-[#F0F1F3] leading-relaxed font-bold">{selectedProject.problem}</p>
@@ -326,7 +326,7 @@ export const Projects: React.FC = () => {
                   </div>
 
                   {/* Results Bullet points */}
-                  <div className="bg-[#181C26]/95 border border-[rgba(255,255,255,0.12)] p-4 rounded-xl shadow-md space-y-2.5">
+                  <div className="bg-[#181C26] border border-[rgba(255,255,255,0.12)] p-4 rounded-xl shadow-md space-y-2.5">
                     <span className="text-[10px] font-mono uppercase tracking-widest text-[#A8ACBA] block mb-2 font-bold">
                       Key Metrics & Impact
                     </span>

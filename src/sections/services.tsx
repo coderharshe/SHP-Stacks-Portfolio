@@ -69,18 +69,25 @@ export const Services: React.FC = () => {
       <div className="absolute top-[20%] right-[-10%] h-[350px] w-[350px] rounded-full bg-accent-cyan/5 blur-[120px] -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Section Header - Highly highlighted above content when green color appears */}
         <CameraReactive depth="hero-title">
-          <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
-            <span className="text-xs font-mono uppercase tracking-widest font-semibold" style={{ color: '#E8372A' }}>
-              SERVICES
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-sans" style={{ color: '#F0F1F3' }}>
-              Complete Engineering Capabilities.
-            </h2>
-            <p className="text-sm sm:text-base leading-relaxed font-bold" style={{ color: '#F0F1F3' }}>
-              We handle everything from initial system design and database modeling to high-scale deployment and active performance auditing.
-            </p>
+          <div className="relative text-center max-w-4xl mx-auto mb-20 p-8 sm:p-12 rounded-3xl bg-[#081014]/85 backdrop-blur-2xl border-2 border-emerald-500/50 shadow-[0_0_80px_rgba(16,185,129,0.25),inset_0_1px_0_rgba(255,255,255,0.15)] overflow-hidden">
+            {/* Top glowing radial emerald accent */}
+            <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-48 bg-gradient-to-b from-emerald-500/30 to-transparent blur-3xl" />
+            <div className="pointer-events-none absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-emerald-400 to-transparent" />
+
+            <div className="relative z-10 space-y-5">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 font-mono text-xs font-semibold tracking-wider shadow-[0_0_20px_rgba(16,185,129,0.2)]">
+                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span>SERVICES & CAPABILITIES</span>
+              </div>
+              <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight font-sans text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)]">
+                Complete Engineering Capabilities.
+              </h2>
+              <p className="text-base sm:text-lg leading-relaxed font-bold text-[#F0F1F3] max-w-2xl mx-auto drop-shadow-md">
+                We handle everything from initial system design and database modeling to high-scale deployment and active performance auditing.
+              </p>
+            </div>
           </div>
         </CameraReactive>
 
@@ -107,7 +114,7 @@ export const Services: React.FC = () => {
                 >
                   <Card
                     glowColor="default"
-                    className="p-6 md:p-8 h-full flex flex-col justify-between hover:border-[rgba(255,255,255,0.20)] transition-all glass-card bg-[#12151E]/95 border border-[rgba(255,255,255,0.12)] shadow-xl"
+                    className="p-6 md:p-8 h-full flex flex-col justify-between hover:border-[rgba(255,255,255,0.20)] transition-all glass-card bg-[#12151E]/70 backdrop-blur-md border border-[rgba(255,255,255,0.16)] shadow-xl"
                   >
                     <div className="space-y-4">
                       <div
