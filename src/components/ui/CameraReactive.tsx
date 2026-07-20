@@ -123,53 +123,10 @@ export const CameraReactive: React.FC<CameraReactiveProps> = ({
       let emergenceOpacity = 1;
 
       if (elementTarget !== undefined && baseTarget !== undefined) {
-        if (elementTarget === 0.0) {
-          if (progress > 0.15) {
-            const t = Math.max(0, 1 - (progress - 0.15) / 0.08);
-            emergenceOpacity = t;
-          }
-        } else {
-          let revealStart = elementTarget - 0.15;
-          let revealEnd = elementTarget - 0.05;
-
-          if (typeof depth === 'string') {
-            if (depth === 'hero-title' || depth === 'hero-badge') {
-              revealStart = elementTarget - 0.20;
-              revealEnd = elementTarget - 0.10;
-            } else if (depth === 'paragraph') {
-              revealStart = elementTarget - 0.17;
-              revealEnd = elementTarget - 0.07;
-            } else if (depth === 'card' || depth === 'landmark') {
-              revealStart = elementTarget - 0.14;
-              revealEnd = elementTarget - 0.04;
-            } else if (depth === 'button') {
-              revealStart = elementTarget - 0.10;
-              revealEnd = elementTarget - 0.01;
-            }
-          }
-
-          const fadeOutThreshold = Math.max(baseTarget + 0.25, elementTarget + 0.20);
-
-          if (progress < revealStart) {
-            emergenceOpacity = 0;
-            emergenceY = 20;
-            emergenceBlur = 4;
-          } else if (progress < revealEnd) {
-            const t = (progress - revealStart) / (revealEnd - revealStart);
-            emergenceOpacity = t;
-            emergenceY = (1 - t) * 18;
-            emergenceBlur = (1 - t) * 3;
-          } else if (progress <= fadeOutThreshold) {
-            emergenceOpacity = 1;
-            emergenceY = 0;
-            emergenceBlur = 0;
-          } else {
-            const t = Math.max(0, 1 - (progress - fadeOutThreshold) / 0.10);
-            emergenceOpacity = t;
-            emergenceY = 0;
-            emergenceBlur = 0;
-          }
-        }
+        // Keep emergenceOpacity at 1 and emergenceY at 0 so text and blocks remain crisp, unblurred, and solid across all sections during scroll
+        emergenceOpacity = 1;
+        emergenceY = 0;
+        emergenceBlur = 0;
       }
 
       let hoverZ = 0;
@@ -191,12 +148,7 @@ export const CameraReactive: React.FC<CameraReactiveProps> = ({
 
       el.style.transform = `perspective(1000px) translate3d(${totalX.toFixed(2)}px, ${totalY.toFixed(2)}px, ${totalZ.toFixed(2)}px) rotateX(${totalRotX.toFixed(2)}deg) rotateY(${totalRotY.toFixed(2)}deg) rotateZ(${totalRotZ.toFixed(2)}deg)`;
       el.style.opacity = `${emergenceOpacity.toFixed(2)}`;
-      
-      if (emergenceBlur > 0.1) {
-        el.style.filter = `blur(${emergenceBlur.toFixed(1)}px)`;
-      } else {
-        el.style.filter = 'none';
-      }
+      el.style.filter = 'none';
     });
 
     return () => unsubscribe();

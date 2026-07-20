@@ -47,6 +47,12 @@ export interface FAQItem {
   answer: string;
 }
 
+export const CONTACT_INFO = {
+  email: 'shpstack@gmail.com',
+  phone: '+919279381411',
+  phoneFormatted: '+91 92793 81411',
+};
+
 export const SERVICES_DATA: ServiceItem[] = [
   {
     id: 'custom-software',
