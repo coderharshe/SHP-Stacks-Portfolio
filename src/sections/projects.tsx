@@ -38,16 +38,16 @@ export const Projects: React.FC = () => {
               {/* Screen Content */}
               <div className={`h-full w-full bg-gradient-to-b ${accentBg} p-4 pt-10 flex flex-col justify-between text-[10px] select-none font-mono`}>
                 <div className="space-y-3">
-                  <div className="flex items-center justify-between border-b border-white/5 pb-2">
-                    <span className="text-white/40">SYSTEM OK</span>
+                  <div className="flex items-center justify-between border-b border-[#111827]/5 pb-2">
+                    <span className="text-[#111827]/40">SYSTEM OK</span>
                     <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
                   </div>
                   <div className="space-y-2">
-                    <div className="h-8 rounded bg-white/5 border border-white/10 p-1 flex items-center gap-1.5">
+                    <div className="h-8 rounded bg-white/5 border border-[#111827]/10 p-1 flex items-center gap-1.5">
                       <div className="h-2 w-2 rounded bg-purple-500" />
                       <div className="h-1 w-20 bg-white/20 rounded" />
                     </div>
-                    <div className="h-14 rounded bg-white/5 border border-white/10 p-1.5 space-y-1">
+                    <div className="h-14 rounded bg-white/5 border border-[#111827]/10 p-1.5 space-y-1">
                       <div className="h-1.5 w-10 bg-white/30 rounded" />
                       <div className="grid grid-cols-3 gap-1">
                         <div className="h-4 bg-white/5 rounded" />
@@ -57,15 +57,15 @@ export const Projects: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="h-16 rounded bg-neutral-900/80 border border-white/10 p-1.5 flex flex-col justify-between">
-                  <div className="flex justify-between items-center text-[8px] text-white/50">
+                <div className="h-16 rounded bg-neutral-900/80 border border-[#111827]/10 p-1.5 flex flex-col justify-between">
+                  <div className="flex justify-between items-center text-[8px] text-[#111827]/50">
                     <span>OPS DELAY</span>
                     <span>1.8s</span>
                   </div>
                   <div className="h-1.5 bg-white/10 rounded overflow-hidden">
                     <div className="h-full w-[85%] bg-gradient-to-r from-accent-purple to-accent-cyan rounded" />
                   </div>
-                  <div className="flex justify-between items-center text-[7px] text-white/45">
+                  <div className="flex justify-between items-center text-[7px] text-[#111827]/45">
                     <span>99.9% ACCURACY</span>
                     <span>BATCH #290</span>
                   </div>
@@ -82,10 +82,10 @@ export const Projects: React.FC = () => {
               {/* Screen Content */}
               <div className={`h-full w-full bg-gradient-to-b ${accentBg} p-4 flex flex-row gap-3 text-[10px] select-none font-mono`}>
                 {/* Sidebar */}
-                <div className="w-1/4 border-r border-white/5 pr-2 flex flex-col justify-between h-full">
+                <div className="w-1/4 border-r border-[#111827]/5 pr-2 flex flex-col justify-between h-full">
                   <div className="space-y-1.5">
                     <div className="h-2.5 w-12 bg-white/30 rounded mb-4" />
-                    <div className="h-4 rounded bg-white/10 border border-white/5" />
+                    <div className="h-4 rounded bg-white/10 border border-[#111827]/5" />
                     <div className="h-4 rounded bg-white/5" />
                     <div className="h-4 rounded bg-white/5" />
                   </div>
@@ -93,23 +93,23 @@ export const Projects: React.FC = () => {
                 </div>
                 {/* Main panel */}
                 <div className="flex-grow flex flex-col justify-between h-full">
-                  <div className="flex justify-between items-center border-b border-white/5 pb-2">
+                  <div className="flex justify-between items-center border-b border-[#111827]/5 pb-2">
                     <div className="h-2 w-16 bg-white/20 rounded" />
                     <div className="h-2 w-8 bg-white/10 rounded" />
                   </div>
                   <div className="grid grid-cols-2 gap-2 my-2">
-                    <div className="h-16 rounded bg-white/5 border border-white/10 p-2 flex flex-col justify-between">
+                    <div className="h-16 rounded bg-white/5 border border-[#111827]/10 p-2 flex flex-col justify-between">
                       <div className="h-1.5 w-8 bg-cyan-400 rounded" />
                       <div className="h-4 bg-white/10 rounded" />
                     </div>
-                    <div className="h-16 rounded bg-white/5 border border-white/10 p-2 flex flex-col justify-between">
+                    <div className="h-16 rounded bg-white/5 border border-[#111827]/10 p-2 flex flex-col justify-between">
                       <div className="h-1.5 w-8 bg-purple-400 rounded" />
                       <div className="h-4 bg-white/10 rounded" />
                     </div>
                   </div>
-                  <div className="h-14 rounded bg-neutral-900/60 border border-white/5 p-2 flex items-center justify-center text-center">
+                  <div className="h-14 rounded bg-neutral-900/60 border border-[#111827]/5 p-2 flex items-center justify-center text-center">
                     <div className="space-y-1.5">
-                      <span className="text-[9px] text-white/50">FACE INDEX COMPILATION</span>
+                      <span className="text-[9px] text-[#111827]/50">FACE INDEX COMPILATION</span>
                       <div className="flex justify-center gap-1.5">
                         <div className="h-2 w-2 rounded-full bg-white/40" />
                         <div className="h-2 w-2 rounded-full bg-white/40 animate-pulse" />
@@ -132,34 +132,34 @@ export const Projects: React.FC = () => {
               {/* Screen Body */}
               <div className="relative w-[420px] h-[260px] rounded-t-2xl border-[6px] border-neutral-800 bg-neutral-950 shadow-2xl overflow-hidden">
                 {/* Browser bar */}
-                <div className="h-6 border-b border-white/5 bg-neutral-900 px-3 flex items-center gap-1.5">
+                <div className="h-6 border-b border-[#111827]/5 bg-neutral-900 px-3 flex items-center gap-1.5">
                   <div className="h-1.5 w-1.5 rounded-full bg-neutral-700" />
                   <div className="h-1.5 w-1.5 rounded-full bg-neutral-700" />
                   <div className="h-1.5 w-1.5 rounded-full bg-neutral-700" />
-                  <div className="h-3 w-40 bg-neutral-950/80 rounded ml-4 border border-white/5 flex items-center justify-center text-[7px] text-white/30 font-mono">
+                  <div className="h-3 w-40 bg-neutral-950/80 rounded ml-4 border border-[#111827]/5 flex items-center justify-center text-[7px] text-[#111827]/30 font-mono">
                     https://shpstacks.com/dashboard
                   </div>
                 </div>
                 {/* Content */}
                 <div className={`h-[calc(100%-24px)] w-full bg-gradient-to-b ${accentBg} p-4 flex flex-col justify-between text-[10px] select-none font-mono`}>
-                  <div className="flex justify-between items-center border-b border-white/5 pb-2">
-                    <span className="text-white/40">CORE LEDGER</span>
-                    <span className="text-[8px] bg-white/10 px-1.5 py-0.5 rounded text-white/60">STABLE</span>
+                  <div className="flex justify-between items-center border-b border-[#111827]/5 pb-2">
+                    <span className="text-[#111827]/40">CORE LEDGER</span>
+                    <span className="text-[8px] bg-white/10 px-1.5 py-0.5 rounded text-[#111827]/60">STABLE</span>
                   </div>
                   
                   {/* Grid layout mock */}
                   <div className="grid grid-cols-3 gap-2 my-2">
-                    <div className="h-16 rounded bg-neutral-900/70 border border-white/10 p-2 flex flex-col justify-between">
+                    <div className="h-16 rounded bg-neutral-900/70 border border-[#111827]/10 p-2 flex flex-col justify-between">
                       <div className="h-1.5 w-8 bg-white/30 rounded" />
                       <div className="h-4 bg-white/15 rounded" />
                       <div className="h-1 w-10 bg-white/10 rounded" />
                     </div>
-                    <div className="h-16 rounded bg-neutral-900/70 border border-white/10 p-2 flex flex-col justify-between">
+                    <div className="h-16 rounded bg-neutral-900/70 border border-[#111827]/10 p-2 flex flex-col justify-between">
                       <div className="h-1.5 w-8 bg-white/30 rounded" />
                       <div className="h-4 bg-white/15 rounded" />
                       <div className="h-1 w-10 bg-white/10 rounded" />
                     </div>
-                    <div className="h-16 rounded bg-neutral-900/70 border border-white/10 p-2 flex flex-col justify-between">
+                    <div className="h-16 rounded bg-neutral-900/70 border border-[#111827]/10 p-2 flex flex-col justify-between">
                       <div className="h-1.5 w-8 bg-white/30 rounded" />
                       <div className="h-4 bg-white/15 rounded" />
                       <div className="h-1 w-10 bg-white/10 rounded" />
@@ -167,8 +167,8 @@ export const Projects: React.FC = () => {
                   </div>
 
                   {/* Flow chart mock */}
-                  <div className="h-16 rounded bg-white/5 border border-white/5 p-2 flex flex-col justify-between">
-                    <div className="flex justify-between text-[8px] text-white/30">
+                  <div className="h-16 rounded bg-white/5 border border-[#111827]/5 p-2 flex flex-col justify-between">
+                    <div className="flex justify-between text-[8px] text-[#111827]/30">
                       <span>TRAFFIC TRAIL</span>
                       <span>15,200 REQS / MIN</span>
                     </div>
@@ -195,7 +195,10 @@ export const Projects: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="relative py-24 sm:py-32 border-t border-border overflow-hidden bg-[#2A2B2A]">
+    <section id="projects" className="relative py-24 sm:py-32 border-t border-border overflow-hidden bg-transparent" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2500&auto=format&fit=crop')", backgroundSize: 'cover', backgroundAttachment: 'fixed', backgroundPosition: 'center' }}>
+      {/* Parallax Overlay */}
+      <div className="absolute inset-0 bg-[#F8FAF9]/90 -z-10" />
+
       {/* Background blobs */}
       <div className="absolute top-[40%] left-[-10%] h-[300px] w-[300px] rounded-full bg-accent-purple/5 blur-[100px] -z-10 animate-float-slow" />
       <div className="absolute bottom-[20%] right-[-10%] h-[350px] w-[350px] rounded-full bg-accent-blue/5 blur-[120px] -z-10 animate-float-medium" />
@@ -206,7 +209,7 @@ export const Projects: React.FC = () => {
           <span className="text-xs font-mono uppercase tracking-widest text-accent-purple font-semibold">
             FEATURED PROJECTS
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white font-sans">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#111827] font-sans">
             Products Built to Perform.
           </h2>
           <p className="text-sm sm:text-base text-foreground/50 leading-relaxed font-light">
@@ -227,8 +230,8 @@ export const Projects: React.FC = () => {
                   onClick={() => setSelectedProject(project)}
                   className={`flex-shrink-0 text-left px-5 py-4 rounded-xl border transition-all duration-300 cursor-pointer lg:w-full flex items-center justify-between group ${
                     isSelected 
-                      ? 'bg-card border-white/10 text-white shadow-lg' 
-                      : 'bg-transparent border-transparent text-foreground/50 hover:text-white/80 hover:bg-white/2'
+                      ? 'bg-card border-[#111827]/10 text-[#111827] shadow-lg' 
+                      : 'bg-transparent border-transparent text-foreground/50 hover:text-[#111827]/80 hover:bg-white/2'
                   }`}
                 >
                   <div className="space-y-1 overflow-hidden">
@@ -242,7 +245,7 @@ export const Projects: React.FC = () => {
                     </h3>
                   </div>
                   <ChevronRight className={`hidden lg:block h-4 w-4 transition-transform duration-300 ${
-                    isSelected ? 'translate-x-0.5 text-accent-purple' : 'opacity-0 group-hover:opacity-40 group-hover:translate-x-0.5'
+                    isSelected ? 'translate-x-0.5 text-accent-purple' : 'opacity-0 group-hover:opacity-20 group-hover:translate-x-0.5'
                   }`} />
                 </button>
               );
@@ -284,7 +287,7 @@ export const Projects: React.FC = () => {
                     <span className="text-[10px] font-mono tracking-widest text-accent-purple uppercase">
                       {selectedProject.category}
                     </span>
-                    <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight">
+                    <h3 className="text-xl md:text-2xl font-bold text-[#111827] tracking-tight">
                       {selectedProject.title}
                     </h3>
                   </div>
@@ -299,7 +302,7 @@ export const Projects: React.FC = () => {
                     {selectedProject.techStack.map((tech, idx) => (
                       <span 
                         key={idx} 
-                        className="text-[9px] font-mono bg-white/5 border border-white/5 text-foreground/70 px-2 py-0.5 rounded-md"
+                        className="text-[9px] font-mono bg-white/5 border border-[#111827]/5 text-foreground/70 px-2 py-0.5 rounded-md"
                       >
                         {tech}
                       </span>
@@ -309,18 +312,18 @@ export const Projects: React.FC = () => {
                   {/* Problem & Solution block */}
                   <div className="space-y-3.5 border-t border-border pt-4 text-xs">
                     <div className="space-y-1">
-                      <span className="font-semibold text-white/80 block">The Challenge</span>
+                      <span className="font-semibold text-[#111827]/80 block">The Challenge</span>
                       <p className="text-foreground/50 leading-relaxed font-light">{selectedProject.problem}</p>
                     </div>
                     <div className="space-y-1">
-                      <span className="font-semibold text-white/80 block">The Engineering Outcome</span>
+                      <span className="font-semibold text-[#111827]/80 block">The Engineering Outcome</span>
                       <p className="text-foreground/50 leading-relaxed font-light">{selectedProject.solution}</p>
                     </div>
                   </div>
 
                   {/* Results Bullet points */}
                   <div className="border-t border-border pt-4 space-y-2">
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-white/40 block mb-2">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#111827]/40 block mb-2">
                       Key Metrics
                     </span>
                     {selectedProject.results.map((result, idx) => (
@@ -344,7 +347,7 @@ export const Projects: React.FC = () => {
                   className="group w-full md:w-auto text-xs py-2 px-4 hover:border-accent-purple/40"
                 >
                   <span>Build A Similar Solution</span>
-                  <ArrowRight className="h-3.5 w-3.5 opacity-60 group-hover:translate-x-0.5 transition-transform" />
+                  <ArrowRight className="h-3.5 w-3.5 opacity-30 group-hover:translate-x-0.5 transition-transform" />
                 </Button>
               </div>
 

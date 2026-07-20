@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-[#2A2B2A] flex flex-col justify-center items-center px-4 relative overflow-hidden">
+    <div className="min-h-screen bg-transparent flex flex-col justify-center items-center px-4 relative overflow-hidden">
       {/* Background radial spotlight */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-[500px] bg-gradient-to-b from-accent-purple/5 to-transparent blur-[120px] pointer-events-none -z-10" />
       <div className="absolute inset-0 bg-grid-pattern opacity-10 -z-10" />
@@ -31,7 +31,7 @@ export default function NotFound() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl sm:text-5xl font-bold tracking-tight text-white font-sans"
+          className="text-4xl sm:text-5xl font-bold tracking-tight text-[#111827] font-sans"
         >
           Page Not Found.
         </motion.h1>
@@ -61,7 +61,7 @@ export default function NotFound() {
           >
             <Home className="h-4 w-4 mr-2" />
             <span>Return to Command Center</span>
-            <ArrowRight className="h-4 w-4 ml-1 opacity-60 group-hover:translate-x-0.5 transition-transform" />
+            <ArrowRight className="h-4 w-4 ml-1 opacity-30 group-hover:translate-x-0.5 transition-transform" />
           </Button>
         </motion.div>
       </div>

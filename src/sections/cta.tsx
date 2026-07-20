@@ -27,7 +27,10 @@ export const CTA: React.FC = () => {
   };
 
   return (
-    <section id="cta" className="relative py-24 sm:py-32 border-t border-border overflow-hidden bg-[#2A2B2A]">
+    <section id="cta" className="relative py-24 sm:py-32 border-t border-border overflow-hidden bg-transparent" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2500&auto=format&fit=crop')", backgroundSize: 'cover', backgroundAttachment: 'fixed', backgroundPosition: 'center' }}>
+      {/* Parallax Overlay */}
+      <div className="absolute inset-0 bg-[#F8FAF9]/90 -z-10" />
+
       {/* Background blobs */}
       <div className="absolute bottom-[-10%] left-[-10%] h-[400px] w-[400px] rounded-full bg-accent-blue/10 blur-[130px] -z-10" />
       <div className="absolute top-[20%] right-[-10%] h-[350px] w-[350px] rounded-full bg-accent-purple/10 blur-[120px] -z-10" />
@@ -41,7 +44,7 @@ export const CTA: React.FC = () => {
               <span className="text-xs font-mono uppercase tracking-widest text-accent-blue font-semibold">
                 GET IN TOUCH
               </span>
-              <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white font-sans leading-tight">
+              <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#111827] font-sans leading-tight">
                 Ready to Build Your Next Product?
               </h2>
               <p className="text-sm sm:text-base text-foreground/50 leading-relaxed font-light">
@@ -50,18 +53,18 @@ export const CTA: React.FC = () => {
             </div>
 
             {/* Support Actions */}
-            <div className="space-y-4 pt-4 border-t border-white/5">
+            <div className="space-y-4 pt-4 border-t border-[#111827]/5">
               <a 
                 href="https://calendly.com" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="flex items-center gap-4 group cursor-pointer"
               >
-                <div className="h-10 w-10 rounded-lg border border-border bg-white/2 flex items-center justify-center group-hover:border-white/12 transition-colors">
+                <div className="h-10 w-10 rounded-lg border border-border bg-white/2 flex items-center justify-center group-hover:border-[#111827]/12 transition-colors">
                   <Calendar className="h-4.5 w-4.5 text-accent-blue" />
                 </div>
                 <div className="space-y-0.5">
-                  <h4 className="text-sm font-semibold text-white group-hover:text-accent-blue transition-colors">
+                  <h4 className="text-sm font-semibold text-[#111827] group-hover:text-accent-blue transition-colors">
                     Book a Discovery Call
                   </h4>
                   <p className="text-xs text-foreground/45">Choose a time slot to review your specs.</p>
@@ -72,11 +75,11 @@ export const CTA: React.FC = () => {
                 href="mailto:contact@shpstacks.com" 
                 className="flex items-center gap-4 group cursor-pointer"
               >
-                <div className="h-10 w-10 rounded-lg border border-border bg-white/2 flex items-center justify-center group-hover:border-white/12 transition-colors">
+                <div className="h-10 w-10 rounded-lg border border-border bg-white/2 flex items-center justify-center group-hover:border-[#111827]/12 transition-colors">
                   <Mail className="h-4.5 w-4.5 text-accent-purple" />
                 </div>
                 <div className="space-y-0.5">
-                  <h4 className="text-sm font-semibold text-white group-hover:text-accent-purple transition-colors">
+                  <h4 className="text-sm font-semibold text-[#111827] group-hover:text-accent-purple transition-colors">
                     Direct Email Inquiry
                   </h4>
                   <p className="text-xs text-foreground/45">Send requirements directly to founders.</p>
@@ -87,14 +90,14 @@ export const CTA: React.FC = () => {
 
           {/* Right Column - Contact Form */}
           <div className="lg:col-span-7">
-            <Card glowColor="blue" className="p-6 sm:p-8 border-white/5 bg-card/65 shadow-2xl relative">
+            <Card glowColor="blue" className="p-6 sm:p-8 border-[#111827]/5 bg-card/65 shadow-2xl relative">
               {isSubmitted ? (
                 <div className="py-16 text-center flex flex-col items-center gap-5">
                   <div className="h-12 w-12 rounded-full border border-emerald-500/20 bg-emerald-500/5 flex items-center justify-center">
                     <CheckCircle2 className="h-6 w-6 text-emerald-400" />
                   </div>
                   <div className="space-y-2">
-                    <h3 className="text-xl font-bold text-white tracking-tight">
+                    <h3 className="text-xl font-bold text-[#111827] tracking-tight">
                       Requirements Received
                     </h3>
                     <p className="text-sm text-foreground/50 max-w-sm leading-relaxed font-light">
@@ -114,7 +117,7 @@ export const CTA: React.FC = () => {
                   {/* Name & Email Group */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="space-y-1.5">
-                      <label htmlFor="name" className="text-[10px] font-mono uppercase tracking-wider text-white/55">
+                      <label htmlFor="name" className="text-[10px] font-mono uppercase tracking-wider text-[#111827]/55">
                         Your Name
                       </label>
                       <input
@@ -130,7 +133,7 @@ export const CTA: React.FC = () => {
                     </div>
 
                     <div className="space-y-1.5">
-                      <label htmlFor="email" className="text-[10px] font-mono uppercase tracking-wider text-white/55">
+                      <label htmlFor="email" className="text-[10px] font-mono uppercase tracking-wider text-[#111827]/55">
                         Email Address
                       </label>
                       <input
@@ -155,7 +158,7 @@ export const CTA: React.FC = () => {
                   {/* Company & Budget Group */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="space-y-1.5">
-                      <label htmlFor="company" className="text-[10px] font-mono uppercase tracking-wider text-white/55">
+                      <label htmlFor="company" className="text-[10px] font-mono uppercase tracking-wider text-[#111827]/55">
                         Company Name
                       </label>
                       <input
@@ -171,7 +174,7 @@ export const CTA: React.FC = () => {
                     </div>
 
                     <div className="space-y-1.5">
-                      <label htmlFor="budget" className="text-[10px] font-mono uppercase tracking-wider text-white/55">
+                      <label htmlFor="budget" className="text-[10px] font-mono uppercase tracking-wider text-[#111827]/55">
                         Budget Range
                       </label>
                       <select
@@ -193,7 +196,7 @@ export const CTA: React.FC = () => {
 
                   {/* Project message */}
                   <div className="space-y-1.5">
-                    <label htmlFor="message" className="text-[10px] font-mono uppercase tracking-wider text-white/55">
+                    <label htmlFor="message" className="text-[10px] font-mono uppercase tracking-wider text-[#111827]/55">
                       Project Description
                     </label>
                     <textarea

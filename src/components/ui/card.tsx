@@ -22,19 +22,19 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
     };
 
     const spotlightColorMap = {
-      default: 'rgba(241, 255, 250, 0.06)',
-      blue:    'rgba(52, 84, 209, 0.18)',
-      gold:    'rgba(183, 158, 54, 0.18)',
-      purple:  'rgba(183, 158, 54, 0.18)',  // alias → gold
-      cyan:    'rgba(52, 84, 209, 0.18)',   // alias → blue
+      default: 'rgba(17, 24, 39, 0.03)',
+      blue:    'rgba(239, 68, 68, 0.05)',  // Red
+      gold:    'rgba(17, 24, 39, 0.05)',   // Dark gray
+      purple:  'rgba(17, 24, 39, 0.05)',
+      cyan:    'rgba(239, 68, 68, 0.05)',
     };
 
     const borderGlowMap = {
-      default: 'rgba(241, 255, 250, 0.10)',
-      blue:    'rgba(52, 84, 209, 0.30)',
-      gold:    'rgba(183, 158, 54, 0.30)',
-      purple:  'rgba(183, 158, 54, 0.30)',
-      cyan:    'rgba(52, 84, 209, 0.30)',
+      default: 'rgba(17, 24, 39, 0.08)',
+      blue:    'rgba(239, 68, 68, 0.20)',  // Red border
+      gold:    'rgba(17, 24, 39, 0.20)',   // Dark gray border
+      purple:  'rgba(17, 24, 39, 0.20)',
+      cyan:    'rgba(239, 68, 68, 0.20)',
     };
 
     return (

@@ -33,7 +33,7 @@ export const Navbar: React.FC = () => {
   const scrollY = useScrollPosition();
   const [scrollProgress, setScrollProgress] = useState(0);
 
-  const sectionIds = ['hero', 'about', 'services', 'projects', 'why-choose-us', 'tech-stack', 'process', 'team', 'faq'];
+  const sectionIds = ['hero', 'about', 'services', 'projects', 'why-choose-us', 'tech-stack', 'process', 'faq'];
   const activeSection = useActiveSection(sectionIds);
 
   const navLinks = [
@@ -41,7 +41,7 @@ export const Navbar: React.FC = () => {
     { label: 'Services', href: '#services', section: 'services' },
     { label: 'Projects', href: '#projects', section: 'projects' },
     { label: 'Process',  href: '#process',  section: 'process'  },
-    { label: 'Team',     href: '#team',     section: 'team'     },
+
     { label: 'FAQ',      href: '#faq',      section: 'faq'      },
   ];
 
@@ -68,12 +68,12 @@ export const Navbar: React.FC = () => {
           scrollY > 20 ? "glass-nav py-3" : "bg-transparent py-5 border-b border-transparent"
         )}
       >
-        {/* Scroll Progress Bar — blue → gold */}
+        {/* Scroll Progress Bar — Red */}
         <div
-          className="absolute top-0 left-0 h-[2px] transition-all duration-75"
+          className="absolute top-0 left-0 h-[3px] transition-all duration-75"
           style={{
             width: `${scrollProgress}%`,
-            background: 'linear-gradient(90deg, #3454D1, #B79E36)',
+            background: 'linear-gradient(90deg, #EF4444, #F87171)',
           }}
         />
 
@@ -87,11 +87,13 @@ export const Navbar: React.FC = () => {
               className="flex items-center gap-2.5 group cursor-pointer"
             >
               <div className="relative h-7 w-7 flex-shrink-0">
-                <SHPLogoMark className="h-7 w-7 text-[#F1FFFA] group-hover:text-[#B79E36] transition-colors duration-300" />
+                {/* PDF Logo is Red */}
+                <SHPLogoMark className="h-7 w-7 text-[#EF4444] group-hover:text-[#F87171] transition-colors duration-300" />
               </div>
-              <span className="font-sans text-[#F1FFFA] text-base leading-none">
+              <span className="font-sans text-[#111827] text-base leading-none">
                 <span className="font-black tracking-tight">SHP</span>
-                <span className="font-light tracking-tight">Stacks</span>
+                {/* PDF specifies 'Stacks' is also red but for contrast let's keep text dark, or make 'Stacks' red */}
+                <span className="font-light tracking-tight text-[#EF4444]">Stacks</span>
               </span>
             </a>
 
@@ -106,15 +108,15 @@ export const Navbar: React.FC = () => {
                     onClick={(e) => handleLinkClick(e, link.href)}
                     className={cn(
                       "relative text-sm font-medium transition-colors duration-200 py-1.5 cursor-pointer",
-                      isActive ? "text-[#F1FFFA]" : "text-[#F1FFFA]/50 hover:text-[#F1FFFA]"
+                      isActive ? "text-[#111827]" : "text-[#111827]/60 hover:text-[#111827]"
                     )}
                   >
                     {link.label}
                     {isActive && (
                       <motion.span
                         layoutId="activeNavIndicator"
-                        className="absolute bottom-0 left-0 right-0 h-[1.5px] rounded-full"
-                        style={{ background: '#3454D1' }}
+                        className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full"
+                        style={{ background: '#EF4444' }}
                         transition={{ type: "spring", stiffness: 350, damping: 30 }}
                       />
                     )}
@@ -139,7 +141,7 @@ export const Navbar: React.FC = () => {
             <div className="flex md:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="text-[#F1FFFA]/75 hover:text-[#F1FFFA] p-2 cursor-pointer focus:outline-none"
+                className="text-[#111827]/75 hover:text-[#111827] p-2 cursor-pointer focus:outline-none"
                 aria-label="Toggle menu"
               >
                 {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -156,8 +158,8 @@ export const Navbar: React.FC = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="md:hidden border-t border-[#F1FFFA]/08 overflow-hidden absolute top-full left-0 right-0"
-              style={{ background: 'rgba(42,43,42,0.97)', backdropFilter: 'blur(16px)' }}
+              className="md:hidden border-t border-gray-200 overflow-hidden absolute top-full left-0 right-0"
+              style={{ background: 'rgba(255,255,255,0.97)', backdropFilter: 'blur(16px)' }}
             >
               <div className="px-4 pt-4 pb-6 space-y-1 flex flex-col items-start">
                 {navLinks.map((link) => {
@@ -168,8 +170,8 @@ export const Navbar: React.FC = () => {
                       href={link.href}
                       onClick={(e) => handleLinkClick(e, link.href)}
                       className={cn(
-                        "w-full text-base font-medium py-3 border-b border-[#F1FFFA]/06 cursor-pointer",
-                        isActive ? "text-[#3454D1] font-semibold" : "text-[#F1FFFA]/60"
+                        "w-full text-base font-medium py-3 border-b border-gray-100 cursor-pointer",
+                        isActive ? "text-[#EF4444] font-semibold" : "text-[#111827]/70"
                       )}
                     >
                       {link.label}

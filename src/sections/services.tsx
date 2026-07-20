@@ -50,7 +50,10 @@ export const Services: React.FC = () => {
   };
 
   return (
-    <section id="services" className="relative py-24 sm:py-32 border-t border-border overflow-hidden bg-[#2A2B2A]">
+    <section id="services" className="relative py-24 sm:py-32 border-t border-border overflow-hidden bg-transparent" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2500&auto=format&fit=crop')", backgroundSize: 'cover', backgroundAttachment: 'fixed', backgroundPosition: 'center' }}>
+      {/* Parallax Overlay */}
+      <div className="absolute inset-0 bg-[#F8FAF9]/90 -z-10" />
+
       {/* Decorative Blur Blob */}
       <div className="absolute top-[20%] right-[-10%] h-[350px] w-[350px] rounded-full bg-accent-cyan/5 blur-[120px] -z-10" />
 
@@ -60,7 +63,7 @@ export const Services: React.FC = () => {
           <span className="text-xs font-mono uppercase tracking-widest text-accent-cyan font-semibold">
             SERVICES
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white font-sans">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#111827] font-sans">
             Complete Engineering Capabilities.
           </h2>
           <p className="text-sm sm:text-base text-foreground/50 leading-relaxed font-light">
@@ -87,15 +90,15 @@ export const Services: React.FC = () => {
               >
                 <Card 
                   glowColor="default" 
-                  className="p-6 md:p-8 h-full flex flex-col justify-between hover:border-white/15 transition-all"
+                  className="p-6 md:p-8 h-full flex flex-col justify-between hover:border-[#111827]/15 transition-all"
                 >
                   <div className="space-y-4">
                     {/* Icon wrapper */}
-                    <div className="h-11 w-11 rounded-lg border border-border bg-white/2 flex items-center justify-center group-hover:border-white/20 transition-colors">
-                      <Icon className="h-5 w-5 text-white/80 group-hover:text-white transition-colors" />
+                    <div className="h-11 w-11 rounded-lg border border-border bg-white/2 flex items-center justify-center group-hover:border-[#111827]/20 transition-colors">
+                      <Icon className="h-5 w-5 text-[#111827]/80 group-hover:text-[#111827] transition-colors" />
                     </div>
                     <div className="space-y-2">
-                      <h3 className="text-base sm:text-lg font-semibold text-white tracking-tight group-hover:text-accent-cyan transition-colors">
+                      <h3 className="text-base sm:text-lg font-semibold text-[#111827] tracking-tight group-hover:text-accent-cyan transition-colors">
                         {service.title}
                       </h3>
                       <p className="text-xs sm:text-sm text-foreground/50 leading-relaxed font-light line-clamp-3">
@@ -105,7 +108,7 @@ export const Services: React.FC = () => {
                   </div>
 
                   {/* Read More link */}
-                  <div className="mt-6 flex items-center gap-1 text-xs font-mono text-white/40 group-hover:text-white transition-colors">
+                  <div className="mt-6 flex items-center gap-1 text-xs font-mono text-[#111827]/40 group-hover:text-[#111827] transition-colors">
                     <span>EXPLORE SPECS</span>
                     <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
                   </div>
@@ -129,7 +132,7 @@ export const Services: React.FC = () => {
             </p>
             
             <div className="border-t border-border pt-6">
-              <h4 className="text-xs font-mono uppercase tracking-widest text-white/50 mb-4">
+              <h4 className="text-xs font-mono uppercase tracking-widest text-[#111827]/50 mb-4">
                 Core Capabilities
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

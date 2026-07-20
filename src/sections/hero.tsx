@@ -40,18 +40,21 @@ export const Hero: React.FC = () => {
     <section
       id="hero"
       className="relative min-h-[95vh] flex flex-col justify-center items-center pt-28 pb-16 overflow-hidden z-10"
-    >
+     style={{ backgroundImage: "url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2500&auto=format&fit=crop')", backgroundSize: 'cover', backgroundAttachment: 'fixed', backgroundPosition: 'center' }}>
+      {/* Parallax Overlay */}
+      <div className="absolute inset-0 bg-[#F8FAF9]/90 -z-10" />
+
       {/* Grid */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-60 -z-10" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-30 -z-10" />
 
       {/* Glow Blob 1 — Gold (top-left) */}
-      <div className="absolute top-[10%] left-[8%] h-[380px] w-[380px] rounded-full bg-[#B79E36]/08 blur-[130px] animate-float-slow -z-10" />
+      <div className="absolute top-[10%] left-[8%] h-[380px] w-[380px] rounded-full bg-[#111827]/08 blur-[130px] animate-float-slow -z-10" />
 
       {/* Glow Blob 2 — Royal Blue (bottom-right) */}
-      <div className="absolute bottom-[8%] right-[8%] h-[420px] w-[420px] rounded-full bg-[#3454D1]/10 blur-[140px] animate-float-medium -z-10" />
+      <div className="absolute bottom-[8%] right-[8%] h-[420px] w-[420px] rounded-full bg-[#EF4444]/10 blur-[140px] animate-float-medium -z-10" />
 
       {/* Glow Blob 3 — Subtle blue (top-center) */}
-      <div className="absolute top-[-5%] left-[44%] h-[240px] w-[240px] rounded-full bg-[#3454D1]/08 blur-[100px] animate-float-fast -z-10" />
+      <div className="absolute top-[-5%] left-[44%] h-[240px] w-[240px] rounded-full bg-[#EF4444]/08 blur-[100px] animate-float-fast -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
         <motion.div
@@ -70,8 +73,8 @@ export const Hero: React.FC = () => {
             }}
           >
             {/* Gold dot */}
-            <span className="h-1.5 w-1.5 rounded-full bg-[#B79E36] animate-pulse" />
-            <span className="text-xs font-mono tracking-widest text-[#F1FFFA]/70 uppercase">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#111827] animate-pulse" />
+            <span className="text-xs font-mono tracking-widest text-[#111827]/70 uppercase">
               AI-First Software Engineering Agency
             </span>
           </motion.div>
@@ -89,7 +92,7 @@ export const Hero: React.FC = () => {
           {/* Subheading */}
           <motion.p
             variants={itemVariants}
-            className="text-base sm:text-lg md:text-xl text-[#F1FFFA]/50 max-w-2xl mb-10 leading-relaxed font-light"
+            className="text-base sm:text-lg md:text-xl text-[#111827]/50 max-w-2xl mb-10 leading-relaxed font-light"
           >
             We build enterprise software, AI solutions, SaaS platforms, automation systems,
             and high-performance web applications for ambitious businesses.
@@ -122,14 +125,14 @@ export const Hero: React.FC = () => {
           {/* Stats */}
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-3 gap-4 md:gap-16 border-t border-b border-[#F1FFFA]/08 py-8 w-full max-w-3xl"
+            className="grid grid-cols-3 gap-4 md:gap-16 border-t border-b border-[#111827]/08 py-8 w-full max-w-3xl"
           >
             {stats.map((stat, idx) => (
               <div key={idx} className="flex flex-col items-center px-2">
-                <span className="text-2xl sm:text-4xl font-bold font-sans tracking-tight text-[#F1FFFA] mb-1.5 tabular-nums">
+                <span className="text-2xl sm:text-4xl font-bold font-sans tracking-tight text-[#111827] mb-1.5 tabular-nums">
                   {stat.value}
                 </span>
-                <span className="text-[9px] sm:text-[10px] text-[#F1FFFA]/40 uppercase tracking-widest font-mono text-center leading-tight">
+                <span className="text-[9px] sm:text-[10px] text-[#111827]/40 uppercase tracking-widest font-mono text-center leading-tight">
                   {stat.label}
                 </span>
               </div>
@@ -140,7 +143,7 @@ export const Hero: React.FC = () => {
 
       {/* Technology Marquee */}
       <div
-        className="w-full mt-20 relative py-5 overflow-hidden select-none border-t border-b border-[#F1FFFA]/06"
+        className="w-full mt-20 relative py-5 overflow-hidden select-none border-t border-b border-[#111827]/06"
         style={{ background: 'rgba(241,255,250,0.015)' }}
       >
         <div
@@ -156,7 +159,7 @@ export const Hero: React.FC = () => {
           {[...technologies, ...technologies, ...technologies].map((tech, idx) => (
             <div
               key={idx}
-              className="text-xs sm:text-sm font-mono tracking-wider text-[#F1FFFA]/30 hover:text-[#B79E36] transition-colors duration-300"
+              className="text-xs sm:text-sm font-mono tracking-wider text-[#111827]/30 hover:text-[#111827] transition-colors duration-300"
             >
               {tech}
             </div>

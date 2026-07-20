@@ -78,7 +78,10 @@ export const WhyChooseUs: React.FC = () => {
   };
 
   return (
-    <section id="why-choose-us" className="relative py-24 sm:py-32 border-t border-border overflow-hidden bg-background">
+    <section id="why-choose-us" className="relative py-24 sm:py-32 border-t border-border overflow-hidden bg-background" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2500&auto=format&fit=crop')", backgroundSize: 'cover', backgroundAttachment: 'fixed', backgroundPosition: 'center' }}>
+      {/* Parallax Overlay */}
+      <div className="absolute inset-0 bg-[#F8FAF9]/90 -z-10" />
+
       {/* Decorative Blur Blob */}
       <div className="absolute top-[30%] left-[-10%] h-[350px] w-[350px] rounded-full bg-accent-purple/5 blur-[120px] -z-10" />
 
@@ -88,7 +91,7 @@ export const WhyChooseUs: React.FC = () => {
           <span className="text-xs font-mono uppercase tracking-widest text-accent-blue font-semibold">
             WHY SHP STACKS
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white font-sans">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#111827] font-sans">
             Built for Serious Operations.
           </h2>
           <p className="text-sm sm:text-base text-foreground/50 leading-relaxed font-light">
@@ -110,14 +113,14 @@ export const WhyChooseUs: React.FC = () => {
               <motion.div key={idx} variants={cardVariants} className="group">
                 <Card 
                   glowColor={reason.color} 
-                  className="p-6 h-full flex flex-col justify-start border-white/5 hover:border-white/10"
+                  className="p-6 h-full flex flex-col justify-start border-[#111827]/5 hover:border-[#111827]/10"
                 >
                   <div className="space-y-4">
-                    <div className="h-10 w-10 rounded-lg border border-border bg-white/2 flex items-center justify-center group-hover:border-white/10 transition-colors">
-                      <Icon className="h-5 w-5 text-white/80 group-hover:text-white transition-colors" />
+                    <div className="h-10 w-10 rounded-lg border border-border bg-white/2 flex items-center justify-center group-hover:border-[#111827]/10 transition-colors">
+                      <Icon className="h-5 w-5 text-[#111827]/80 group-hover:text-[#111827] transition-colors" />
                     </div>
                     <div className="space-y-2">
-                      <h3 className="text-base font-semibold text-white tracking-tight">
+                      <h3 className="text-base font-semibold text-[#111827] tracking-tight">
                         {reason.title}
                       </h3>
                       <p className="text-xs sm:text-sm text-foreground/50 leading-relaxed font-light">

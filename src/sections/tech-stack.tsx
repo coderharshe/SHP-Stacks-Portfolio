@@ -72,7 +72,10 @@ export const TechStack: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('Frontend');
 
   return (
-    <section id="tech-stack" className="relative py-24 sm:py-32 border-t border-border overflow-hidden bg-[#2A2B2A]">
+    <section id="tech-stack" className="relative py-24 sm:py-32 border-t border-border overflow-hidden bg-transparent" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2500&auto=format&fit=crop')", backgroundSize: 'cover', backgroundAttachment: 'fixed', backgroundPosition: 'center' }}>
+      {/* Parallax Overlay */}
+      <div className="absolute inset-0 bg-[#F8FAF9]/90 -z-10" />
+
       {/* Background blobs */}
       <div className="absolute top-[20%] right-[-10%] h-[300px] w-[300px] rounded-full bg-accent-purple/5 blur-[100px] -z-10" />
       <div className="absolute bottom-[20%] left-[-10%] h-[350px] w-[350px] rounded-full bg-accent-blue/5 blur-[120px] -z-10" />
@@ -83,7 +86,7 @@ export const TechStack: React.FC = () => {
           <span className="text-xs font-mono uppercase tracking-widest text-accent-cyan font-semibold">
             TECHNOLOGY HUB
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white font-sans">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#111827] font-sans">
             Our Production Tech Stack.
           </h2>
           <p className="text-sm sm:text-base text-foreground/50 leading-relaxed font-light">
@@ -99,8 +102,8 @@ export const TechStack: React.FC = () => {
               onClick={() => setActiveCategory(cat.name)}
               className={`px-4 py-2 text-xs font-mono rounded-full border transition-all duration-300 cursor-pointer ${
                 activeCategory === cat.name
-                  ? 'bg-white text-black border-white'
-                  : 'bg-transparent text-foreground/60 border-border hover:text-white hover:border-white/20'
+                  ? 'bg-white text-black border-[#111827]'
+                  : 'bg-transparent text-foreground/60 border-border hover:text-[#111827] hover:border-[#111827]/20'
               }`}
             >
               {cat.name.toUpperCase()}
@@ -124,13 +127,13 @@ export const TechStack: React.FC = () => {
                 <Card
                   key={idx}
                   glowColor="cyan"
-                  className="p-6 flex flex-col justify-between h-36 border-white/5 hover:border-white/12"
+                  className="p-6 flex flex-col justify-between h-36 border-[#111827]/5 hover:border-[#111827]/12"
                 >
                   <div className="space-y-1">
                     <span className="text-xs font-mono text-accent-cyan font-medium block">
                       {tech.tag}
                     </span>
-                    <h3 className="text-lg font-bold text-white tracking-tight">
+                    <h3 className="text-lg font-bold text-[#111827] tracking-tight">
                       {tech.name}
                     </h3>
                   </div>

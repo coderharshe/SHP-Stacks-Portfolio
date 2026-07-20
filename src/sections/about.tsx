@@ -55,8 +55,11 @@ export const About: React.FC = () => {
   };
 
   return (
-    <section id="about" className="relative py-24 sm:py-32 border-t border-border overflow-hidden">
-      <div className="absolute inset-0 bg-[#2A2B2A] -z-20" />
+    <section id="about" className="relative py-24 sm:py-32 border-t border-border overflow-hidden" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2500&auto=format&fit=crop')", backgroundSize: 'cover', backgroundAttachment: 'fixed', backgroundPosition: 'center' }}>
+      {/* Parallax Overlay */}
+      <div className="absolute inset-0 bg-[#F8FAF9]/90 -z-10" />
+
+      <div className="absolute inset-0 bg-transparent -z-20" />
       <div className="absolute top-[30%] left-1/2 -translate-x-1/2 h-[300px] w-[500px] rounded-full bg-accent-blue/5 blur-[120px] -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -77,7 +80,7 @@ export const About: React.FC = () => {
             </motion.span>
             <motion.h2 
               variants={textVariants}
-              className="text-3xl sm:text-4xl font-bold tracking-tight text-white font-sans"
+              className="text-3xl sm:text-4xl font-bold tracking-tight text-[#111827] font-sans"
             >
               We Build Software That Scales Businesses.
             </motion.h2>
@@ -106,10 +109,10 @@ export const About: React.FC = () => {
                     className="p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start"
                   >
                     <div className="rounded-lg border border-border p-3 bg-white/2 flex-shrink-0">
-                      <Icon className="h-6 w-6 text-white" />
+                      <Icon className="h-6 w-6 text-[#111827]" />
                     </div>
                     <div className="space-y-2">
-                      <h3 className="text-lg font-semibold text-white">
+                      <h3 className="text-lg font-semibold text-[#111827]">
                         {item.title}
                       </h3>
                       <p className="text-sm text-foreground/50 leading-relaxed font-light">

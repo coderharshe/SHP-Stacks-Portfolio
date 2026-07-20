@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
@@ -87,7 +87,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col bg-[#2A2B2A] text-foreground antialiased relative">
+      <body className="min-h-full flex flex-col bg-transparent text-foreground antialiased relative">
         {/* Grain overlay */}
         <div className="noise-overlay" />
 

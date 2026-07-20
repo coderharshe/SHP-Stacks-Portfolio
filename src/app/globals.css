@@ -1,62 +1,61 @@
 @import "tailwindcss";
 
 @theme {
-  /* ── Brand Colors ── */
-  --color-background:  #2A2B2A;
-  --color-foreground:  #F1FFFA;
-  --color-card:        #1E1F1E;
-  --color-border:      rgba(241, 255, 250, 0.08);
+  /* ── Brand Colors (Light Theme) ── */
+  --color-background:  #F8FAF9;
+  --color-foreground:  #111827;
+  --color-card:        #FFFFFF;
+  --color-border:      rgba(17, 24, 39, 0.08);
 
   /* ── Brand Accents ── */
-  --color-accent-blue:  #3454D1;   /* Royal Blue  */
-  --color-accent-gold:  #B79E36;   /* Gold        */
-  --color-accent-mint:  #F1FFFA;   /* Mint White  */
-
-  /* ── Legacy aliases (used across sections) ── */
-  --color-accent-purple: #B79E36;  /* maps gold   */
-  --color-accent-cyan:   #3454D1;  /* maps blue   */
+  --color-accent-red:   #EF4444;   /* Vibrant Red from PDF */
+  --color-accent-blue:  #EF4444;   /* Alias to Red for legacy support */
+  --color-accent-gold:  #111827;   /* Alias to Dark for secondary accents */
+  --color-accent-mint:  #FFFFFF;   /* Alias to White */
+  --color-accent-purple: #EF4444;  /* maps to red */
+  --color-accent-cyan:   #EF4444;  /* maps to red */
 
   --font-sans: var(--font-geist-sans), var(--font-inter), sans-serif;
   --font-mono: var(--font-geist-mono), monospace;
 }
 
 :root {
-  --background: #2A2B2A;
-  --foreground: #F1FFFA;
+  --background: #F8FAF9;
+  --foreground: #111827;
 }
-
-
 
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
-  background-color: #2A2B2A;
-  color: #F1FFFA;
+  background-color: #F8FAF9;
+  color: #111827;
   overflow-x: hidden;
 }
 
 body {
-  background: #2A2B2A;
-  color: #F1FFFA;
+  background: #F8FAF9;
+  color: #111827;
   font-family: var(--font-sans);
   overflow-x: hidden;
   position: relative;
   min-height: 100vh;
 }
 
+
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #2A2B2A;
+  background: #F8FAF9;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(241, 255, 250, 0.12);
+  background: rgba(17, 24, 39, 0.15);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(52, 84, 209, 0.5);
+  background: rgba(239, 68, 68, 0.5); /* Red on hover */
 }
 
 /* Noise overlay */
@@ -67,7 +66,7 @@ body {
   width: 100vw;
   height: 100vh;
   content: "";
-  opacity: 0.025;
+  opacity: 0.03;
   pointer-events: none;
   z-index: 9999;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
@@ -77,27 +76,27 @@ body {
 .bg-grid-pattern {
   background-size: 48px 48px;
   background-image: 
-    linear-gradient(to right, rgba(241, 255, 250, 0.025) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(241, 255, 250, 0.025) 1px, transparent 1px);
+    linear-gradient(to right, rgba(17, 24, 39, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17, 24, 39, 0.04) 1px, transparent 1px);
   mask-image: radial-gradient(ellipse at 50% 50%, black 40%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 40%, transparent 100%);
 }
 
 /* Glassmorphism — Navbar */
 .glass-nav {
-  background: rgba(42, 43, 42, 0.85);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(241, 255, 250, 0.06);
+  border-bottom: 1px solid rgba(17, 24, 39, 0.06);
 }
 
 /* Glassmorphism — Card */
 .glass-card {
-  background: rgba(30, 31, 30, 0.7);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(241, 255, 250, 0.07);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.03);
 }
 
 /* Animations */
@@ -112,39 +111,36 @@ body {
 
 /* ── Text Gradients ── */
 .text-gradient-white {
-  background: linear-gradient(180deg, #F1FFFA 0%, rgba(241, 255, 250, 0.65) 100%);
+  background: linear-gradient(180deg, #111827 0%, rgba(17, 24, 39, 0.75) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Headline: Royal Blue accent line */
+/* Headline: Vibrant Red accent line */
 .text-gradient-blue-purple {
-  background: linear-gradient(135deg, #3454D1 0%, #5b76e8 100%);
+  background: linear-gradient(135deg, #EF4444 0%, #F87171 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Gold accent gradient */
 .text-gradient-gold {
-  background: linear-gradient(135deg, #B79E36 0%, #d4bc52 100%);
+  background: linear-gradient(135deg, #111827 0%, #374151 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Blue → Gold */
 .text-gradient-blue-gold {
-  background: linear-gradient(135deg, #3454D1 0%, #B79E36 100%);
+  background: linear-gradient(135deg, #EF4444 0%, #111827 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Legacy alias */
 .text-gradient-purple-cyan {
-  background: linear-gradient(135deg, #B79E36 0%, #3454D1 100%);
+  background: linear-gradient(135deg, #EF4444 0%, #F87171 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

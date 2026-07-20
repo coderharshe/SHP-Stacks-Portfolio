@@ -21,8 +21,11 @@ export const Process: React.FC = () => {
     <section 
       id="process" 
       ref={containerRef} 
-      className="relative py-24 sm:py-32 border-t border-border overflow-hidden bg-[#2A2B2A]"
-    >
+      className="relative py-24 sm:py-32 border-t border-border overflow-hidden bg-transparent"
+     style={{ backgroundImage: "url('https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=2500&auto=format&fit=crop')", backgroundSize: 'cover', backgroundAttachment: 'fixed', backgroundPosition: 'center' }}>
+      {/* Parallax Overlay */}
+      <div className="absolute inset-0 bg-[#F8FAF9]/90 -z-10" />
+
       <div className="absolute inset-0 bg-grid-pattern opacity-10 -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -32,7 +35,7 @@ export const Process: React.FC = () => {
           <span className="text-xs font-mono uppercase tracking-widest text-accent-blue font-semibold">
             DEVELOPMENT PROCESS
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white font-sans">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#111827] font-sans">
             How We Build Systems.
           </h2>
           <p className="text-sm sm:text-base text-foreground/50 leading-relaxed font-light">
@@ -86,7 +89,7 @@ export const Process: React.FC = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <h3 className="text-lg md:text-xl font-semibold text-white tracking-tight">
+                      <h3 className="text-lg md:text-xl font-semibold text-[#111827] tracking-tight">
                         {step.title}
                       </h3>
                       <p className="text-sm text-foreground/50 leading-relaxed font-light">
@@ -95,7 +98,7 @@ export const Process: React.FC = () => {
                     </div>
 
                     {/* Bullet Specs List */}
-                    <ul className="space-y-2 pt-2 border-t border-white/5">
+                    <ul className="space-y-2 pt-2 border-t border-[#111827]/5">
                       {step.details.map((detail, dIdx) => (
                         <li key={dIdx} className="flex items-start gap-2.5 text-xs text-foreground/75 font-light leading-relaxed">
                           <Check className="h-4 w-4 text-accent-blue/60 flex-shrink-0 mt-0.5" />
