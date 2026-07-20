@@ -153,12 +153,12 @@ export const CameraReactive: React.FC<CameraReactiveProps> = ({
           if (progress < revealStart) {
             emergenceOpacity = 0;
             emergenceY = 20;
-            emergenceBlur = 4;
+            emergenceBlur = 0;
           } else if (progress < revealEnd) {
             const t = (progress - revealStart) / (revealEnd - revealStart);
             emergenceOpacity = t;
             emergenceY = (1 - t) * 18;
-            emergenceBlur = (1 - t) * 3;
+            emergenceBlur = 0;
           } else if (progress <= fadeOutThreshold) {
             emergenceOpacity = 1;
             emergenceY = 0;
@@ -191,12 +191,7 @@ export const CameraReactive: React.FC<CameraReactiveProps> = ({
 
       el.style.transform = `perspective(1000px) translate3d(${totalX.toFixed(2)}px, ${totalY.toFixed(2)}px, ${totalZ.toFixed(2)}px) rotateX(${totalRotX.toFixed(2)}deg) rotateY(${totalRotY.toFixed(2)}deg) rotateZ(${totalRotZ.toFixed(2)}deg)`;
       el.style.opacity = `${emergenceOpacity.toFixed(2)}`;
-      
-      if (emergenceBlur > 0.1) {
-        el.style.filter = `blur(${emergenceBlur.toFixed(1)}px)`;
-      } else {
-        el.style.filter = 'none';
-      }
+      el.style.filter = 'none';
     });
 
     return () => unsubscribe();

@@ -70,7 +70,7 @@ export const Services: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <CameraReactive depth="hero-title" sectionProgressTarget={0.45} revealProgressOffset={-0.18}>
+        <CameraReactive depth="hero-title">
           <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
             <span className="text-xs font-mono uppercase tracking-widest font-semibold" style={{ color: '#E8372A' }}>
               SERVICES
@@ -99,8 +99,6 @@ export const Services: React.FC = () => {
                 key={service.id}
                 depth="card"
                 tiltOnHover={true}
-                sectionProgressTarget={0.45}
-                revealProgressOffset={getRevealOffset(idx)}
               >
                 <motion.div 
                   variants={cardVariants}
@@ -109,7 +107,7 @@ export const Services: React.FC = () => {
                 >
                   <Card
                     glowColor="default"
-                    className="p-6 md:p-8 h-full flex flex-col justify-between hover:border-[rgba(255,255,255,0.14)] transition-all glass-card"
+                    className="p-6 md:p-8 h-full flex flex-col justify-between hover:border-[rgba(255,255,255,0.20)] transition-all glass-card bg-[#12151E]/95 border border-[rgba(255,255,255,0.12)] shadow-xl"
                   >
                     <div className="space-y-4">
                       <div
