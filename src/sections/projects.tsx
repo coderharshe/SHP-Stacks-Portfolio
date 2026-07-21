@@ -107,8 +107,32 @@ const PROJECT_DETAILS_EXT: Record<string, {
     statusText: 'WAYPOINT STANDBY',
     objective: 'Synchronize physical warehouse stock levels with external API marketplaces.',
   },
+  'ai-rescue-bot': {
+    distance: '158 km',
+    industry: 'Robotics / Defense',
+    role: 'Lead Robotics Engineer',
+    timeline: '6 Months',
+    region: 'field-deployed',
+    latency: '8ms',
+    sprint: 'S-33',
+    buildVer: 'v2.0.1',
+    statusText: 'MISSION ACTIVE',
+    objective: 'Deploy tri-robot collaborative swarm to locate and GPS-pin survivors in earthquake and flood disaster zones.',
+  },
+  'ai-interview': {
+    distance: '168 km',
+    industry: 'HR Tech / AI SaaS',
+    role: 'Lead AI Architect',
+    timeline: '4 Months',
+    region: 'us-west-2',
+    latency: '22ms',
+    sprint: 'S-27',
+    buildVer: 'v1.3.0',
+    statusText: 'WAYPOINT STANDBY',
+    objective: 'Deploy conversational LLM agents with adaptive question routing and real-time candidate scoring.',
+  },
   'future-saas-products': {
-    distance: '155 km',
+    distance: '168 km',
     industry: 'Product Labs',
     role: 'Product Engineer',
     timeline: 'Ongoing',
@@ -296,41 +320,44 @@ export const Projects: React.FC = () => {
 
       case 'ai-automation-platform':
         return (
-          <div className="relative w-full h-full min-h-[220px] bg-black/30 backdrop-blur-md rounded-xl p-3 overflow-hidden border border-white/5 font-mono text-[9px] text-[#A0A5B5] flex flex-col justify-between">
+          <div className="relative w-full min-h-[220px] bg-black/30 backdrop-blur-md rounded-xl p-3 overflow-hidden border border-white/5 font-mono text-[9px] text-[#A0A5B5] flex flex-col gap-3">
             <div className="flex justify-between items-center border-b border-white/5 pb-2">
               <span className="text-[#FF5C00] font-semibold text-xs">● COGNITIVE AGENT PIPELINE</span>
               <span className="text-white/40 text-xs">PIPELINE: ACTIVE</span>
             </div>
-            
-            <div className="flex items-center justify-between gap-2 my-3 px-2">
-              <div className="flex flex-col items-center">
-                <div className="w-8 h-8 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-[10px] text-white">
-                  IN
-                </div>
-                <span className="text-[9px] text-white/30 mt-1 font-bold">DOCS</span>
+
+            {/* Pipeline flow diagram */}
+            <div className="flex items-center justify-between gap-2 px-2 py-3 bg-black/20 rounded-lg border border-white/5">
+              <div className="flex flex-col items-center gap-1">
+                <div className="w-10 h-10 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-[10px] text-white font-bold">IN</div>
+                <span className="text-[8px] text-white/30 font-bold">DOCS</span>
               </div>
-              <div className="flex-grow h-0.5 bg-[#FF5C00]/40 relative">
-                <div className="absolute top-1/2 -translate-y-1/2 left-0 h-2 w-2 bg-[#FF5C00] rounded-full animate-ping" />
+              <div className="flex-grow h-[2px] bg-[#FF5C00]/30 relative rounded-full overflow-visible">
+                <div className="absolute top-1/2 -translate-y-1/2 left-1/4 h-2.5 w-2.5 bg-[#FF5C00] rounded-full animate-ping opacity-70" />
               </div>
-              <div className="flex flex-col items-center">
-                <div className="w-10 h-10 rounded-full border border-[#FF5C00]/40 bg-[#FF5C00]/10 flex items-center justify-center text-xs font-bold text-[#FF5C00]">
-                  RAG
-                </div>
-                <span className="text-[9px] text-[#FF5C00] mt-1 font-bold">EMBED</span>
+              <div className="flex flex-col items-center gap-1">
+                <div className="w-12 h-12 rounded-full border-2 border-[#FF5C00]/60 bg-[#FF5C00]/10 flex items-center justify-center text-xs font-bold text-[#FF5C00] shadow-[0_0_16px_rgba(255,92,0,0.3)]">RAG</div>
+                <span className="text-[8px] text-[#FF5C00] font-bold">EMBED</span>
               </div>
-              <div className="flex-grow h-0.5 bg-[#FF5C00]/40 relative">
-                <div className="absolute top-1/2 -translate-y-1/2 left-0 h-2 w-2 bg-[#FF5C00] rounded-full animate-ping" />
+              <div className="flex-grow h-[2px] bg-[#FF5C00]/30 relative rounded-full overflow-visible">
+                <div className="absolute top-1/2 -translate-y-1/2 right-1/4 h-2.5 w-2.5 bg-[#FF5C00] rounded-full animate-ping opacity-70" style={{ animationDelay: '0.5s' }} />
               </div>
-              <div className="flex flex-col items-center">
-                <div className="w-8 h-8 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-[10px] text-white">
-                  OUT
-                </div>
-                <span className="text-[9px] text-white/30 mt-1 font-bold">JSON</span>
+              <div className="flex flex-col items-center gap-1">
+                <div className="w-10 h-10 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-[10px] text-white font-bold">OUT</div>
+                <span className="text-[8px] text-white/30 font-bold">JSON</span>
               </div>
             </div>
 
-            <div className="border-t border-white/5 pt-2 text-[9px] text-[#FF5C00] font-bold truncate">
-              &gt; WORKFLOW_LOG: &quot;Executing structured context assembly...&quot;
+            {/* Live log stream */}
+            <div className="flex-grow bg-black/40 border border-white/5 rounded-lg p-2 space-y-1">
+              <div className="text-[8px] text-emerald-400">[OK] CONTEXT_RETRIEVAL: 3 chunks matched</div>
+              <div className="text-[8px] text-white/40">[LLM] Prompt tokens: 1,842 | Cost: $0.0003</div>
+              <div className="text-[8px] text-[#FF5C00] animate-pulse">&gt; WORKFLOW_LOG: &quot;Executing structured context assembly...&quot;</div>
+            </div>
+
+            <div className="border-t border-white/5 pt-2 flex justify-between text-[7.5px] text-white/30">
+              <span>AGENT LOOPS: 14 active</span>
+              <span>QUEUE: 0 pending</span>
             </div>
           </div>
         );
@@ -392,6 +419,87 @@ export const Projects: React.FC = () => {
             <div className="flex justify-between text-[7.5px] text-white/30 border-t border-white/5 pt-2">
               <span>QUEUE RETRIES: 0</span>
               <span>SYNCS TOTAL: 49,204</span>
+            </div>
+          </div>
+        );
+
+      case 'ai-interview':
+        return (
+          <div className="relative w-full min-h-[220px] bg-black/30 backdrop-blur-md rounded-xl p-3 overflow-hidden border border-white/5 font-mono text-[9px] text-[#A0A5B5] flex flex-col gap-3">
+            <div className="flex justify-between items-center border-b border-white/5 pb-2">
+              <span className="text-[#FF5C00] font-semibold text-xs">● AI INTERVIEW ENGINE</span>
+              <span className="text-white/40 text-xs">AGENT: LIVE</span>
+            </div>
+
+            {/* Candidate scoring panel */}
+            <div className="space-y-1.5 flex-grow">
+              {[
+                { name: 'Candidate #2847', score: 94, tag: 'SHORTLIST', color: 'text-emerald-400 border-emerald-500/30 bg-emerald-500/5' },
+                { name: 'Candidate #2848', score: 71, tag: 'REVIEW', color: 'text-amber-400 border-amber-500/30 bg-amber-500/5' },
+                { name: 'Candidate #2849', score: 38, tag: 'REJECT', color: 'text-red-400 border-red-500/30 bg-red-500/5' },
+              ].map((c, idx) => (
+                <div key={idx} className="flex items-center justify-between bg-black/30 border border-white/5 rounded p-1.5 gap-2">
+                  <span className="text-white/70 truncate text-[8px] font-bold">{c.name}</span>
+                  <div className="flex-grow h-1 bg-white/5 rounded-full overflow-hidden">
+                    <div className="h-full bg-[#FF5C00] rounded-full" style={{ width: `${c.score}%` }} />
+                  </div>
+                  <span className="text-[8px] font-bold shrink-0">{c.score}%</span>
+                  <span className={`text-[7px] font-bold px-1.5 py-0.5 rounded border shrink-0 ${c.color}`}>{c.tag}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="border-t border-white/5 pt-2 flex justify-between text-[7.5px] text-white/30">
+              <span>INTERVIEWS TODAY: 47</span>
+              <span>LLM MODEL: GPT-4o</span>
+            </div>
+          </div>
+        );
+
+      case 'ai-rescue-bot':
+        return (
+          <div className="relative w-full min-h-[220px] bg-black/30 backdrop-blur-md rounded-xl p-3 overflow-hidden border border-white/5 font-mono text-[9px] text-[#A0A5B5] flex flex-col gap-2.5">
+            <div className="flex justify-between items-center border-b border-white/5 pb-2">
+              <span className="text-[#FF5C00] font-semibold text-xs flex items-center gap-1.5">
+                <span className="h-2 w-2 rounded-full bg-[#FF5C00] animate-ping" />
+                ● RESCUE COMMAND CENTER
+              </span>
+              <span className="text-emerald-400 text-[8px] font-bold">MISSION: ACTIVE</span>
+            </div>
+
+            {/* Robot status grid */}
+            <div className="grid grid-cols-3 gap-1.5">
+              {[
+                { id: 'DRONE-01', type: 'Aerial', status: 'SCANNING', lat: '26.84°N', lon: '80.94°E', color: 'text-emerald-400 border-emerald-500/30 bg-emerald-500/5' },
+                { id: 'SNAKE-01', type: 'Infiltrate', status: 'IN CAVITY', lat: '26.84°N', lon: '80.94°E', color: 'text-[#FF5C00] border-[#FF5C00]/30 bg-[#FF5C00]/5' },
+                { id: 'ROVER-01', type: 'Ground', status: 'NAVIGATING', lat: '26.84°N', lon: '80.94°E', color: 'text-blue-400 border-blue-500/30 bg-blue-500/5' },
+              ].map((bot, idx) => (
+                <div key={idx} className={`border rounded p-1.5 flex flex-col gap-0.5 ${bot.color}`}>
+                  <span className="text-[8px] font-bold">{bot.id}</span>
+                  <span className="text-[7px] text-white/40">{bot.type}</span>
+                  <span className="text-[7px] font-bold animate-pulse">{bot.status}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Survivor pings */}
+            <div className="flex-grow bg-black/40 border border-white/5 rounded p-1.5 space-y-1">
+              <div className="text-[7.5px] text-white/30 font-bold uppercase mb-1">SURVIVOR COORDINATES LOCKED</div>
+              {[
+                { id: 'SUR-001', coords: '26.8412°N, 80.9438°E', depth: '1.8m rubble', conf: '97%', agent: 'SNAKE-01' },
+                { id: 'SUR-002', coords: '26.8408°N, 80.9441°E', depth: 'surface', conf: '99%', agent: 'DRONE-01' },
+              ].map((s, i) => (
+                <div key={i} className="flex items-center justify-between text-[7.5px] border-b border-white/5 pb-1">
+                  <span className="text-[#FF5C00] font-bold">{s.id}</span>
+                  <span className="text-white/50">{s.coords}</span>
+                  <span className="text-emerald-400 font-bold">{s.conf}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="border-t border-white/5 pt-1.5 flex justify-between text-[7px] text-white/30">
+              <span>ROBOTS ACTIVE: 3/3</span>
+              <span>SURVIVORS FOUND: 2</span>
             </div>
           </div>
         );
@@ -660,13 +768,13 @@ export const Projects: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 md:px-8 w-full relative z-10 flex flex-col gap-6 mt-24">
         
         {/* Main Interface Cockpit Columns */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch" style={{ minHeight: '600px' }}>
           
           {/* LEFT PANEL: GPS Destination Selector */}
           <div className="lg:col-span-3 flex flex-col">
             <CameraReactive depth="card" className="flex flex-col h-full">
-              <div className="flex flex-col gap-3 h-full justify-start bg-[#0F1115]/30 border border-[#2D313A]/25 border-t-[#3D4250]/40 rounded-2xl p-4 backdrop-blur-md shadow-lg">
-                <div className="border-b border-white/5 pb-2.5 flex justify-between items-center">
+              <div className="flex flex-col gap-3 h-full justify-start bg-[#0F1115]/30 border border-[#2D313A]/25 border-t-[#3D4250]/40 rounded-2xl p-4 backdrop-blur-md shadow-lg overflow-hidden">
+                <div className="border-b border-white/5 pb-2.5 flex justify-between items-center shrink-0">
                   <span className="text-[7.5px] uppercase tracking-widest text-white/30 font-bold flex items-center gap-1.5">
                     <MapPin className="h-3 w-3 text-[#E8372A]" />
                     DESTINATIONS SELECT
@@ -674,7 +782,7 @@ export const Projects: React.FC = () => {
                   <span className="text-[7px] text-white/20">COUNT: {PROJECTS_DATA.length}</span>
                 </div>
                 
-                <div className="flex flex-row lg:flex-col overflow-x-auto lg:overflow-y-auto lg:overflow-x-visible pb-2 lg:pb-0 gap-2.5 no-scrollbar lg:max-h-[460px] flex-grow pr-0 lg:pr-1">
+                <div className="flex flex-col overflow-y-auto gap-2.5 flex-grow pr-1" style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(255,92,0,0.3) transparent' }}>
                   {PROJECTS_DATA.map((project) => {
                     const isSelected = selectedProject.id === project.id;
                     const ext = PROJECT_DETAILS_EXT[project.id] || {
@@ -804,10 +912,11 @@ export const Projects: React.FC = () => {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 8 }}
                     transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                    className="space-y-3.5 flex-grow flex flex-col justify-between"
+                    className="flex-grow flex flex-col min-h-0"
                   >
-                    <div>
-                      <div className="flex justify-between items-start border-b border-white/5 pb-2.5 mb-3">
+                    {/* Scrollable content area */}
+                    <div className="flex-grow overflow-y-auto pr-1 space-y-3.5" style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(255,92,0,0.2) transparent' }}>
+                      <div className="flex justify-between items-start border-b border-white/5 pb-2.5">
                         <div>
                           <span className="text-xs uppercase tracking-widest text-white/40 font-mono block">MISSION TARGET</span>
                           <h3 className="text-base font-bold text-white tracking-tight">{selectedProject.title}</h3>
@@ -817,7 +926,7 @@ export const Projects: React.FC = () => {
                         </span>
                       </div>
 
-                      <div className="mb-3">
+                      <div>
                         <span className="block text-xs text-white/40 uppercase tracking-widest mb-1 font-bold font-mono flex items-center gap-1.5">
                           <Radio className="h-4 w-4 text-[#FF5C00]" />
                           MISSION OBJECTIVE
@@ -827,7 +936,7 @@ export const Projects: React.FC = () => {
                         </p>
                       </div>
 
-                      <div className="mb-3">
+                      <div>
                         <span className="block text-xs text-white/40 uppercase tracking-widest mb-1 font-bold font-mono flex items-center gap-1.5">
                           <Shield className="h-4 w-4 text-white/40" />
                           SYSTEM BOTTLENECK
@@ -837,7 +946,7 @@ export const Projects: React.FC = () => {
                         </p>
                       </div>
 
-                      <div className="mb-3.5">
+                      <div>
                         <span className="block text-xs text-white/40 uppercase tracking-widest mb-1 font-bold font-mono flex items-center gap-1.5">
                           <Activity className="h-4 w-4 text-white/40" />
                           ENGINEERING SOLUTION
@@ -847,7 +956,7 @@ export const Projects: React.FC = () => {
                         </p>
                       </div>
 
-                      <div className="border-t border-white/5 pt-3.5 space-y-2">
+                      <div className="border-t border-white/5 pt-3 space-y-2">
                         <span className="block text-xs text-white/40 uppercase tracking-widest font-bold font-mono">OPERATIONAL METRICS</span>
                         {selectedProject.results.map((result, idx) => (
                           <div key={idx} className="flex items-start gap-2 text-xs text-slate-200">
@@ -856,17 +965,17 @@ export const Projects: React.FC = () => {
                           </div>
                         ))}
                       </div>
-                    </div>
 
-                    <div className="border-t border-white/5 pt-2.5 flex justify-between items-center text-xs text-white/40 font-mono">
-                      <span>INFRA DEPLOYMENT</span>
-                      <span className="text-white/80 font-bold uppercase tracking-wider">{selectedProject.techStack.slice(0, 3).join(' / ')}</span>
+                      <div className="border-t border-white/5 pt-2 flex justify-between items-center text-xs text-white/40 font-mono">
+                        <span>INFRA DEPLOYMENT</span>
+                        <span className="text-white/80 font-bold uppercase tracking-wider">{selectedProject.techStack.slice(0, 3).join(' / ')}</span>
+                      </div>
                     </div>
                   </motion.div>
                 </AnimatePresence>
 
-                {/* CTA Inquire Trigger Button */}
-                <div className="border-t border-white/5 pt-3.5 flex justify-end shrink-0">
+                {/* CTA pinned at bottom */}
+                <div className="border-t border-white/5 pt-3.5 flex justify-end shrink-0 mt-3">
                   <Button
                     variant="outline"
                     onClick={() => {

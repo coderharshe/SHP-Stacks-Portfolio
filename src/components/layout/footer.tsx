@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { ArrowUp, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowUp, Github, Linkedin, Mail, Phone } from 'lucide-react';
 
 const SHPLogoMark = ({ className }: { className?: string }) => (
   <img
@@ -73,36 +73,79 @@ export const Footer: React.FC = () => {
               standards with high-end design to solve complex industrial problems.
             </p>
 
-            {/* Social Links */}
-            <div className="flex items-center gap-3">
-              {[
-                { href: 'https://github.com',          icon: <Github  className="h-4 w-4" />, label: 'GitHub'   },
-                { href: 'https://linkedin.com',         icon: <Linkedin className="h-4 w-4" />, label: 'LinkedIn' },
-                { href: 'mailto:contact@shpstacks.com', icon: <Mail    className="h-4 w-4" />, label: 'Email'    },
-              ].map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  target={item.href.startsWith('http') ? '_blank' : undefined}
-                  rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  aria-label={item.label}
-                  className="rounded-lg p-2 transition-all duration-300 group"
-                  style={{
-                    color: 'var(--text-tertiary)',
-                    border: '1px solid rgba(255,255,255,0.07)',
-                  }}
-                  onMouseEnter={e => {
-                    (e.currentTarget as HTMLElement).style.color = '#E8372A';
-                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(232,55,42,0.25)';
-                  }}
-                  onMouseLeave={e => {
-                    (e.currentTarget as HTMLElement).style.color = 'var(--text-tertiary)';
-                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.07)';
-                  }}
+            {/* Contact info */}
+            <div className="space-y-3">
+              <a
+                href="mailto:shpstack@gmail.com"
+                className="flex items-center gap-3 group"
+              >
+                <div
+                  className="h-8 w-8 rounded-md flex items-center justify-center shrink-0 transition-colors"
+                  style={{ border: '1px solid rgba(255,255,255,0.07)', background: 'rgba(255,255,255,0.02)' }}
+                  onMouseEnter={e => (e.currentTarget.style.borderColor = 'rgba(232,55,42,0.30)')}
+                  onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)')}
                 >
-                  {item.icon}
-                </a>
-              ))}
+                  <Mail className="h-3.5 w-3.5" style={{ color: '#E8372A' }} />
+                </div>
+                <span
+                  className="text-sm transition-colors duration-200"
+                  style={{ color: 'var(--text-tertiary)' }}
+                  onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = '#E8372A')}
+                  onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = 'var(--text-tertiary)')}
+                >
+                  shpstack@gmail.com
+                </span>
+              </a>
+
+              <a
+                href="tel:+919279381411"
+                className="flex items-center gap-3 group"
+              >
+                <div
+                  className="h-8 w-8 rounded-md flex items-center justify-center shrink-0 transition-colors"
+                  style={{ border: '1px solid rgba(255,255,255,0.07)', background: 'rgba(255,255,255,0.02)' }}
+                  onMouseEnter={e => (e.currentTarget.style.borderColor = 'rgba(232,55,42,0.30)')}
+                  onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)')}
+                >
+                  <Phone className="h-3.5 w-3.5" style={{ color: '#E8372A' }} />
+                </div>
+                <span
+                  className="text-sm transition-colors duration-200"
+                  style={{ color: 'var(--text-tertiary)' }}
+                  onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = '#E8372A')}
+                  onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = 'var(--text-tertiary)')}
+                >
+                  +91 92793 81411
+                </span>
+              </a>
+
+              {/* Social icon links */}
+              <div className="flex items-center gap-2 pt-1">
+                {[
+                  { href: 'https://github.com',  icon: <Github   className="h-4 w-4" />, label: 'GitHub'   },
+                  { href: 'https://linkedin.com', icon: <Linkedin className="h-4 w-4" />, label: 'LinkedIn' },
+                ].map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={item.label}
+                    className="rounded-lg p-2 transition-all duration-300"
+                    style={{ color: 'var(--text-tertiary)', border: '1px solid rgba(255,255,255,0.07)' }}
+                    onMouseEnter={e => {
+                      (e.currentTarget as HTMLElement).style.color = '#E8372A';
+                      (e.currentTarget as HTMLElement).style.borderColor = 'rgba(232,55,42,0.25)';
+                    }}
+                    onMouseLeave={e => {
+                      (e.currentTarget as HTMLElement).style.color = 'var(--text-tertiary)';
+                      (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.07)';
+                    }}
+                  >
+                    {item.icon}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
 

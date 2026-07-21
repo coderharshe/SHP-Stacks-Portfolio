@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Mail, Calendar, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Mail, Phone, Calendar, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { CameraReactive } from '@/components/ui/CameraReactive';
@@ -75,7 +75,7 @@ export const CTA: React.FC = () => {
                 </a>
 
                 <a
-                  href="mailto:contact@shpstacks.com"
+                  href="mailto:shpstack@gmail.com"
                   className="flex items-center gap-4 group cursor-pointer"
                 >
                   <div
@@ -86,9 +86,27 @@ export const CTA: React.FC = () => {
                   </div>
                   <div className="space-y-0.5">
                     <h4 className="text-sm font-semibold transition-colors group-hover:text-[#F0F1F3]" style={{ color: 'var(--text-secondary)' }}>
-                      Direct Email Inquiry
+                      shpstack@gmail.com
                     </h4>
                     <p className="text-xs" style={{ color: 'var(--text-tertiary)' }}>Send requirements directly to founders.</p>
+                  </div>
+                </a>
+
+                <a
+                  href="tel:+919279381411"
+                  className="flex items-center gap-4 group cursor-pointer"
+                >
+                  <div
+                    className="h-10 w-10 rounded-lg flex items-center justify-center group-hover:border-[rgba(255,92,0,0.30)] transition-colors"
+                    style={{ border: '1px solid rgba(255,255,255,0.07)', background: 'rgba(255,255,255,0.02)' }}
+                  >
+                    <Phone className="h-4 w-4" style={{ color: '#FF5C00' }} />
+                  </div>
+                  <div className="space-y-0.5">
+                    <h4 className="text-sm font-semibold transition-colors group-hover:text-[#FF5C00]" style={{ color: '#F0F1F3' }}>
+                      +91 92793 81411
+                    </h4>
+                    <p className="text-xs" style={{ color: 'var(--text-tertiary)' }}>Call or WhatsApp directly.</p>
                   </div>
                 </a>
               </div>

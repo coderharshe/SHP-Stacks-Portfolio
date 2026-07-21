@@ -178,11 +178,34 @@ export const SERVICES_DATA: ServiceItem[] = [
 
 export const PROJECTS_DATA: ProjectItem[] = [
   {
+    id: 'face-recognition-photo',
+    title: 'Face Recognition Photo Hub',
+    category: 'Consumer SaaS',
+    subtitle: 'Intelligent event photo delivery and classification',
+    overview: 'A premium, high-scale platform designed for event organizers and professional photographers. It processes thousands of high-res photos, groups them by face embeddings, and delivers them instantly to attendees via self-lookup matching.',
+    problem: 'Event organizers struggled to deliver event photos to thousands of attendees, who had to scroll through massive galleries of unorganized folders to find themselves.',
+    solution: 'We engineered an event portal with an AI backend. Users upload a single selfie, and our vector-embedding engine scans millions of event photos, finding matching faces instantly. The frontend leverages Next.js and CDN edge caching to serve heavy media assets seamlessly.',
+    techStack: ['Next.js', 'Python (PyTorch)', 'Pgvector', 'AWS S3', 'Cloudflare CDN', 'TypeScript'],
+    features: [
+      'Instant facial embedding matching using Pgvector index queries',
+      'Automated batch watermarking and resizing at cloud uploads',
+      'Secure attendee portal with face validation safeguards',
+      'Stripe integration for high-res photo downloads and prints'
+    ],
+    results: [
+      'Attendees find their images in under 400 milliseconds',
+      'Over 500,000 photos processed and served across various conferences',
+      'Generated a 3x increase in digital photo purchases for organizers'
+    ],
+    deviceType: 'tablet',
+    accentColor: 'cyan'
+  },
+  {
     id: 'oceon-wms',
-    title: 'Oceon Warehouse Management',
+    title: 'Warehouse Management System',
     category: 'Enterprise Logistics',
     subtitle: 'High-performance logistics management platform',
-    overview: 'Oceon WMS is a next-generation warehouse management system designed to coordinate complex stock movements, putaway patterns, and picking paths in real-time. It connects front-line handheld scanners with a centralized command center to maximize logistics throughput.',
+    overview: 'A next-generation warehouse management system designed to coordinate complex stock movements, putaway patterns, and picking paths in real-time. It connects front-line handheld scanners with a centralized command center to maximize logistics throughput.',
     problem: 'The client struggled with chaotic storage strategies, slow picking cycles, and manual pen-and-paper audit trails, which resulted in a 4.2% error rate in order fulfillment and high worker fatigue.',
     solution: 'We engineered a React and Go-backed web dashboard coupled with a lightweight mobile application for scanner integrations. We implemented automated storage routing algorithms that recommend slotting coordinates based on product velocity and size.',
     techStack: ['Next.js', 'Go (Golang)', 'PostgreSQL', 'Docker', 'WebSockets', 'Tailwind CSS'],
@@ -198,6 +221,76 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Fulfillment error rate dropped from 4.2% to less than 0.1%'
     ],
     deviceType: 'laptop',
+    accentColor: 'blue'
+  },
+  {
+    id: 'ai-interview',
+    title: 'AI Interview Platform',
+    category: 'AI SaaS & HR Tech',
+    subtitle: 'AI-powered platform for intelligent candidate screening',
+    overview: 'AI Interview is a conversational AI-driven hiring platform that automates the initial screening and technical evaluation of job candidates. Recruiters define role requirements and the platform autonomously conducts structured interviews, scores responses using LLM reasoning, and surfaces ranked candidates with detailed insight reports.',
+    problem: 'Recruitment teams were overwhelmed by high applicant volumes, spending 15–20 hours per week scheduling and conducting repetitive first-round interviews with unqualified candidates — delaying hiring cycles by weeks.',
+    solution: 'We built an AI-native SaaS platform powered by an OpenAI-backed conversational agent that dynamically adapts questions based on candidate responses. Recruiters receive structured scorecards, sentiment analysis, and confidence scoring for every candidate, eliminating the need for manual first-round interviews.',
+    techStack: ['Next.js', 'Python (FastAPI)', 'OpenAI API', 'LangChain', 'PostgreSQL', 'Supabase Auth', 'Pgvector', 'Tailwind CSS'],
+    features: [
+      'Conversational AI agent conducting dynamic, adaptive interviews',
+      'Technical code assessment with integrated live IDE and execution',
+      'Sentiment analysis and confidence scoring per candidate response',
+      'Automated shortlist generation with ranked candidate scorecards'
+    ],
+    results: [
+      'Reduced recruiter time-per-hire by 68% within the first month',
+      'Platform screened over 2,000 candidates with zero manual first-round interviews',
+      'Hiring decision accuracy improved by 40% using structured AI scorecards'
+    ],
+    deviceType: 'laptop',
+    accentColor: 'cyan'
+  },
+  {
+    id: 'ai-rescue-bot',
+    title: 'AI Rescue Bot System',
+    category: 'Robotics & AI',
+    subtitle: 'Multi-robot AI system for disaster survivor detection',
+    overview: 'A multi-robot emergency response system combining a drone, a ground crawling rover, and a robotic snake to autonomously locate and pinpoint survivors in disaster zones such as flood-affected areas and earthquake rubble. The system uses AI-powered vision, thermal analysis, and collaborative GPS triangulation to deliver precise survivor coordinates to rescue teams in real time.',
+    problem: 'In disaster scenarios like earthquakes and floods, rescue teams face extreme danger and significant delays navigating collapsed structures and debris. Manual search operations miss survivors buried in narrow cavities, and poor coordinates waste critical response time for first responders.',
+    solution: 'We engineered a three-robot collaborative system: the drone provides aerial bird\'s-eye thermal scanning to identify heat signatures, the crawling rover navigates open debris fields collecting visual data, and the robotic snake infiltrates narrow rubble cavities unreachable by humans. All three robots feed into a central AI command dashboard that fuses their data streams, detects survivors using a TensorFlow vision model, and outputs pinpoint GPS coordinates for rescue teams.',
+    techStack: ['Python', 'ROS 2', 'TensorFlow', 'OpenCV', 'Drone SDK', 'FastAPI', 'WebSockets', 'React'],
+    features: [
+      'Drone aerial surveillance with real-time AI human heat-signature detection',
+      'Robotic snake for narrow-space infiltration and precise GPS coordinate locking',
+      'Crawling rover for wide-area ground coverage with obstacle avoidance',
+      'Fused AI command dashboard streaming all three robot feeds simultaneously'
+    ],
+    results: [
+      'Detected survivors in cavities as narrow as 18cm — inaccessible to humans',
+      'GPS coordinate accuracy within 1.5 meters across field test simulations',
+      'Reduced simulated search time by 62% compared to manual rescue protocols'
+    ],
+    deviceType: 'desktop',
+    accentColor: 'purple'
+  },
+  {
+    id: 'business-portfolio-websites',
+    title: 'Premium Brand Portfolios',
+    category: 'Web Design & Interactive',
+
+    subtitle: 'Immersive digital experiences for global agencies',
+    overview: 'A series of high-end interactive websites built for creative agencies and venture funds. These platforms use advanced layout engineering, dynamic webGL elements, and sleek transitions to deliver an unforgettable digital footprint.',
+    problem: 'Typical company websites look templated, fail to communicate prestige, and have sluggish loading speeds due to heavy design assets and unoptimized animations.',
+    solution: 'We established a standardized boilerplate using Next.js App Router, Tailwind CSS, and Framer Motion. We constructed custom layout mechanics that optimize asset loading, load images progressively, and ensure fluid scroll animations at 60fps on mobile devices.',
+    techStack: ['Next.js', 'Framer Motion', 'Tailwind CSS', 'Vercel', 'PostCSS', 'TypeScript'],
+    features: [
+      'Pre-rendered static sites delivering 100/100 Lighthouse scores',
+      'Custom scroll progress bars, command controls, and active states',
+      'Subtle page entry and element exit Framer transitions',
+      'Aria-compliant navigation preserving absolute accessibility'
+    ],
+    results: [
+      '100% Core Web Vitals score across client portfolios',
+      'Average session duration increased by 45% due to immersive UX',
+      'Zero maintenance downtime achieved via headless static generation'
+    ],
+    deviceType: 'desktop',
     accentColor: 'blue'
   },
   {
@@ -222,52 +315,6 @@ export const PROJECTS_DATA: ProjectItem[] = [
     ],
     deviceType: 'phone',
     accentColor: 'purple'
-  },
-  {
-    id: 'face-recognition-photo',
-    title: 'Face Recognition Photo Hub',
-    category: 'Consumer SaaS',
-    subtitle: 'Intelligent event photo delivery and classification',
-    overview: 'A premium, high-scale platform designed for event organizers and professional photographers. It processes thousands of high-res photos, groups them by face embeddings, and delivers them instantly to attendees via self-lookup matching.',
-    problem: 'Event organizers struggled to deliver event photos to thousands of attendees, who had to scroll through massive galleries of unorganized folders to find themselves.',
-    solution: 'We engineered an event portal with an AI backend. Users upload a single selfie, and our vector-embedding engine scans millions of event photos, finding matching faces instantly. The frontend leverages Next.js and CDN edge caching to serve heavy media assets seamlessly.',
-    techStack: ['Next.js', 'Python (PyTorch)', 'Pgvector', 'AWS S3', 'Cloudflare CDN', 'TypeScript'],
-    features: [
-      'Instant facial embedding matching using Pgvector index queries',
-      'Automated batch watermarking and resizing at cloud uploads',
-      'Secure attendee portal with face validation safeguards',
-      'Stripe integration for high-res photo downloads and prints'
-    ],
-    results: [
-      'Attendees find their images in under 400 milliseconds',
-      'Over 500,000 photos processed and served across various conferences',
-      'Generated a 3x increase in digital photo purchases for organizers'
-    ],
-    deviceType: 'tablet',
-    accentColor: 'cyan'
-  },
-  {
-    id: 'business-portfolio-websites',
-    title: 'Premium Brand Portfolios',
-    category: 'Web Design & Interactive',
-    subtitle: 'Immersive digital experiences for global agencies',
-    overview: 'A series of high-end interactive websites built for creative agencies and venture funds. These platforms use advanced layout engineering, dynamic webGL elements, and sleek transitions to deliver an unforgettable digital footprint.',
-    problem: 'Typical company websites look templated, fail to communicate prestige, and have sluggish loading speeds due to heavy design assets and unoptimized animations.',
-    solution: 'We established a standardized boilerplate using Next.js App Router, Tailwind CSS, and Framer Motion. We constructed custom layout mechanics that optimize asset loading, load images progressively, and ensure fluid scroll animations at 60fps on mobile devices.',
-    techStack: ['Next.js', 'Framer Motion', 'Tailwind CSS', 'Vercel', 'PostCSS', 'TypeScript'],
-    features: [
-      'Pre-rendered static sites delivering 100/100 Lighthouse scores',
-      'Custom scroll progress bars, command controls, and active states',
-      'Subtle page entry and element exit Framer transitions',
-      'Aria-compliant navigation preserving absolute accessibility'
-    ],
-    results: [
-      '100% Core Web Vitals score across client portfolios',
-      'Average session duration increased by 45% due to immersive UX',
-      'Zero maintenance downtime achieved via headless static generation'
-    ],
-    deviceType: 'desktop',
-    accentColor: 'blue'
   },
   {
     id: 'ai-automation-platform',
@@ -364,6 +411,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
 ];
 
 export const TIMELINE_PROCESS: TimelineStep[] = [
+
   {
     step: 1,
     title: 'Discovery',
