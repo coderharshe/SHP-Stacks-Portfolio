@@ -130,7 +130,7 @@ export const Process: React.FC = () => {
               How We Build & Deploy.
             </h2>
             <p className="text-base sm:text-lg leading-relaxed font-light" style={{ color: 'var(--text-tertiary)' }}>
-              A disciplined, engineering-first development lifecycle designed to minimize risk and maximize speed.
+              A disciplined, high-velocity 6-stage engineering sprint designed to take full-stack software from concept to production in 5–6 weeks.
             </p>
           </div>
         </CameraReactive>

@@ -411,89 +411,88 @@ export const PROJECTS_DATA: ProjectItem[] = [
 ];
 
 export const TIMELINE_PROCESS: TimelineStep[] = [
-
   {
     step: 1,
-    title: 'Discovery',
+    title: 'Discovery & Scoping',
     duration: 'Week 1',
-    desc: 'Understanding your business operations, goals, and system challenges.',
+    desc: 'Understanding your business operations, goals, and technical challenges.',
     details: [
-      'Initial discovery meetings to define software requirements',
-      'Analyzing current user workflows and legacy systems',
-      'Drafting the Initial Technical Brief and scoping parameters',
-      'Defining success metrics and overall timeline targets'
+      'Discovery sessions to map requirements and system constraints',
+      'Analyzing current user workflows and existing infrastructure',
+      'Drafting the technical brief and scoping parameters',
+      'Defining KPI success metrics and sprint deliverables'
     ]
   },
   {
     step: 2,
-    title: 'Planning',
+    title: 'Architecture & Planning',
     duration: 'Week 2',
-    desc: 'Engineering the software architecture, database design, and choosing the tech stack.',
+    desc: 'Engineering system architecture, database schemas, and choosing tech stacks.',
     details: [
-      'Creating database schema models and API routes mappings',
-      'Selecting the optimal framework, hosting tier, and database infrastructure',
-      'Detailing security requirements, authorization layers, and compliance needs',
-      'Finalizing project roadmap with milestone dates and deliverables'
+      'Modeling database schemas and API route mappings',
+      'Selecting optimal frameworks, hosting tiers, and database infrastructure',
+      'Establishing authorization layers, security parameters, and compliance controls',
+      'Setting up repository structures and CI/CD pipelines'
     ]
   },
   {
     step: 3,
-    title: 'UI/UX Design',
-    duration: 'Weeks 3-4',
-    desc: 'Creating high-fidelity interactive mockups and design assets.',
+    title: 'Rapid UI/UX Design',
+    duration: 'Week 3',
+    desc: 'Crafting high-fidelity interactive mockups and component design tokens.',
     details: [
-      'Constructing responsive layout wireframes showing content flows',
-      'Designing modern, premium user interfaces matching your brand persona',
-      'Creating interactive prototypes in Figma for user verification',
-      'Assembling the design system (color schemes, typography, spacing controls)'
+      'Constructing responsive layout wireframes showing key user flows',
+      'Designing modern, high-end interfaces aligned with your brand persona',
+      'Building interactive prototypes in Figma for fast client feedback',
+      'Assembling component libraries (colors, typography, spacing)'
     ]
   },
   {
     step: 4,
-    title: 'Development',
-    duration: 'Weeks 5-10',
-    desc: 'Writing production-grade code, configuring services, and building logic.',
+    title: 'Sprint Development',
+    duration: 'Weeks 4-5',
+    desc: 'High-velocity production coding, backend business logic, and API integrations.',
     details: [
-      'Setting up repository structures using strict TypeScript standards',
-      'Writing components and backend routing functions',
-      'Connecting database tables and configuring database query pipelines',
-      'Integrating external payment processors, auth providers, or AI engines'
+      'Building modular components using strict TypeScript standards',
+      'Implementing serverless endpoints and real-time WebSocket pipelines',
+      'Connecting database schemas with optimized query indexing',
+      'Integrating payment gateways, auth systems, or AI model endpoints'
     ]
   },
   {
     step: 5,
-    title: 'Testing',
-    duration: 'Week 11',
-    desc: 'Rigorous automated and manual QA checking compatibility and scale.',
+    title: 'QA & Security Testing',
+    duration: 'Week 5',
+    desc: 'Rigorous automated and manual QA checking security, speed, and stability.',
     details: [
-      'Writing automated unit tests verifying business calculations',
-      'Conducting security tests (input sanitization, permission validation)',
-      'Evaluating responsive performance across mobile and desktop browser engines',
-      'Running load tests to verify app latency under heavy traffic'
+      'Executing automated unit and end-to-end integration tests',
+      'Conducting security audits (sanitization, permission enforcement)',
+      'Optimizing responsive rendering across mobile and desktop engines',
+      'Running load tests to guarantee ultra-low latency under load'
     ]
   },
   {
     step: 6,
-    title: 'Deployment',
-    duration: 'Week 12',
-    desc: 'Launching to production servers with solid environment security.',
+    title: 'Deployment & Handover',
+    duration: 'Week 6',
+    desc: 'Deploying to live production servers with zero downtime and complete handover.',
     details: [
-      'Configuring serverless or containerized deployment paths (Vercel, AWS)',
-      'Migrating the database schemas to live production systems',
-      'Pointing production domain records and establishing SSL and CDN cache rules',
-      'Performing smoke tests on live systems to verify full capability'
+      'Configuring serverless or containerized edge infrastructure (Vercel, AWS)',
+      'Migrating live production database schemas and environment secrets',
+      'Configuring custom domain SSL, DNS, and CDN caching layers',
+      'Delivering comprehensive code docs, API specs, and post-launch support'
     ]
   },
   {
     step: 7,
-    title: 'Support',
+    title: 'Support & Scaling',
     duration: 'Ongoing',
-    desc: 'Monitoring server health, updates, and scaling databases.',
+    desc: 'Monitoring production health, performance tuning, and continuous feature expansion.',
     details: [
-      'Establishing uptime alerts and automated error logging (Sentry)',
-      'Upgrading packages and applying security database patches',
-      'Delivering monthly logs audits and analytics reviews',
-      'Adding incremental features as your business requirements expand'
+      'Setting up real-time error tracking and uptime monitoring (Sentry)',
+      'Applying security patches and framework updates',
+      'Conducting monthly database indexing and performance audits',
+      'Adding incremental features as your business scales'
     ]
   }
 ];
@@ -522,7 +521,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
 export const FAQ_DATA: FAQItem[] = [
   {
     question: 'How long does a typical software project take?',
-    answer: 'Standard projects take between 8 to 12 weeks. Less complex projects (such as interactive marketing portfolios or simple automation scripts) can be completed in 4 to 6 weeks, while large-scale custom ERP platforms or AI engines can range from 3 to 6 months. We provide clear deliverables and timeline schedules prior to starting.'
+    answer: 'We build and deploy full-stack production systems in 5 to 6 weeks. Our high-velocity 6-stage sprint lifecycle ensures clear weekly deliverables, staging reviews, and rapid execution without compromising security or code quality.'
   },
   {
     question: 'How do you structure project pricing?',
