@@ -652,37 +652,38 @@ export const Projects: React.FC = () => {
   // Dashboard gauge telemetry renderer
   const renderGauge = (label: string, value: string, subtext: string, progress: number, idx: number) => {
     return (
-      <div key={idx} className="flex-grow flex-shrink basis-[150px] bg-[#0F1115]/35 border border-[#2D313A]/25 border-t-[#3D4250]/40 rounded-xl p-3 flex flex-col justify-between items-center text-center font-mono relative overflow-hidden backdrop-blur-md shadow-lg select-none">
-        <div className="absolute top-1.5 right-1.5 flex gap-1 items-center">
+      <div key={idx} className="flex-1 bg-[#0F1115]/35 border border-[#2D313A]/25 border-t-[#3D4250]/40 rounded-xl px-2 py-2 flex flex-col justify-between items-center text-center font-mono relative overflow-hidden backdrop-blur-md shadow-lg select-none">
+        <div className="absolute top-1 right-1 flex gap-1 items-center">
           <div className="h-1 w-1 rounded-full bg-emerald-500 animate-pulse" />
         </div>
         
-        <div className="relative w-14 h-14 flex items-center justify-center mb-1.5 bg-black/20 rounded-full border border-white/5">
-          <span className="text-[10px] font-bold text-white/90 tracking-tighter">{value}</span>
+        <div className="relative w-14 h-14 flex items-center justify-center bg-black/20 rounded-full border border-white/5">
           <svg className="absolute inset-0 w-full h-full rotate-[-90deg]">
-            <circle cx="28" cy="28" r="23" stroke="rgba(255,255,255,0.03)" strokeWidth="1.5" fill="transparent" />
+            <circle cx="28" cy="28" r="24" stroke="rgba(255,255,255,0.05)" strokeWidth="2" fill="transparent" />
             <circle 
               cx="28" 
               cy="28" 
-              r="23" 
+              r="24" 
               stroke="#E8372A" 
-              strokeWidth="1.5" 
+              strokeWidth="2" 
               fill="transparent" 
-              strokeDasharray="144.5" 
-              strokeDashoffset={144.5 - (144.5 * progress) / 100} 
-              className="transition-all duration-1000 ease-out opacity-85"
+              strokeDasharray="150.8" 
+              strokeDashoffset={150.8 - (150.8 * progress) / 100} 
+              className="transition-all duration-1000 ease-out opacity-90"
             />
           </svg>
+          <span className="relative z-10 text-[12px] font-bold text-white tracking-tighter">{value}</span>
         </div>
 
-        <span className="text-[8.5px] font-bold text-white/60 tracking-wider uppercase">{label}</span>
-        <span className="text-[7px] text-white/35 mt-0.5 truncate max-w-full">{subtext}</span>
+        <span className="text-[9px] font-bold text-white/70 tracking-wider uppercase leading-tight">{label}</span>
+        <span className="text-[8px] text-white/45 truncate max-w-full">{subtext}</span>
       </div>
     );
   };
 
+
   return (
-    <section id="projects" className="relative py-20 overflow-hidden bg-transparent select-none font-mono min-h-screen flex flex-col justify-center">
+    <section id="projects" className="relative overflow-hidden bg-transparent select-none font-mono flex flex-col" style={{ height: '100dvh' }}>
 
       {/* Top HUD overlay (Attached to Glass) */}
       <CameraReactive depth="nav" className="absolute top-6 left-0 right-0 z-20 px-4 md:px-8 max-w-7xl mx-auto flex justify-between items-start pointer-events-none">
@@ -765,13 +766,13 @@ export const Projects: React.FC = () => {
         </div>
       </CameraReactive>
 
-      <div className="max-w-7xl mx-auto px-4 md:px-8 w-full relative z-10 flex flex-col gap-6 mt-24">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 w-full relative z-10 flex flex-col gap-3 flex-1 min-h-0 pt-[148px] pb-3 overflow-hidden">
         
         {/* Main Interface Cockpit Columns */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch" style={{ minHeight: '600px' }}>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch flex-1 min-h-0 overflow-hidden">
           
           {/* LEFT PANEL: GPS Destination Selector */}
-          <div className="lg:col-span-3 flex flex-col">
+          <div className="lg:col-span-3 flex flex-col overflow-hidden">
             <CameraReactive depth="card" className="flex flex-col h-full">
               <div className="flex flex-col gap-3 h-full justify-start bg-[#0F1115]/30 border border-[#2D313A]/25 border-t-[#3D4250]/40 rounded-2xl p-4 backdrop-blur-md shadow-lg overflow-hidden">
                 <div className="border-b border-white/5 pb-2.5 flex justify-between items-center shrink-0">
@@ -833,9 +834,9 @@ export const Projects: React.FC = () => {
           </div>
 
           {/* CENTER PANEL: Infotainment Screen Display */}
-          <div className="lg:col-span-5 flex flex-col">
+          <div className="lg:col-span-5 flex flex-col overflow-hidden">
             <CameraReactive depth="landmark" className="flex flex-col h-full">
-              <div className="flex flex-col justify-between bg-[#0F1115]/30 border border-[#2D313A]/25 border-t-[#3D4250]/40 rounded-2xl p-4 backdrop-blur-md shadow-lg relative overflow-hidden min-h-[460px] flex-grow">
+              <div className="flex flex-col justify-between bg-[#0F1115]/30 border border-[#2D313A]/25 border-t-[#3D4250]/40 rounded-2xl p-4 backdrop-blur-md shadow-lg relative overflow-hidden h-full">
                 <div className="absolute top-0 left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-[#FF5C00]/50 to-transparent" />
                 
                 {/* Infotainment Tab Selector bar */}
@@ -900,9 +901,9 @@ export const Projects: React.FC = () => {
           </div>
 
           {/* RIGHT PANEL: Project Intelligence Panel */}
-          <div className="lg:col-span-4 flex flex-col">
+          <div className="lg:col-span-4 flex flex-col overflow-hidden">
             <CameraReactive depth="card" className="flex flex-col h-full">
-              <div className="flex flex-col justify-between bg-[#0F1115]/30 border border-[#2D313A]/25 border-t-[#3D4250]/40 rounded-2xl p-4.5 backdrop-blur-md shadow-lg font-mono text-[9px] relative overflow-hidden min-h-[460px] flex-grow">
+              <div className="flex flex-col justify-between bg-[#0F1115]/30 border border-[#2D313A]/25 border-t-[#3D4250]/40 rounded-2xl p-4.5 backdrop-blur-md shadow-lg font-mono text-[9px] relative overflow-hidden h-full">
                 <div className="absolute top-0 left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-[#FF5C00]/50 to-transparent" />
 
                 <AnimatePresence mode="wait">
@@ -994,10 +995,10 @@ export const Projects: React.FC = () => {
 
         </div>
 
-        {/* BOTTOM DASHBOARD: Luxury Vehicle Dashboard Instrument Cluster */}
-        <div className="w-full mt-4">
+        {/* BOTTOM DASHBOARD: Compact gauge strip */}
+        <div className="w-full shrink-0 h-[112px] overflow-hidden">
           <CameraReactive depth="button" className="w-full">
-            <div className="flex flex-wrap lg:flex-nowrap gap-3.5 w-full justify-between items-stretch">
+            <div className="flex gap-2.5 w-full justify-between items-stretch">
               {renderGauge('Core Assets', '50+', 'Active Portfolios', 100, 0)}
               {renderGauge('Client Ret', '94.0%', 'Long-term SLA', 94, 1)}
               {renderGauge('Sys Uptime', '99.9%', 'Continuous Ops', 99.9, 2)}

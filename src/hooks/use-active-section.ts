@@ -25,13 +25,15 @@ export const useActiveSection = (sectionIds: string[], options?: IntersectionObs
       if (element) observer.observe(element);
     });
 
+    const sectionKey = sectionIds.join(',');
+
     return () => {
-      sectionIds.forEach((id) => {
+      sectionKey.split(',').forEach((id) => {
         const element = document.getElementById(id);
         if (element) observer.unobserve(element);
       });
     };
-  }, [sectionIds, options]);
+  }, [sectionIds.join(','), options]);
 
   return activeSection;
 };

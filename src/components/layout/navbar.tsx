@@ -18,21 +18,23 @@ const SHPLogoMark = ({ className }: { className?: string }) => (
   />
 );
 
+const SECTION_IDS = ['hero', 'about', 'services', 'projects', 'why-choose-us', 'process', 'faq'];
+
+const NAV_LINKS = [
+  { label: 'About',    href: '#about',    section: 'about'    },
+  { label: 'Services', href: '#services', section: 'services' },
+  { label: 'Projects', href: '#projects', section: 'projects' },
+  { label: 'Process',  href: '#process',  section: 'process'  },
+  { label: 'FAQ',      href: '#faq',      section: 'faq'      },
+];
+
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const scrollY = useScrollPosition();
   const [scrollProgress, setScrollProgress] = useState(0);
 
-  const sectionIds = ['hero', 'about', 'services', 'projects', 'why-choose-us', 'process', 'faq'];
-  const activeSection = useActiveSection(sectionIds);
+  const activeSection = useActiveSection(SECTION_IDS);
 
-  const navLinks = [
-    { label: 'About',    href: '#about',    section: 'about'    },
-    { label: 'Services', href: '#services', section: 'services' },
-    { label: 'Projects', href: '#projects', section: 'projects' },
-    { label: 'Process',  href: '#process',  section: 'process'  },
-    { label: 'FAQ',      href: '#faq',      section: 'faq'      },
-  ];
 
   useEffect(() => {
     const handleProgress = () => {
@@ -86,7 +88,7 @@ export const Navbar: React.FC = () => {
 
             {/* ── Desktop Nav ── */}
             <nav className="hidden md:flex items-center gap-7">
-              {navLinks.map((link) => {
+              {NAV_LINKS.map((link) => {
                 const isActive = activeSection === link.section;
                 return (
                   <a
@@ -156,7 +158,7 @@ export const Navbar: React.FC = () => {
               }}
             >
               <div className="px-4 pt-4 pb-6 space-y-1 flex flex-col items-start">
-                {navLinks.map((link) => {
+                {NAV_LINKS.map((link) => {
                   const isActive = activeSection === link.section;
                   return (
                     <a
